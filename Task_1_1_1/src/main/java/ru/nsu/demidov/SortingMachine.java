@@ -1,5 +1,6 @@
 package ru.nsu.demidov;
 
+import java.util.Random;
 /**
  * heapsort algorithm on Java.
  *
@@ -8,7 +9,9 @@ package ru.nsu.demidov;
  */
 
 public class SortingMachine {
-    /** sift down algorithm. */
+    /**
+     * sift down algorithm.
+     */
     public static void siftDown(int[] arr, int index, int n) { // SiftDown
         int max = index;
         int left = max * 2 + 1;
@@ -26,7 +29,10 @@ public class SortingMachine {
             siftDown(arr, max, n);
         }
     }
-    /** sorting algorithm. */
+
+    /**
+     * sorting algorithm.
+     */
 
     public static int[] heapsort(int[] arr) { // Heap building and sorting
         int n = arr.length;
@@ -47,8 +53,56 @@ public class SortingMachine {
     }
 
     public static void main(String[] args) { // idk wouldn't run without it
-
+        Random number = new Random();
+        int[] arr_1000 = new int[1000];
+        for (int i = 0; i < 1000; ++i) {
+            arr_1000[i] = number.nextInt(-100000000, 100000000) + 1;
+        }
+        double time = System.currentTimeMillis();
+        int[] sorted_arr_1000 = heapsort(arr_1000);
+        System.out.println("1000 elements - " + (double) (System.currentTimeMillis() - time));
+        int[] arr_10000 = new int[10000];
+        for (int i = 0; i < 10000; ++i) {
+            arr_10000[i] = number.nextInt(-100000000, 100000000) + 1;
+        }
+        time = System.currentTimeMillis();
+        int[] sorted_arr_10000 = heapsort(arr_10000);
+        System.out.println("10000 elements - " + (double) (System.currentTimeMillis() - time));
+        int[] arr_100000 = new int[100000];
+        for (int i = 0; i < 100000; ++i) {
+            arr_100000[i] = number.nextInt(-100000000, 100000000) + 1;
+        }
+        time = System.currentTimeMillis();
+        int[] sorted_arr_100000 = heapsort(arr_100000);
+        System.out.println("100000 elements - " + (double) (System.currentTimeMillis() - time));
+        int[] arr_1000000 = new int[1000000];
+        for (int i = 0; i < 1000000; ++i) {
+            arr_1000000[i] = number.nextInt(-100000000, 100000000) + 1;
+        }
+        time = System.currentTimeMillis();
+        int[] sorted_arr_1000000 = heapsort(arr_1000000);
+        System.out.println("1000000 elements - " + (double) (System.currentTimeMillis() - time));
+        int[] arr_2000000 = new int[2000000];
+        for (int i = 0; i < 2000000; ++i) {
+            arr_2000000[i] = number.nextInt(-100000000, 100000000) + 1;
+        }
+        time = System.currentTimeMillis();
+        int[] sorted_arr_2000000 = heapsort(arr_2000000);
+        System.out.println("2000000 elements - " + (double) (System.currentTimeMillis() - time));
+        int[] arr_5000000 = new int[5000000];
+        for (int i = 0; i < 5000000; ++i) {
+            arr_5000000[i] = number.nextInt(-100000000, 100000000) + 1;
+        }
+        time = System.currentTimeMillis();
+        int[] sorted_arr_5000000 = heapsort(arr_5000000);
+        System.out.println("5000000 elements - " + (double) (System.currentTimeMillis() - time));
+        int[] arr_10000000 = new int[10000000];
+        for (int i = 0; i < 10000000; ++i) {
+            arr_10000000[i] = number.nextInt(-100000000, 100000000) + 1;
+        }
+        time = System.currentTimeMillis();
+        int[] sorted_arr_10000000 = heapsort(arr_10000000);
+        System.out.println("10000000 elements - " + (double) (System.currentTimeMillis() - time));
     }
 
 }
-
