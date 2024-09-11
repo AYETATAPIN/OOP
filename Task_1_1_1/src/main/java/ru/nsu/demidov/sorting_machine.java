@@ -1,13 +1,9 @@
 package ru.nsu.demidov;
 
-/**
- * Heapsort is a sorting algorithm which asymptotic O(nlog(n)
- */
+/** Heapsort is a sorting algorithm which asymptotic O(nlog(n) */
 
 public class sorting_machine {
-    /**
-     * main
-     */
+    /** sorting algorithm */
     public static void sift_down(int[] arr, int index, int n) { // SiftDown
         int max = index;
         int left = max * 2 + 1, right = max * 2 + 2;
