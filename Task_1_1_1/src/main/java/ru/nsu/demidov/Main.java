@@ -6,10 +6,12 @@ public class Main { /** main */
     public static void swapping(int[] arr, int index, int n) { // SiftDown
         int max = index;
         int left = max * 2 + 1, right = max * 2 + 2;
-        if (left < n && arr[left] > arr[max])
+        if (left < n && arr[left] > arr[max]) {
             max = left;
-        if (right < n && arr[right] > arr[max])
+        }
+        if (right < n && arr[right] > arr[max]) {
             max = right;
+        }
         if (max != index) {
             int temp = arr[max];
             arr[max] = arr[index];
