@@ -52,6 +52,9 @@ public class SortingMachine {
         return sortedArr;
     }
 
+    /**
+     * asymptotic testing.
+     */
     public static void main(String[] args) { // idk wouldn't run without it
         Random number = new Random();
         int[] arr1000 = new int[1000];
