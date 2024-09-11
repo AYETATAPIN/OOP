@@ -2,9 +2,9 @@ package ru.nsu.demidov;
 
 /** Heapsort is a sorting algorithm which asymptotic O(nlog(n) */
 
-public class Sorting_machine {
+public class sortingMachine {
     /** sift down algorithm */
-    public static void sift_down(int[] arr, int index, int n) { // SiftDown
+    public static void siftDown(int[] arr, int index, int n) { // SiftDown
         int max = index;
         int left = max * 2 + 1;
         int right = max * 2 + 2;
@@ -18,7 +18,7 @@ public class Sorting_machine {
             int temp = arr[max];
             arr[max] = arr[index];
             arr[index] = temp;
-            sift_down(arr, max, n);
+            siftDown(arr, max, n);
         }
     }
     /** sorting algorithm */
@@ -27,7 +27,7 @@ public class Sorting_machine {
         int[] tempArr = new int[n];
         System.arraycopy(arr, 0, tempArr, 0, n);
         for (int i = n / 2 - 1; i >= 0; --i) { // Heap building
-            sift_down(tempArr, i, n);
+            siftDown(tempArr, i, n);
         }
         int[] sortedArr = new int[n];
         for (int i = n - 1; i >= 0; --i) { // Max & min swap and SiftDown
@@ -35,7 +35,7 @@ public class Sorting_machine {
             int temp = tempArr[0];
             tempArr[0] = tempArr[i];
             tempArr[i] = temp;
-            sift_down(tempArr, 0, i);
+            siftDown(tempArr, 0, i);
         }
         return sortedArr;
     }
