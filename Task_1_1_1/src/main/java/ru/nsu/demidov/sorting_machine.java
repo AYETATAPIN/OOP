@@ -1,9 +1,14 @@
 package ru.nsu.demidov;
 
-/** Heapsort is a sorting algorithm which asymptotic O(nlog(n) */
+/**
+ * Heapsort is a sorting algorithm which asymptotic O(nlog(n)
+ */
 
-public class Main { /** main */
-    public static void swapping(int[] arr, int index, int n) { // SiftDown
+public class sorting_machine {
+    /**
+     * main
+     */
+    public static void sift_down(int[] arr, int index, int n) { // SiftDown
         int max = index;
         int left = max * 2 + 1, right = max * 2 + 2;
         if (left < n && arr[left] > arr[max]) {
@@ -16,22 +21,24 @@ public class Main { /** main */
             int temp = arr[max];
             arr[max] = arr[index];
             arr[index] = temp;
-            swapping(arr, max, n);
+            sift_down(arr, max, n);
         }
     }
 
     public static int[] heapsort(int[] arr) { // Heap building and sorting
         int n = arr.length;
+        int[] temp_arr = new int[n];
+        System.arraycopy(arr, 0, temp_arr, 0, n);
         for (int i = n / 2 - 1; i >= 0; --i) { // Heap building
-            swapping(arr, i, n);
+            sift_down(temp_arr, i, n);
         }
         int[] sorted_arr = new int[n];
         for (int i = n - 1; i >= 0; --i) { // Max & min swap and SiftDown
-            sorted_arr[i] = arr[0];
-            int temp = arr[0];
-            arr[0] = arr[i];
-            arr[i] = temp;
-            swapping(arr, 0, i);
+            sorted_arr[i] = temp_arr[0];
+            int temp = temp_arr[0];
+            temp_arr[0] = temp_arr[i];
+            temp_arr[i] = temp;
+            sift_down(temp_arr, 0, i);
         }
         return sorted_arr;
     }
