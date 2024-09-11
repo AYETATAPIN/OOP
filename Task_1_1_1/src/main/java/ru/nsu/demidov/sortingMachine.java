@@ -1,9 +1,13 @@
 package ru.nsu.demidov;
 
-/** Heapsort is a sorting algorithm which asymptotic O(nlog(n) */
+/**
+ * heapsort algorithm on Java.
+ * @author d.demidov
+ * @version 1
+ */
 
 public class sortingMachine {
-    /** sift down algorithm */
+    /** sift down algorithm. */
     public static void siftDown(int[] arr, int index, int n) { // SiftDown
         int max = index;
         int left = max * 2 + 1;
@@ -21,7 +25,7 @@ public class sortingMachine {
             siftDown(arr, max, n);
         }
     }
-    /** sorting algorithm */
+    /** sorting algorithm. */
     public static int[] heapsort(int[] arr) { // Heap building and sorting
         int n = arr.length;
         int[] tempArr = new int[n];
