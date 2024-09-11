@@ -2,11 +2,12 @@ package ru.nsu.demidov;
 
 /**
  * heapsort algorithm on Java.
+ *
  * @author d.demidov
  * @version 1
  */
 
-public class sortingMachine {
+public class SortingMachine {
     /** sift down algorithm. */
     public static void siftDown(int[] arr, int index, int n) { // SiftDown
         int max = index;
