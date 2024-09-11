@@ -27,6 +27,7 @@ public class SortingMachine {
         }
     }
     /** sorting algorithm. */
+
     public static int[] heapsort(int[] arr) { // Heap building and sorting
         int n = arr.length;
         int[] tempArr = new int[n];
