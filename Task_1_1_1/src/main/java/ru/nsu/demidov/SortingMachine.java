@@ -59,7 +59,10 @@ public class SortingMachine {
         Random number = new Random();
         int[] arr1000 = new int[1000];
         for (int i = 0; i < 1000; ++i) {
-            arr1000[i] = number.nextInt( 10000) + 1;
+            arr1000[i] = number.nextInt(10000) + 1;
+            if (arr1000[i] % 2 == 0) {
+                arr1000[i] *= -1;
+            }
         }
         double time = System.currentTimeMillis();
         int[] sortedArr1000 = heapsort(arr1000);
@@ -67,6 +70,9 @@ public class SortingMachine {
         int[] arr10000 = new int[10000];
         for (int i = 0; i < 10000; ++i) {
             arr10000[i] = number.nextInt(10000) + 1;
+            if (arr10000[i] % 2 == 0) {
+                arr10000[i] *= -1;
+            }
         }
         time = System.currentTimeMillis();
         int[] sortedArr10000 = heapsort(arr10000);
@@ -74,20 +80,29 @@ public class SortingMachine {
         int[] arr100000 = new int[100000];
         for (int i = 0; i < 100000; ++i) {
             arr100000[i] = number.nextInt(10000) + 1;
+            if (arr100000[i] % 2 == 0) {
+                arr100000[i] *= -1;
+            }
         }
         time = System.currentTimeMillis();
         int[] sortedArr100000 = heapsort(arr100000);
         System.out.println("100000 elements - " + (double) (System.currentTimeMillis() - time));
         int[] arr1000000 = new int[1000000];
         for (int i = 0; i < 1000000; ++i) {
-            arr1000000[i] = number.nextInt( 10000) + 1;
+            arr1000000[i] = number.nextInt(10000) + 1;
+            if (arr1000000[i] % 2 == 0) {
+                arr1000000[i] *= -1;
+            }
         }
         time = System.currentTimeMillis();
         int[] sortedArr1000000 = heapsort(arr1000000);
         System.out.println("1000000 elements - " + (double) (System.currentTimeMillis() - time));
         int[] arr2000000 = new int[2000000];
         for (int i = 0; i < 2000000; ++i) {
-            arr2000000[i] = number.nextInt( 10000) + 1;
+            arr2000000[i] = number.nextInt(10000) + 1;
+            if (arr2000000[i] % 2 == 0) {
+                arr2000000[i] *= -1;
+            }
         }
         time = System.currentTimeMillis();
         int[] sortedArr2000000 = heapsort(arr2000000);
@@ -95,6 +110,9 @@ public class SortingMachine {
         int[] arr5000000 = new int[5000000];
         for (int i = 0; i < 5000000; ++i) {
             arr5000000[i] = number.nextInt(10000) + 1;
+            if (arr5000000[i] % 2 == 0) {
+                arr5000000[i] *= -1;
+            }
         }
         time = System.currentTimeMillis();
         int[] sortedArr5000000 = heapsort(arr5000000);
@@ -102,6 +120,9 @@ public class SortingMachine {
         int[] arr10000000 = new int[10000000];
         for (int i = 0; i < 10000000; ++i) {
             arr10000000[i] = number.nextInt(10000) + 1;
+            if (arr10000000[i] % 2 == 0) {
+                arr10000000[i] *= -1;
+            }
         }
         time = System.currentTimeMillis();
         int[] sortedArr10000000 = heapsort(arr10000000);
