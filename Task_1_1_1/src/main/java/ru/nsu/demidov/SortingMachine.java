@@ -56,7 +56,7 @@ public class SortingMachine {
      * asymptotic testing.
      */
     public static void main(String[] args) { // idk wouldn't run without it
-        Random number = new Random();
+        /*Random number = new Random();
         int[] arr1000 = new int[1000];
         for (int i = 0; i < 1000; ++i) {
             arr1000[i] = number.nextInt(10000) + 1;
@@ -126,7 +126,7 @@ public class SortingMachine {
         }
         time = System.currentTimeMillis();
         int[] sortedArr10000000 = heapsort(arr10000000);
-        System.out.println("10000000 elements - " + (double) (System.currentTimeMillis() - time));
+        System.out.println("10000000 elements - " + (double) (System.currentTimeMillis() - time));*/
     }
 
 }
