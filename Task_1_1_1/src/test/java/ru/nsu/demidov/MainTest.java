@@ -1,21 +1,20 @@
 package ru.nsu.demidov;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
 class MainTest {
     @Test
     public void reversed_test() {
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, SortingMachine.heapsort(new int[]{5, 4, 3, 2,
-                1}));
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, SortingMachine.heapsort(new int[]{5, 4, 3, 2, 1}
+        ));
     }
 
     @Test
     public void same_elements_test() {
-        assertArrayEquals(new int[]{1, 1, 1, 1, 1}, SortingMachine.heapsort(new int[]{1, 1, 1, 1,
-                1}));
-
+        assertArrayEquals(new int[]{1, 1, 1, 1, 1}, SortingMachine.heapsort(new int[]{1, 1, 1, 1, 1}
+        ));
     }
 
     @Test
@@ -35,8 +34,8 @@ class MainTest {
 
     @Test
     public void sorted_test() {
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, SortingMachine.heapsort(new int[]{1, 2, 4, 3,
-                    5}));
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, SortingMachine.heapsort(new int[]{1, 2, 4, 3, 5}
+        ));
     }
 
     @Test
