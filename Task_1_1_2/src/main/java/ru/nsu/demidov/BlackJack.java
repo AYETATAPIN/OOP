@@ -266,8 +266,8 @@ public class BlackJack {
                 }
                 if (playerHand.score == dealerHand.score) {
                     System.out.println("Ничья. Везунчики");
-                } else if (playerHand.score > dealerHand.score || playerHand.score <= 21 &&
-                        dealerHand.score > 21) {
+                } else if (playerHand.score > dealerHand.score || playerHand.score <= 21
+                        && dealerHand.score > 21) {
                     System.out.println("Ты прогрел дилера на фишки.");
                 } else {
                     System.out.println("Дилер прогрел тебя на фишки");
