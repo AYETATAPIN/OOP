@@ -201,7 +201,7 @@ public class BlackJack {
     /**
      * блэкджек.
      */
-    public static void Game(String[] args) throws InterruptedException {
+    public static void game(String[] args) throws InterruptedException {
         int round = 1;
         while (true) {
             System.out.println("Раунд" + " " + round);
@@ -266,7 +266,8 @@ public class BlackJack {
                 }
                 if (playerHand.score == dealerHand.score) {
                     System.out.println("Ничья. Везунчики");
-                } else if (playerHand.score > dealerHand.score || playerHand.score <= 21 && dealerHand.score > 21) {
+                } else if (playerHand.score > dealerHand.score || playerHand.score <= 21 &&
+                        dealerHand.score > 21) {
                     System.out.println("Ты прогрел дилера на фишки.");
                 } else {
                     System.out.println("Дилер прогрел тебя на фишки");
@@ -287,7 +288,7 @@ public class BlackJack {
     /**
      * шлюхи.
      */
-    public static class whores {
+    public static class Whores {
 
     }
 }
