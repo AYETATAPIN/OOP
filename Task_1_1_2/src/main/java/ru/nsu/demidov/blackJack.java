@@ -6,27 +6,29 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 /**
  * Игра с блэкджеком и шлюхами.
+ *
  * @author d.demidov
  * @version 69
  */
+
 public class blackJack {
     /**
      * игральная карта.
      */
-    public static class card {
+    public static class Card {
         String name;
         String suit;
         int value;
 
-        card(String current_name, String current_suit, int current_value) {
-            name = current_name;
-            suit = current_suit;
-            value = current_value;
+        Card(String currentName, String currentSuit, int currentValue) {
+            name = currentName;
+            suit = currentSuit;
+            value = currentValue;
         }
         /**
          * вывод названия, масти и стоимости карты.
          */
-        void display_info() {
+        void displayInfo() {
             System.out.print(name + " " + suit + "(" + value + ")");
         }
 
@@ -34,35 +36,35 @@ public class blackJack {
     /**
      * карты игрока.
      */
-    public static class hand {
-        int number_of_cards, score;
-        card[] cards;
+    public static class Hand {
+        int numberOfCards, score;
+        Card[] Cards;
 
         {
-            number_of_cards = 0;
+            numberOfCards = 0;
             score = 0;
-            cards = new card[9];
+            Cards = new Card[9];
         }
         /**
          * метод добавления карты.
          */
-        void add_card(card current_card) {
-            cards[number_of_cards] = current_card;
-            number_of_cards++;
-            score += current_card.value;
-            if (score > 21 && current_card.value == 11) {
+        void addCard(Card currentCard) {
+            Cards[numberOfCards] = currentCard;
+            numberOfCards++;
+            score += currentCard.value;
+            if (score > 21 && currentCard.value == 11) {
                 score -= 10;
             }
         }
         /**
          * вывод всех карт.
          */
-        void show_all_cards(boolean is_secret) {
+        void showAllCards(boolean isSecret) {
             System.out.print("[");
-            for (int i = 0; i < number_of_cards; ++i) {
-                if (!(is_secret == true && number_of_cards == 2 && i == 1)) {
-                    cards[i].display_info();
-                    if (i != number_of_cards - 1) {
+            for (int i = 0; i < numberOfCards; ++i) {
+                if (!(isSecret == true && numberOfCards == 2 && i == 1)) {
+                    Cards[i].displayInfo();
+                    if (i != numberOfCards - 1) {
                         System.out.print(", ");
                     }
                 } else {
@@ -70,8 +72,8 @@ public class blackJack {
                 }
             }
             System.out.print("], " + "Счет - ");
-            if (is_secret == true) {
-                System.out.println(cards[0].value + " + <секретик>");
+            if (isSecret == true) {
+                System.out.println(Cards[0].value + " + <секретик>");
             } else {
                 System.out.println(score);
             }
@@ -80,84 +82,84 @@ public class blackJack {
     /**
      * игральная колода.
      */
-    public static class deck {
-        int number_of_cards;
-        card[] cards;
+    public static class Deck {
+        int numberOfCards;
+        Card[] Cards;
         /**
          * создание колоды из 36 карт.
          */
-        void deck_of_36() {
-            cards[0] = new card("Шестерка", "черви", 6);
-            cards[1] = new card("Шестерка", "буби", 6);
-            cards[2] = new card("Шестерка", "крести", 6);
-            cards[3] = new card("Шестерка", "пики", 6);
+        void deckOf36() {
+            Cards[0] = new Card("Шестерка", "черви", 6);
+            Cards[1] = new Card("Шестерка", "буби", 6);
+            Cards[2] = new Card("Шестерка", "крести", 6);
+            Cards[3] = new Card("Шестерка", "пики", 6);
 
-            cards[4] = new card("Семерка", "черви", 7);
-            cards[5] = new card("Семерка", "буби", 7);
-            cards[6] = new card("Семерка", "крести", 7);
-            cards[7] = new card("Семерка", "пики", 7);
+            Cards[4] = new Card("Семерка", "черви", 7);
+            Cards[5] = new Card("Семерка", "буби", 7);
+            Cards[6] = new Card("Семерка", "крести", 7);
+            Cards[7] = new Card("Семерка", "пики", 7);
 
-            cards[8] = new card("Восьмерка", "черви", 8);
-            cards[9] = new card("Восьмерка", "буби", 8);
-            cards[10] = new card("Восьмерка", "крести", 8);
-            cards[11] = new card("Восьмерка", "пики", 8);
+            Cards[8] = new Card("Восьмерка", "черви", 8);
+            Cards[9] = new Card("Восьмерка", "буби", 8);
+            Cards[10] = new Card("Восьмерка", "крести", 8);
+            Cards[11] = new Card("Восьмерка", "пики", 8);
 
-            cards[12] = new card("Девятка", "черви", 9);
-            cards[13] = new card("Девятка", "буби", 9);
-            cards[14] = new card("Девятка", "крести", 9);
-            cards[15] = new card("Девятка", "пики", 9);
+            Cards[12] = new Card("Девятка", "черви", 9);
+            Cards[13] = new Card("Девятка", "буби", 9);
+            Cards[14] = new Card("Девятка", "крести", 9);
+            Cards[15] = new Card("Девятка", "пики", 9);
 
-            cards[16] = new card("Десятка", "черви", 10);
-            cards[17] = new card("Десятка", "буби", 10);
-            cards[18] = new card("Десятка", "крести", 10);
-            cards[19] = new card("Десятка", "пики", 10);
+            Cards[16] = new Card("Десятка", "черви", 10);
+            Cards[17] = new Card("Десятка", "буби", 10);
+            Cards[18] = new Card("Десятка", "крести", 10);
+            Cards[19] = new Card("Десятка", "пики", 10);
 
-            cards[20] = new card("Валет", "черви", 10);
-            cards[21] = new card("Валет", "буби", 10);
-            cards[22] = new card("Валет", "крести", 10);
-            cards[23] = new card("Валет", "пики", 10);
+            Cards[20] = new Card("Валет", "черви", 10);
+            Cards[21] = new Card("Валет", "буби", 10);
+            Cards[22] = new Card("Валет", "крести", 10);
+            Cards[23] = new Card("Валет", "пики", 10);
 
-            cards[24] = new card("Дама", "черви", 10);
-            cards[25] = new card("Дама", "буби", 10);
-            cards[26] = new card("Дама", "крести", 10);
-            cards[27] = new card("Дама", "пики", 10);
+            Cards[24] = new Card("Дама", "черви", 10);
+            Cards[25] = new Card("Дама", "буби", 10);
+            Cards[26] = new Card("Дама", "крести", 10);
+            Cards[27] = new Card("Дама", "пики", 10);
 
-            cards[28] = new card("Король", "черви", 10);
-            cards[29] = new card("Король", "буби", 10);
-            cards[30] = new card("Король", "крести", 10);
-            cards[31] = new card("Король", "пики", 10);
+            Cards[28] = new Card("Король", "черви", 10);
+            Cards[29] = new Card("Король", "буби", 10);
+            Cards[30] = new Card("Король", "крести", 10);
+            Cards[31] = new Card("Король", "пики", 10);
 
-            cards[32] = new card("Туз", "черви", 11);
-            cards[33] = new card("Туз", "буби", 11);
-            cards[34] = new card("Туз", "крести", 11);
-            cards[35] = new card("Туз", "пики", 11);
+            Cards[32] = new Card("Туз", "черви", 11);
+            Cards[33] = new Card("Туз", "буби", 11);
+            Cards[34] = new Card("Туз", "крести", 11);
+            Cards[35] = new Card("Туз", "пики", 11);
 
 
         }
         /**
          * создание колоды из 52 карт.
          */
-        void deck_of_52() {
-            deck_of_36();
-            cards[36] = new card("Двойка", "черви", 2);
-            cards[37] = new card("Двойка", "буби", 2);
-            cards[38] = new card("Двойка", "крести", 2);
-            cards[39] = new card("Двойка", "пики", 2);
+        void deckOf52() {
+            deckOf36();
+            Cards[36] = new Card("Двойка", "черви", 2);
+            Cards[37] = new Card("Двойка", "буби", 2);
+            Cards[38] = new Card("Двойка", "крести", 2);
+            Cards[39] = new Card("Двойка", "пики", 2);
 
-            cards[40] = new card("Тройка", "черви", 3);
-            cards[41] = new card("Тройка", "буби", 3);
-            cards[42] = new card("Тройка", "крести", 3);
-            cards[43] = new card("Тройка", "пики", 3);
+            Cards[40] = new Card("Тройка", "черви", 3);
+            Cards[41] = new Card("Тройка", "буби", 3);
+            Cards[42] = new Card("Тройка", "крести", 3);
+            Cards[43] = new Card("Тройка", "пики", 3);
 
-            cards[44] = new card("Четверка", "черви", 4);
-            cards[45] = new card("Четверка", "буби", 4);
-            cards[46] = new card("Четверка", "крести", 4);
-            cards[47] = new card("Четверка", "пики", 4);
+            Cards[44] = new Card("Четверка", "черви", 4);
+            Cards[45] = new Card("Четверка", "буби", 4);
+            Cards[46] = new Card("Четверка", "крести", 4);
+            Cards[47] = new Card("Четверка", "пики", 4);
 
-            cards[48] = new card("Пятерка", "черви", 5);
-            cards[49] = new card("Пятерка", "буби", 5);
-            cards[50] = new card("Пятерка", "крести", 5);
-            cards[51] = new card("Пятерка", "пики", 5);
+            Cards[48] = new Card("Пятерка", "черви", 5);
+            Cards[49] = new Card("Пятерка", "буби", 5);
+            Cards[50] = new Card("Пятерка", "крести", 5);
+            Cards[51] = new Card("Пятерка", "пики", 5);
         }
         /**
          * тасовка колоды.
@@ -165,23 +167,23 @@ public class blackJack {
         void shuffle() {
             Random number = new Random();
             for (int i = 0; i < 1000; ++i) {
-                int temp_index = number.nextInt(10000) % number_of_cards;
-                int switch_index = number.nextInt(10000) % number_of_cards;
-                card temp = cards[temp_index];
-                cards[temp_index] = cards[switch_index];
-                cards[switch_index] = temp;
+                int temp_index = number.nextInt(10000) % numberOfCards;
+                int switch_index = number.nextInt(10000) % numberOfCards;
+                Card temp = Cards[temp_index];
+                Cards[temp_index] = Cards[switch_index];
+                Cards[switch_index] = temp;
             }
         }
         /**
          * конструктор колоды.
          */
-        deck(int size) {
-            number_of_cards = size;
-            cards = new card[size];
+        Deck(int size) {
+            numberOfCards = size;
+            Cards = new Card[size];
             if (size == 36) {
-                deck_of_36();
+                deckOf36();
             } else {
-                deck_of_52();
+                deckOf52();
             }
             shuffle();
         }
@@ -189,7 +191,7 @@ public class blackJack {
     /**
      * блэкджек.
      */
-    public static void game(String[] args) throws InterruptedException {
+    public static void Game(String[] args) throws InterruptedException {
         int round = 1;
         while (true) {
             System.out.println("Раунд" + " " + round);
@@ -197,38 +199,38 @@ public class blackJack {
             System.out.println("Выберите тип колоды: [36/52]");
             boolean lost = false;
             Scanner argument = new Scanner(System.in);
-            int deck_size = argument.nextInt();
-            deck dealer_deck = new deck(deck_size);
-            hand player_hand = new hand(), dealer_hand = new hand();
-            int deck_index = 0;
-            player_hand.add_card(dealer_deck.cards[deck_index]); // first player card
-            deck_index++;
-            dealer_hand.add_card(dealer_deck.cards[deck_index]); // first dealer card
-            deck_index++;
-            player_hand.add_card(dealer_deck.cards[deck_index]); // second player card
-            deck_index++;
-            dealer_hand.add_card(dealer_deck.cards[deck_index]); // second dealer card
-            deck_index++;
+            int deckSize = argument.nextInt();
+            Deck dealerDeck = new Deck(deckSize);
+            Hand playerHand = new Hand(), dealerHand = new Hand();
+            int deckIndex = 0;
+            playerHand.addCard(dealerDeck.Cards[deckIndex]); // first player card
+            deckIndex++;
+            dealerHand.addCard(dealerDeck.Cards[deckIndex]); // first dealer card
+            deckIndex++;
+            playerHand.addCard(dealerDeck.Cards[deckIndex]); // second player card
+            deckIndex++;
+            dealerHand.addCard(dealerDeck.Cards[deckIndex]); // second dealer card
+            deckIndex++;
             System.out.print("Ваши карты: ");
             TimeUnit.SECONDS.sleep(1);
-            player_hand.show_all_cards(false);
-            if (player_hand.score == 21) {
+            playerHand.showAllCards(false);
+            if (playerHand.score == 21) {
                 System.out.println("Блэкджек! KYS!");
                 break;
             }
             System.out.print("Карты дилера: ");
             TimeUnit.SECONDS.sleep(1);
-            dealer_hand.show_all_cards(true);
+            dealerHand.showAllCards(true);
             System.out.println("Маловато будет? [да/нет]");
             String option;
             option = argument.next();
 
             if (Objects.equals(option, "1")) {
                 while (!(Objects.equals(option, "2"))) {
-                    player_hand.add_card(dealer_deck.cards[deck_index]);
-                    deck_index++;
-                    player_hand.show_all_cards(false);
-                    if (player_hand.score > 21) {
+                    playerHand.addCard(dealerDeck.Cards[deckIndex]);
+                    deckIndex++;
+                    playerHand.showAllCards(false);
+                    if (playerHand.score > 21) {
                         System.out.println("ПЕРЕПОЛНЕНИЕ");
                         lost = true;
                         break;
@@ -240,20 +242,20 @@ public class blackJack {
             if (lost != true) {
                 System.out.print("Дилер вскрывается: ");
                 TimeUnit.SECONDS.sleep(1);
-                dealer_hand.show_all_cards(false);
-                while (dealer_hand.score < 17) {
+                dealerHand.showAllCards(false);
+                while (dealerHand.score < 17) {
                     System.out.println("Дилеру маловато");
                     TimeUnit.SECONDS.sleep(1);
-                    dealer_hand.add_card(dealer_deck.cards[deck_index]);
-                    dealer_hand.show_all_cards(false);
-                    if (dealer_hand.score > 21) {
+                    dealerHand.addCard(dealerDeck.Cards[deckIndex]);
+                    dealerHand.showAllCards(false);
+                    if (dealerHand.score > 21) {
                         System.out.println("Дилер вскрылся");
                     }
-                    deck_index++;
+                    deckIndex++;
                 }
-                if (player_hand.score == dealer_hand.score) {
+                if (playerHand.score == dealerHand.score) {
                     System.out.println("Ничья. Везунчики");
-                } else if (player_hand.score > dealer_hand.score || player_hand.score <= 21 && dealer_hand.score > 21) {
+                } else if (playerHand.score > dealerHand.score || playerHand.score <= 21 && dealerHand.score > 21) {
                     System.out.println("Ты прогрел дилера на фишки.");
                 } else {
                     System.out.println("Дилер прогрел тебя на фишки");
