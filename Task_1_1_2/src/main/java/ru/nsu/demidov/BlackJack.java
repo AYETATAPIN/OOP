@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * @version 69
  */
 
-public class blackJack {
+public class BlackJack {
     /**
      * игральная карта.
      */
@@ -31,8 +31,8 @@ public class blackJack {
         void displayInfo() {
             System.out.print(name + " " + suit + "(" + value + ")");
         }
-
     }
+
     /**
      * карты игрока.
      */
@@ -56,6 +56,7 @@ public class blackJack {
                 score -= 10;
             }
         }
+
         /**
          * вывод всех карт.
          */
@@ -85,6 +86,7 @@ public class blackJack {
     public static class Deck {
         int numberOfCards;
         Card[] Cards;
+
         /**
          * создание колоды из 36 карт.
          */
@@ -136,6 +138,7 @@ public class blackJack {
 
 
         }
+
         /**
          * создание колоды из 52 карт.
          */
@@ -161,6 +164,7 @@ public class blackJack {
             Cards[50] = new Card("Пятерка", "крести", 5);
             Cards[51] = new Card("Пятерка", "пики", 5);
         }
+
         /**
          * тасовка колоды.
          */
@@ -174,6 +178,7 @@ public class blackJack {
                 Cards[switch_index] = temp;
             }
         }
+
         /**
          * конструктор колоды.
          */
@@ -188,6 +193,7 @@ public class blackJack {
             shuffle();
         }
     }
+
     /**
      * блэкджек.
      */
@@ -272,6 +278,7 @@ public class blackJack {
             round++;
         }
     }
+    
     /**
      * шлюхи.
      */
