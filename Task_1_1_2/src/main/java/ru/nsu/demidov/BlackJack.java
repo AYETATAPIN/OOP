@@ -38,20 +38,21 @@ public class BlackJack {
      * карты игрока.
      */
     public static class Hand {
-        int numberOfCards, score;
-        Card[] Cards;
+        int numberOfCards;
+        int score;
+        Card[] cards;
 
         {
             numberOfCards = 0;
             score = 0;
-            Cards = new Card[9];
+            cards = new Card[9];
         }
 
         /**
          * метод добавления карты.
          */
         void addCard(Card currentCard) {
-            Cards[numberOfCards] = currentCard;
+            cards[numberOfCards] = currentCard;
             numberOfCards++;
             score += currentCard.value;
             if (score > 21 && currentCard.value == 11) {
@@ -66,7 +67,7 @@ public class BlackJack {
             System.out.print("[");
             for (int i = 0; i < numberOfCards; ++i) {
                 if (!(isSecret == true && numberOfCards == 2 && i == 1)) {
-                    Cards[i].displayInfo();
+                    cards[i].displayInfo();
                     if (i != numberOfCards - 1) {
                         System.out.print(", ");
                     }
@@ -76,7 +77,7 @@ public class BlackJack {
             }
             System.out.print("], " + "Счет - ");
             if (isSecret == true) {
-                System.out.println(Cards[0].value + " + <секретик>");
+                System.out.println(cards[0].value + " + <секретик>");
             } else {
                 System.out.println(score);
             }
