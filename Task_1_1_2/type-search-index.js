@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.demidov","l":"BlackJack"},{"p":"ru.nsu.demidov","l":"BlackJack.Card"},{"p":"ru.nsu.demidov","l":"BlackJack.Deck"},{"p":"ru.nsu.demidov","l":"BlackJack.Hand"},{"p":"ru.nsu.demidov","l":"BlackJack.Whores"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.demidov","l":"BlackJack"},{"p":"ru.nsu.demidov","l":"BlackJack.Card"},{"p":"ru.nsu.demidov","l":"BlackJack.Deck"},{"p":"ru.nsu.demidov","l":"BlackJack.Hand"}]
