@@ -201,7 +201,7 @@ public class BlackJack {
     /**
      * блэкджек.
      */
-    public static void game(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         int round = 1;
         while (true) {
             System.out.println("Раунд" + " " + round);
@@ -210,6 +210,7 @@ public class BlackJack {
             boolean lost = false;
             Scanner argument = new Scanner(System.in);
             int deckSize = argument.nextInt();
+            deckSize = deckSize == 1 ? 36 : 52;
             Deck dealerDeck = new Deck(deckSize);
             Hand playerHand = new Hand();
             Hand dealerHand = new Hand();
@@ -288,7 +289,5 @@ public class BlackJack {
     /**
      * шлюхи.
      */
-    public static class Whores {
 
-    }
 }
