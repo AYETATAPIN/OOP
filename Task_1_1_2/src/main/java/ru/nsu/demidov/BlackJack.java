@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 /**
- * Игра с блэкджеком и шлюхами.
+ * BlackJack with hookers.
  *
  * @author d.demidov
  * @version 69
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BlackJack {
     /**
-     * игральная карта.
+     * playing card.
      */
     public static class Card {
         String name;
@@ -27,7 +27,7 @@ public class BlackJack {
         }
 
         /**
-         * вывод названия, масти и стоимости карты.
+         * card name suit and value output.
          */
         void displayInfo() {
             System.out.print(name + " " + suit + "(" + value + ")");
@@ -35,7 +35,7 @@ public class BlackJack {
     }
 
     /**
-     * карты игрока.
+     * hand of cards.
      */
     public static class Hand {
         int numberOfCards;
@@ -49,7 +49,7 @@ public class BlackJack {
         }
 
         /**
-         * метод добавления карты.
+         * card addition method.
          */
         void addCard(Card currentCard) {
             cards[numberOfCards] = currentCard;
@@ -61,7 +61,7 @@ public class BlackJack {
         }
 
         /**
-         * вывод всех карт.
+         * output of all cards.
          */
         void showAllCards(boolean isSecret) {
             System.out.print("[");
@@ -85,14 +85,14 @@ public class BlackJack {
     }
 
     /**
-     * игральная колода.
+     * playing deck.
      */
     public static class Deck {
         int numberOfCards;
         Card[] cards;
 
         /**
-         * создание колоды из 36 карт.
+         * deck of 36 cards creation.
          */
         void deckOf36() {
             cards[0] = new Card("Шестерка", "черви", 6);
@@ -144,7 +144,7 @@ public class BlackJack {
         }
 
         /**
-         * создание колоды из 52 карт.
+         * deck of 52 cards creation.
          */
         void deckOf52() {
             deckOf36();
@@ -170,7 +170,7 @@ public class BlackJack {
         }
 
         /**
-         * тасовка колоды.
+         * deck shuffle.
          */
         void shuffle() {
             Random number = new Random();
@@ -184,7 +184,7 @@ public class BlackJack {
         }
 
         /**
-         * конструктор колоды.
+         * deck constructor.
          */
         Deck(int size) {
             numberOfCards = size;
@@ -199,7 +199,7 @@ public class BlackJack {
     }
 
     /**
-     * блэкджек.
+     * BlackJack.
      */
     public static void main(String[] args) throws InterruptedException {
         int round = 1;
@@ -287,7 +287,7 @@ public class BlackJack {
     }
 
     /**
-     * шлюхи.
+     * Hookers.
      */
 
 }
