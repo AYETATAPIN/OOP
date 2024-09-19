@@ -3,14 +3,16 @@ package ru.nsu.demidov;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 /**
  * playing deck.
  */
 public class Deck {
-    int deck_size = 52;
-    int deck_index = 0;
-    Card[] cards = new Card[deck_size];
-    String[] names = {"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
+    int deckSize = 52;
+    int deckIndex = 0;
+    Card[] cards = new Card[deckSize];
+    String[] names = {"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+            "Jack", "Queen", "King", "Ace"};
     String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
     int[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
@@ -23,22 +25,22 @@ public class Deck {
      * deck of 52 cards creation.
      */
     void deckOf52() {
-        for (int name_index = 0; name_index < 8; ++name_index) { // from 2 to 10
-            for (int suit_index = 0; suit_index < 4; ++suit_index) {
-                cards[deck_index] = new Card(names[name_index], suits[suit_index], values[name_index]);
-                deck_index++;
+        for (int nameIndex = 0; nameIndex < 8; ++nameIndex) { // from 2 to 10
+            for (int suitIndex = 0; suitIndex < 4; ++suitIndex) {
+                cards[deckIndex] = new Card(names[nameIndex], suits[suitIndex], values[nameIndex]);
+                deckIndex++;
             }
         }
-        for (int name_index = 8; name_index < 12; ++name_index) { // face cards
-            for (int suit_index = 0; suit_index < 4; ++suit_index) {
-                cards[deck_index] = new Card(names[name_index], suits[suit_index], 10);
-                deck_index++;
+        for (int nameIndex = 8; nameIndex < 12; ++nameIndex) { // face cards
+            for (int suitIndex = 0; suitIndex < 4; ++suitIndex) {
+                cards[deckIndex] = new Card(names[nameIndex], suits[suitIndex], 10);
+                deckIndex++;
             }
         }
-        for (int name_index = 12; name_index < 13; ++name_index) { // aces
-            for (int suit_index = 0; suit_index < 4; ++suit_index) {
-                cards[deck_index] = new Card(names[name_index], suits[suit_index], 11);
-                deck_index++;
+        for (int nameIndex = 12; nameIndex < 13; ++nameIndex) { // aces
+            for (int suitIndex = 0; suitIndex < 4; ++suitIndex) {
+                cards[deckIndex] = new Card(names[nameIndex], suits[suitIndex], 11);
+                deckIndex++;
             }
         }
     }
@@ -51,6 +53,4 @@ public class Deck {
         Collections.shuffle(cardList);
         cards = cardList.toArray(new Card[0]);
     }
-
-
 }

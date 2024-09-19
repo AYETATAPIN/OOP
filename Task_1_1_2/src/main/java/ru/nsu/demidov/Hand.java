@@ -5,7 +5,7 @@ package ru.nsu.demidov;
  */
 public class Hand {
     int winning_score = 21;
-    int ace_value = 11;
+    int aceValue = 11;
     int numberOfCards;
     int score;
     Card[] cards;
@@ -23,7 +23,7 @@ public class Hand {
         cards[numberOfCards] = currentCard;
         numberOfCards++;
         score += currentCard.value;
-        if (score > winning_score && currentCard.value == ace_value) {
+        if (score > winning_score && currentCard.value == aceValue) {
             score -= 10;
         }
     }

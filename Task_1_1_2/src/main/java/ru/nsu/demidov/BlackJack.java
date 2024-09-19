@@ -14,16 +14,17 @@ public class BlackJack {
     /**
      * Handing out cards.
      */
-    public static void cards_handing(Hand playerHand, Hand dealerHand, Deck dealerDeck) throws InterruptedException {
-        dealerDeck.deck_index = 0;
-        playerHand.addCard(dealerDeck.cards[dealerDeck.deck_index]); // first player card
-        dealerDeck.deck_index++;
-        dealerHand.addCard(dealerDeck.cards[dealerDeck.deck_index]); // first dealer card
-        dealerDeck.deck_index++;
-        playerHand.addCard(dealerDeck.cards[dealerDeck.deck_index]); // second player card
-        dealerDeck.deck_index++;
-        dealerHand.addCard(dealerDeck.cards[dealerDeck.deck_index]); // second dealer card
-        dealerDeck.deck_index++;
+    public static void cards_handing(Hand playerHand, Hand dealerHand,
+                                     Deck dealerDeck) throws InterruptedException {
+        dealerDeck.deckIndex = 0;
+        playerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // first player card
+        dealerDeck.deckIndex++;
+        dealerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // first dealer card
+        dealerDeck.deckIndex++;
+        playerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // second player card
+        dealerDeck.deckIndex++;
+        dealerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // second dealer card
+        dealerDeck.deckIndex++;
         System.out.print("Your cards: ");
         TimeUnit.SECONDS.sleep(1);
         playerHand.showAllCards(false);
@@ -40,15 +41,16 @@ public class BlackJack {
     /**
      * Cards hitting.
      */
-    public static void cards_hitting(Hand playerHand, Hand dealerHand, Deck dealerDeck) throws InterruptedException {
+    public static void cards_hitting(Hand playerHand, Hand dealerHand,
+                                     Deck dealerDeck) throws InterruptedException {
         boolean lost = false;
         Scanner argument = new Scanner(System.in);
         String option;
         option = argument.next();
         if (Objects.equals(option, "1")) {
             while (!(Objects.equals(option, "2"))) {
-                playerHand.addCard(dealerDeck.cards[dealerDeck.deck_index]);
-                dealerDeck.deck_index++;
+                playerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]);
+                dealerDeck.deckIndex++;
                 playerHand.showAllCards(false);
                 if (playerHand.score > 21) {
                     System.out.println("STACK OVERFLOW");
@@ -66,12 +68,12 @@ public class BlackJack {
             while (dealerHand.score < 17) {
                 System.out.println("Dealer hits");
                 TimeUnit.SECONDS.sleep(1);
-                dealerHand.addCard(dealerDeck.cards[dealerDeck.deck_index]);
+                dealerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]);
                 dealerHand.showAllCards(false);
                 if (dealerHand.score > 21) {
                     System.out.println("Dealer killed himself");
                 }
-                dealerDeck.deck_index++;
+                dealerDeck.deckIndex++;
             }
             if (playerHand.score == dealerHand.score) {
                 System.out.println("Draw. KYS!");
