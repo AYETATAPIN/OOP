@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9};
+var data = {"i0":9,"i1":9,"i2":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -87,7 +87,7 @@ loadScripts(document, 'script');</script>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
@@ -139,45 +139,6 @@ extends java.lang.Object</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== NESTED CLASS SUMMARY ======== -->
-<section>
-<ul class="blockList">
-<li class="blockList"><a id="nested.class.summary">
-<!--   -->
-</a>
-<h3>Nested Class Summary</h3>
-<table class="memberSummary">
-<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Class</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static class&nbsp;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="BlackJack.Card.html" title="class in ru.nsu.demidov">BlackJack.Card</a></span></code></th>
-<td class="colLast">
-<div class="block">playing card.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static class&nbsp;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="BlackJack.Deck.html" title="class in ru.nsu.demidov">BlackJack.Deck</a></span></code></th>
-<td class="colLast">
-<div class="block">playing deck.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static class&nbsp;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="BlackJack.Hand.html" title="class in ru.nsu.demidov">BlackJack.Hand</a></span></code></th>
-<td class="colLast">
-<div class="block">hand of cards.</div>
-</td>
-</tr>
-</table>
-</li>
-</ul>
-</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -214,6 +175,24 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#cards_handing(ru.nsu.demidov.Hand,ru.nsu.demidov.Hand,ru.nsu.demidov.Deck)">cards_handing</a></span>&#8203;(<a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;playerHand,
+             <a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;dealerHand,
+             <a href="Deck.html" title="class in ru.nsu.demidov">Deck</a>&nbsp;dealerDeck)</code></th>
+<td class="colLast">
+<div class="block">Handing out cards.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#cards_hitting(ru.nsu.demidov.Hand,ru.nsu.demidov.Hand,ru.nsu.demidov.Deck)">cards_hitting</a></span>&#8203;(<a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;playerHand,
+             <a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;dealerHand,
+             <a href="Deck.html" title="class in ru.nsu.demidov">Deck</a>&nbsp;dealerDeck)</code></th>
+<td class="colLast">
+<div class="block">Cards hitting.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#main(java.lang.String%5B%5D)">main</a></span>&#8203;(java.lang.String[]&nbsp;args)</code></th>
 <td class="colLast">
@@ -263,6 +242,40 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="cards_handing(ru.nsu.demidov.Hand,ru.nsu.demidov.Hand,ru.nsu.demidov.Deck)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cards_handing</h4>
+<pre class="methodSignature">public static&nbsp;void&nbsp;cards_handing&#8203;(<a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;playerHand,
+                                 <a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;dealerHand,
+                                 <a href="Deck.html" title="class in ru.nsu.demidov">Deck</a>&nbsp;dealerDeck)
+                          throws java.lang.InterruptedException</pre>
+<div class="block">Handing out cards.</div>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.InterruptedException</code></dd>
+</dl>
+</li>
+</ul>
+<a id="cards_hitting(ru.nsu.demidov.Hand,ru.nsu.demidov.Hand,ru.nsu.demidov.Deck)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cards_hitting</h4>
+<pre class="methodSignature">public static&nbsp;void&nbsp;cards_hitting&#8203;(<a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;playerHand,
+                                 <a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;dealerHand,
+                                 <a href="Deck.html" title="class in ru.nsu.demidov">Deck</a>&nbsp;dealerDeck)
+                          throws java.lang.InterruptedException</pre>
+<div class="block">Cards hitting.</div>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.InterruptedException</code></dd>
+</dl>
+</li>
+</ul>
 <a id="main(java.lang.String[])">
 <!--   -->
 </a>
@@ -328,7 +341,7 @@ extends java.lang.Object</pre>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
