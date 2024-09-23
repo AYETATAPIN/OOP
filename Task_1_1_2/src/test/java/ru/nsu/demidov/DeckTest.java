@@ -75,9 +75,8 @@ class DeckTest {
         Deck sampleDeck = new Deck();
 
         for (int i = 0; i < 52; ++i) {
-            assert (Objects.equals(sampleDeck.cards[i].displayInfo(),
+            assert (Objects.equals(sampleDeck.getCards()[i].displayInfo(),
                         sampleCards[i].displayInfo()));
         }
-
     }
 }
