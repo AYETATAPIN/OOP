@@ -35,7 +35,7 @@ public class Hand {
         System.out.print("[");
         for (int i = 0; i < numberOfCards; ++i) {
             if (!(isSecret == true && numberOfCards == 2 && i == 1)) {
-                cards[i].displayInfo();
+                System.out.print(cards[i].displayInfo());
                 if (i != numberOfCards - 1) {
                     System.out.print(", ");
                 }

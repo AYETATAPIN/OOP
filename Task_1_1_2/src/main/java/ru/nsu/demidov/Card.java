@@ -18,7 +18,7 @@ public class Card {
     /**
      * card name suit and value output.
      */
-    void displayInfo() {
-        System.out.print(name + " of " + suit + "(" + value + ")");
+    String displayInfo() {
+        return (name + " of " + suit + "(" + value + ")");
     }
 }
