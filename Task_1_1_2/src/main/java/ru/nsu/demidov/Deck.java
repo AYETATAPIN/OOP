@@ -17,8 +17,8 @@ public class Deck {
     private final int[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
     {
-        deckIndex = 0;
         deckOf52();
+        deckIndex = 0;
     }
 
     void incrementIndex() {

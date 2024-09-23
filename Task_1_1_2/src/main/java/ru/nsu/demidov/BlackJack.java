@@ -31,8 +31,8 @@ public class BlackJack {
      * Cards hitting.
      */
     public static boolean cards_hitting(Hand playerHand, Hand dealerHand,
-                                        Deck dealerDeck, Scanner argument, String isTest) throws InterruptedException {
-        if (Objects.equals(isTest, "Testing") != true) {
+                                        Deck dealerDeck, Scanner argument, String[] isTest) throws InterruptedException {
+        if (isTest.length == 0 ||  Objects.equals(isTest[0], "Testing") != true) {
             System.out.print("Your cards: ");
             TimeUnit.SECONDS.sleep(1);
             System.out.println(playerHand.showAllCards(false));
@@ -129,11 +129,12 @@ public class BlackJack {
             Hand playerHand = new Hand();
             Hand dealerHand = new Hand();
             cards_handing(playerHand, dealerHand, dealerDeck);
-            over = cards_hitting(playerHand, dealerHand, dealerDeck, argument, args[0]);
+            over = cards_hitting(playerHand, dealerHand, dealerDeck, argument, args);
             if (over == false) {
                 break;
             }
             round++;
         }
+        return;
     }
 }
