@@ -3,6 +3,7 @@ package ru.nsu.demidov;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TransferQueue;
 /**
  * BlackJack with hookers.
  *
@@ -31,21 +32,22 @@ public class BlackJack {
     /**
      * Cards hitting.
      */
-    public static void cards_hitting(Hand playerHand, Hand dealerHand,
-                                     Deck dealerDeck) throws InterruptedException {
-        System.out.print("Your cards: ");
-        TimeUnit.SECONDS.sleep(1);
-        System.out.println(playerHand.showAllCards(false));
-        if (playerHand.score == 21) {
-            System.out.println("Blackjack! KYS!");
-            return;
+    public static boolean cards_hitting(Hand playerHand, Hand dealerHand,
+                    Deck dealerDeck, Scanner argument, String isTest) throws InterruptedException {
+        if (Objects.equals(isTest, "Testing") != true) {
+            System.out.print("Your cards: ");
+            TimeUnit.SECONDS.sleep(1);
+            System.out.println(playerHand.showAllCards(false));
+            if (playerHand.score == 21) {
+                System.out.println("Blackjack! KYS!");
+                return true;
+            }
+            System.out.print("Dealer's cards: ");
+            TimeUnit.SECONDS.sleep(1);
+            System.out.println(dealerHand.showAllCards(true));
+            System.out.println("[Hit / Stand]");
         }
-        System.out.print("Dealer's cards: ");
-        TimeUnit.SECONDS.sleep(1);
-        System.out.println(dealerHand.showAllCards(true));
-        System.out.println("[Hit / Stand]");
         boolean lost = false;
-        Scanner argument = new Scanner(System.in);
         String option;
         option = argument.next();
         if (Objects.equals(option, "1488")) {
@@ -109,24 +111,30 @@ public class BlackJack {
             option = argument.next();
         }
         if (option.equals("2")) {
-            System.exit(0);
+            return false;
         }
+        return true;
     }
 
     /**
      * BlackJack.
      */
     public static void main(String[] args) throws InterruptedException {
+        Scanner argument = new Scanner(System.in);
         int round = 1;
         System.out.println("To choose an option \"1\" or \"2\"");
         while (true) {
             System.out.println("Round" + " " + round);
             TimeUnit.SECONDS.sleep(1);
+            boolean over = true;
             Deck dealerDeck = new Deck();
             Hand playerHand = new Hand();
             Hand dealerHand = new Hand();
             cards_handing(playerHand, dealerHand, dealerDeck);
-            cards_hitting(playerHand, dealerHand, dealerDeck);
+            over = cards_hitting(playerHand, dealerHand, dealerDeck, argument, args[0]);
+            if (over == false) {
+                break;
+            }
             round++;
         }
     }
