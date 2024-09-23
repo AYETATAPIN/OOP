@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class BlackJackTest {
     @Test
-    public void overflow_test() throws InterruptedException {
+    public void winningTest() throws InterruptedException {
         ByteArrayInputStream in = new ByteArrayInputStream("1488\n2\n2\n".getBytes());
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -26,7 +26,7 @@ class BlackJackTest {
         String sampleOutput = "To choose an option \"1\" or \"2\"\n"
                 + "Round 1\n"
                 + "Dealer reveals his cards: [Ace of Diamonds(11), Eight of Diamonds(8)], "
-                + "Score - 19\n" + "You win\r\n" + "[Keep gambling / Daddy gave up]\n";
+                + "Score - 19\n" + "You win\n" + "[Keep gambling / Daddy gave up]\n";
         String output = out.toString();
         assert (Objects.equals(sampleOutput, output));
         System.out.println(output);
