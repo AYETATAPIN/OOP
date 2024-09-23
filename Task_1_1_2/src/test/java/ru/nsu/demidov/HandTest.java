@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class HandTest {
     @Test
-    void infoDisplayinTest() {
+    void infoDisplayingTest() {
         Hand sampleHand = new Hand();
         Card sampleCard0 = new Card("Two", "Spades", 2);
         Card sampleCard1 = new Card("Ace", "Spades", 11);
