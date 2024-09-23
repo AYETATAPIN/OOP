@@ -1,7 +1,7 @@
 package ru.nsu.demidov;
-import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
+import org.junit.jupiter.api.Test;
 
 class HandTest {
     @Test
@@ -11,8 +11,10 @@ class HandTest {
         Card sampleCard1 = new Card("Ace", "Spades", 11);
         sampleHand.addCard(sampleCard0);
         sampleHand.addCard(sampleCard1);
-        assert (Objects.equals(sampleHand.showAllCards(false), "[Two of Spades(2), Ace of Spades(11)], Score - 13"));
-        assert (Objects.equals(sampleHand.showAllCards(true), "[Two of Spades(2), <secret>], Score - 2 + <secret>"));
+        assert (Objects.equals(sampleHand.showAllCards(false), "[Two of Spades(2)," +
+                    " Ace of Spades(11)], Score - 13"));
+        assert (Objects.equals(sampleHand.showAllCards(true), "[Two of Spades(2), " +
+                    "<secret>], Score - 2 + <secret>"));
     }
 }
 

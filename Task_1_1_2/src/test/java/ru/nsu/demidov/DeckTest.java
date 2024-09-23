@@ -1,9 +1,8 @@
 package ru.nsu.demidov;
-import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 class DeckTest {
     @Test
     void deckCreationTest() {
@@ -76,7 +75,8 @@ class DeckTest {
         Deck sampleDeck = new Deck();
 
         for (int i = 0; i < 52; ++i) {
-            assert (Objects.equals(sampleDeck.cards[i].displayInfo(), sampleCards[i].displayInfo()));
+            assert (Objects.equals(sampleDeck.cards[i].displayInfo(),
+                        sampleCards[i].displayInfo()));
         }
 
     }

@@ -1,7 +1,8 @@
 package ru.nsu.demidov;
-import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
+import org.junit.jupiter.api.Test;
+
 class CardTest {
     @Test
     void infoDisplayingTest() {
