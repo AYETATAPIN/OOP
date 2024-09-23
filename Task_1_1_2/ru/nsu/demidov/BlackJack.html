@@ -184,10 +184,12 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#cards_hitting(ru.nsu.demidov.Hand,ru.nsu.demidov.Hand,ru.nsu.demidov.Deck)">cards_hitting</a></span>&#8203;(<a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;playerHand,
+<td class="colFirst"><code>static boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#cards_hitting(ru.nsu.demidov.Hand,ru.nsu.demidov.Hand,ru.nsu.demidov.Deck,java.util.Scanner,java.lang.String)">cards_hitting</a></span>&#8203;(<a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;playerHand,
              <a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;dealerHand,
-             <a href="Deck.html" title="class in ru.nsu.demidov">Deck</a>&nbsp;dealerDeck)</code></th>
+             <a href="Deck.html" title="class in ru.nsu.demidov">Deck</a>&nbsp;dealerDeck,
+             java.util.Scanner&nbsp;argument,
+             java.lang.String&nbsp;isTest)</code></th>
 <td class="colLast">
 <div class="block">Cards hitting.</div>
 </td>
@@ -259,16 +261,18 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="cards_hitting(ru.nsu.demidov.Hand,ru.nsu.demidov.Hand,ru.nsu.demidov.Deck)">
+<a id="cards_hitting(ru.nsu.demidov.Hand,ru.nsu.demidov.Hand,ru.nsu.demidov.Deck,java.util.Scanner,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>cards_hitting</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;cards_hitting&#8203;(<a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;playerHand,
-                                 <a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;dealerHand,
-                                 <a href="Deck.html" title="class in ru.nsu.demidov">Deck</a>&nbsp;dealerDeck)
-                          throws java.lang.InterruptedException</pre>
+<pre class="methodSignature">public static&nbsp;boolean&nbsp;cards_hitting&#8203;(<a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;playerHand,
+                                    <a href="Hand.html" title="class in ru.nsu.demidov">Hand</a>&nbsp;dealerHand,
+                                    <a href="Deck.html" title="class in ru.nsu.demidov">Deck</a>&nbsp;dealerDeck,
+                                    java.util.Scanner&nbsp;argument,
+                                    java.lang.String&nbsp;isTest)
+                             throws java.lang.InterruptedException</pre>
 <div class="block">Cards hitting.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
