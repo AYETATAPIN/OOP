@@ -31,23 +31,32 @@ public class Hand {
     /**
      * output of all cards.
      */
-    void showAllCards(boolean isSecret) {
-        System.out.print("[");
+    String showAllCards(boolean isSecret) {
+        StringBuilder showable = new StringBuilder();
+        showable.append("[");
+        //System.out.print("[");
         for (int i = 0; i < numberOfCards; ++i) {
             if (!(isSecret == true && numberOfCards == 2 && i == 1)) {
-                System.out.print(cards[i].displayInfo());
+                showable.append(cards[i].displayInfo());
+                //System.out.print(cards[i].displayInfo());
                 if (i != numberOfCards - 1) {
-                    System.out.print(", ");
+                    showable.append(", ");
+                    //System.out.print(", ");
                 }
             } else {
-                System.out.print("<secret>");
+                showable.append("<secret>");
+                //System.out.print("<secret>");
             }
         }
-        System.out.print("], " + "Score - ");
+        showable.append("], " + "Score - ");
+        //System.out.print("], " + "Score - ");
         if (isSecret == true) {
-            System.out.println(cards[0].value + " + <secret>");
+            showable.append(cards[0].value).append(" + <secret>");
+            //System.out.println(cards[0].value + " + <secret>");
         } else {
-            System.out.println(score);
+            showable.append(score);
+            //System.out.println(score);
         }
+        return showable.toString();
     }
 }

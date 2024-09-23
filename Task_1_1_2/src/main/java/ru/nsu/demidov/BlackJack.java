@@ -27,14 +27,14 @@ public class BlackJack {
         dealerDeck.deckIndex++;
         System.out.print("Your cards: ");
         TimeUnit.SECONDS.sleep(1);
-        playerHand.showAllCards(false);
+        System.out.println(playerHand.showAllCards(false));
         if (playerHand.score == 21) {
             System.out.println("Blackjack! KYS!");
             return;
         }
         System.out.print("Dealer's cards: ");
         TimeUnit.SECONDS.sleep(1);
-        dealerHand.showAllCards(true);
+        System.out.println(dealerHand.showAllCards(true));
         System.out.println("[Hit / Stand]");
     }
 
@@ -51,7 +51,7 @@ public class BlackJack {
             while (!(Objects.equals(option, "2"))) {
                 playerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]);
                 dealerDeck.deckIndex++;
-                playerHand.showAllCards(false);
+                System.out.println(playerHand.showAllCards(false));
                 if (playerHand.score > 21) {
                     System.out.println("STACK OVERFLOW");
                     lost = true;
@@ -64,12 +64,12 @@ public class BlackJack {
         if (lost != true) {
             System.out.print("Dealer reveals his cards: ");
             TimeUnit.SECONDS.sleep(1);
-            dealerHand.showAllCards(false);
+            System.out.println(dealerHand.showAllCards(false));
             while (dealerHand.score < 17) {
                 System.out.println("Dealer hits");
                 TimeUnit.SECONDS.sleep(1);
                 dealerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]);
-                dealerHand.showAllCards(false);
+                System.out.println(dealerHand.showAllCards(false));
                 if (dealerHand.score > 21) {
                     System.out.println("Dealer killed himself");
                 }
