@@ -3,7 +3,6 @@ package ru.nsu.demidov;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TransferQueue;
 /**
  * BlackJack with hookers.
  *
@@ -18,27 +17,26 @@ public class BlackJack {
     public static void cards_handing(Hand playerHand, Hand dealerHand,
                                      Deck dealerDeck) throws InterruptedException {
         dealerDeck.shuffle();
-        dealerDeck.deckIndex = 0;
-        playerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // first player card
-        dealerDeck.deckIndex++;
-        dealerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // first dealer card
-        dealerDeck.deckIndex++;
-        playerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // second player card
-        dealerDeck.deckIndex++;
-        dealerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // second dealer card
-        dealerDeck.deckIndex++;
+        playerHand.addCard(dealerDeck.getCards()[dealerDeck.getIndex()]); // first player card
+        dealerDeck.incrementIndex();
+        dealerHand.addCard(dealerDeck.getCards()[dealerDeck.getIndex()]); // first dealer card
+        dealerDeck.incrementIndex();
+        playerHand.addCard(dealerDeck.getCards()[dealerDeck.getIndex()]); // second player card
+        dealerDeck.incrementIndex();
+        dealerHand.addCard(dealerDeck.getCards()[dealerDeck.getIndex()]); // second dealer card
+        dealerDeck.incrementIndex();
     }
 
     /**
      * Cards hitting.
      */
     public static boolean cards_hitting(Hand playerHand, Hand dealerHand,
-                    Deck dealerDeck, Scanner argument, String isTest) throws InterruptedException {
+                                        Deck dealerDeck, Scanner argument, String isTest) throws InterruptedException {
         if (Objects.equals(isTest, "Testing") != true) {
             System.out.print("Your cards: ");
             TimeUnit.SECONDS.sleep(1);
             System.out.println(playerHand.showAllCards(false));
-            if (playerHand.score == 21) {
+            if (playerHand.getScore() == 21) {
                 System.out.println("Blackjack! KYS!");
                 return true;
             }
@@ -52,28 +50,28 @@ public class BlackJack {
         option = argument.next();
         if (Objects.equals(option, "1488")) {
             dealerDeck = new Deck();
-            dealerDeck.cards[0] = new Card("Ace", "Spades", 11);
-            dealerDeck.cards[1] = new Card("Ace", "Diamonds", 11);
-            dealerDeck.cards[2] = new Card("Nine", "Spades", 9);
-            dealerDeck.cards[3] = new Card("Eight", "Diamonds", 8);
-            dealerDeck.deckIndex = 0;
+            dealerDeck.getCards()[0] = new Card("Ace", "Spades", 11);
+            dealerDeck.getCards()[1] = new Card("Ace", "Diamonds", 11);
+            dealerDeck.getCards()[2] = new Card("Nine", "Spades", 9);
+            dealerDeck.getCards()[3] = new Card("Eight", "Diamonds", 8);
+            dealerDeck.makeIndexZero();
             playerHand = new Hand();
             dealerHand = new Hand();
-            playerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // first player card
-            dealerDeck.deckIndex++;
-            dealerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // first dealer card
-            dealerDeck.deckIndex++;
-            playerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // second player card
-            dealerDeck.deckIndex++;
-            dealerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // second dealer card
-            dealerDeck.deckIndex++;
+            playerHand.addCard(dealerDeck.getCards()[dealerDeck.getIndex()]); // first player card
+            dealerDeck.incrementIndex();
+            dealerHand.addCard(dealerDeck.getCards()[dealerDeck.getIndex()]); // first dealer card
+            dealerDeck.incrementIndex();
+            playerHand.addCard(dealerDeck.getCards()[dealerDeck.getIndex()]); // second player card
+            dealerDeck.incrementIndex();
+            dealerHand.addCard(dealerDeck.getCards()[dealerDeck.getIndex()]); // second dealer card
+            dealerDeck.incrementIndex();
         }
         if (Objects.equals(option, "1")) {
             while (!(Objects.equals(option, "2"))) {
-                playerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]);
-                dealerDeck.deckIndex++;
+                playerHand.addCard(dealerDeck.getCards()[dealerDeck.getIndex()]);
+                dealerDeck.incrementIndex();
                 System.out.println(playerHand.showAllCards(false));
-                if (playerHand.score > 21) {
+                if (playerHand.getScore() > 21) {
                     System.out.println("STACK OVERFLOW");
                     lost = true;
                     break;
@@ -86,20 +84,20 @@ public class BlackJack {
             System.out.print("Dealer reveals his cards: ");
             TimeUnit.SECONDS.sleep(1);
             System.out.println(dealerHand.showAllCards(false));
-            while (dealerHand.score < 17) {
+            while (dealerHand.getScore() < 17) {
                 System.out.println("Dealer hits");
                 TimeUnit.SECONDS.sleep(1);
-                dealerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]);
+                dealerHand.addCard(dealerDeck.getCards()[dealerDeck.getIndex()]);
                 System.out.println(dealerHand.showAllCards(false));
-                if (dealerHand.score > 21) {
+                if (dealerHand.getScore() > 21) {
                     System.out.println("Dealer killed himself");
                 }
-                dealerDeck.deckIndex++;
+                dealerDeck.incrementIndex();
             }
-            if (playerHand.score == dealerHand.score) {
+            if (playerHand.getScore() == dealerHand.getScore()) {
                 System.out.println("Draw. KYS!");
-            } else if (playerHand.score > dealerHand.score || playerHand.score <= 21
-                    && dealerHand.score > 21) {
+            } else if (playerHand.getScore() > dealerHand.getScore() || playerHand.getScore() <= 21
+                    && dealerHand.getScore() > 21) {
                 System.out.println("You win");
             } else {
                 System.out.println("You lose");

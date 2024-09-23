@@ -4,10 +4,8 @@ package ru.nsu.demidov;
  * hand of cards.
  */
 public class Hand {
-    int winningScore = 21;
-    int aceValue = 11;
-    int numberOfCards;
-    int score;
+    private int numberOfCards;
+    private int score;
     Card[] cards;
 
     {
@@ -16,14 +14,20 @@ public class Hand {
         cards = new Card[9];
     }
 
+    int getScore() {
+        return score;
+    }
+
     /**
      * card addition method.
      */
     void addCard(Card currentCard) {
         cards[numberOfCards] = currentCard;
         numberOfCards++;
-        score += currentCard.value;
-        if (score > winningScore && currentCard.value == aceValue) {
+        score += currentCard.getValue();
+        int WINNING_SCORE = 21;
+        int aceValue = 11;
+        if (score > WINNING_SCORE && currentCard.getValue() == aceValue) {
             score -= 10;
         }
     }
@@ -51,7 +55,7 @@ public class Hand {
         showable.append("], " + "Score - ");
         //System.out.print("], " + "Score - ");
         if (isSecret == true) {
-            showable.append(cards[0].value).append(" + <secret>");
+            showable.append(cards[0].getValue()).append(" + <secret>");
             //System.out.println(cards[0].value + " + <secret>");
         } else {
             showable.append(score);

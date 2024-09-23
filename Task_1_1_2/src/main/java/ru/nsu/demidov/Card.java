@@ -5,14 +5,18 @@ package ru.nsu.demidov;
  */
 
 public class Card {
-    String name;
-    String suit;
-    int value;
+    private final String name;
+    private final String suit;
+    private final int value;
 
     Card(String currentName, String currentSuit, int currentValue) {
         name = currentName;
         suit = currentSuit;
         value = currentValue;
+    }
+
+    int getValue() {
+        return value;
     }
 
     /**
