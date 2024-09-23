@@ -23,10 +23,10 @@ class BlackJackTest {
 
         System.setIn(inputStream);
         System.setOut(outputStream);        // add this line
-        String sampleOutput = "To choose an option \"1\" or \"2\"\r\n"
-                + "Round 1\r\n"
+        String sampleOutput = "To choose an option \"1\" or \"2\"\n"
+                + "Round 1\n"
                 + "Dealer reveals his cards: [Ace of Diamonds(11), Eight of Diamonds(8)], "
-                + "Score - 19\r\n" + "You win\r\n" + "[Keep gambling / Daddy gave up]\r\n";
+                + "Score - 19\n" + "You win\r\n" + "[Keep gambling / Daddy gave up]\n";
         String output = out.toString();
         assert (Objects.equals(sampleOutput, output));
         System.out.println(output);
