@@ -18,7 +18,6 @@ public class Deck {
 
     {
         deckOf52();
-        shuffle();
     }
 
     /**
@@ -45,16 +44,17 @@ public class Deck {
         }
     }
 
-    void getDeck(Card[] sampleCards) {
-        this.cards = sampleCards;
-    }
-
-    /**
-     * deck shuffle.
+    /*
+    cards shuffle
      */
     void shuffle() {
         List<Card> cardList = new ArrayList<>(List.of(cards));
         Collections.shuffle(cardList);
         cards = cardList.toArray(new Card[0]);
     }
+
+    void getDeck(Card[] sampleCards) {
+        this.cards = sampleCards;
+    }
+
 }

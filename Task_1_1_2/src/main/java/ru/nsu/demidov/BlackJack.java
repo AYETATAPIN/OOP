@@ -16,6 +16,7 @@ public class BlackJack {
      */
     public static void cards_handing(Hand playerHand, Hand dealerHand,
                                      Deck dealerDeck) throws InterruptedException {
+        dealerDeck.shuffle();
         dealerDeck.deckIndex = 0;
         playerHand.addCard(dealerDeck.cards[dealerDeck.deckIndex]); // first player card
         dealerDeck.deckIndex++;
