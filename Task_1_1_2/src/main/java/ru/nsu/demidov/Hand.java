@@ -25,9 +25,9 @@ public class Hand {
         cards[numberOfCards] = currentCard;
         numberOfCards++;
         score += currentCard.getValue();
-        int WINNING_SCORE = 21;
+        int winningScore = 21;
         int aceValue = 11;
-        if (score > WINNING_SCORE && currentCard.getValue() == aceValue) {
+        if (score > winningScore && currentCard.getValue() == aceValue) {
             score -= 10;
         }
     }

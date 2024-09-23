@@ -12,15 +12,13 @@ class BlackJackTest {
     public void winningTest() throws InterruptedException {
         ByteArrayInputStream in = new ByteArrayInputStream("1488\n2\n2\n".getBytes());
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-
-        InputStream inputStream = System.in;
-        PrintStream outputStream = System.out;
         PrintStream printStream = new PrintStream(out);
         System.setIn(in);
         System.setOut(printStream);
 
         BlackJack.main(new String[] {"Testing"});
-
+        InputStream inputStream = System.in;
+        PrintStream outputStream = System.out;
         System.setIn(inputStream);
         System.setOut(outputStream);        // add this line
         String sampleOutput = "To choose an option \"1\" or \"2\"\n"

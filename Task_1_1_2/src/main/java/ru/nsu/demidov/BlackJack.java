@@ -31,7 +31,7 @@ public class BlackJack {
      * Cards hitting.
      */
     public static boolean cards_hitting(Hand playerHand, Hand dealerHand,
-                                        Deck dealerDeck, Scanner argument, String[] isTest) throws InterruptedException {
+                   Deck dealerDeck, Scanner argument, String[] isTest) throws InterruptedException {
         if (isTest.length == 0 ||  Objects.equals(isTest[0], "Testing") != true) {
             System.out.print("Your cards: ");
             TimeUnit.SECONDS.sleep(1);
@@ -50,10 +50,14 @@ public class BlackJack {
         option = argument.next();
         if (Objects.equals(option, "1488")) {
             dealerDeck = new Deck();
-            dealerDeck.getCards()[0] = new Card("Ace", "Spades", 11);
-            dealerDeck.getCards()[1] = new Card("Ace", "Diamonds", 11);
-            dealerDeck.getCards()[2] = new Card("Nine", "Spades", 9);
-            dealerDeck.getCards()[3] = new Card("Eight", "Diamonds", 8);
+            dealerDeck.getCards()[0] = new Card("Ace", "Spades",
+                    11);
+            dealerDeck.getCards()[1] = new Card("Ace", "Diamonds",
+                    11);
+            dealerDeck.getCards()[2] = new Card("Nine", "Spades",
+                    9);
+            dealerDeck.getCards()[3] = new Card("Eight", "Diamonds",
+                    8);
             dealerDeck.makeIndexZero();
             playerHand = new Hand();
             dealerHand = new Hand();
