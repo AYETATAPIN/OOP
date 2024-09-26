@@ -7,14 +7,17 @@ public class Number extends Expression {
         this.value = value;
     }
 
+    @Override
     public Expression derivative(String variable) {
         return new Number(0);
     }
 
+    @Override
     public int ejaculate(String ejaculateballs) {
         return value;
     }
 
+    @Override
     public void print() {
         System.out.print(value);
     }

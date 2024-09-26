@@ -9,14 +9,17 @@ public class Add extends Expression {
         this.second = second;
     }
 
+    @Override
     public Expression derivative(String variable) {
         return new Add(first.derivative(variable), second.derivative(variable));
     }
 
+    @Override
     public int ejaculate(String ejaculateballs) {
         return first.ejaculate(ejaculateballs) + second.ejaculate(ejaculateballs);
     }
 
+    @Override
     public void print() {
         System.out.print("(");
         first.print();
