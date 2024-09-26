@@ -2,6 +2,11 @@ package ru.nsu.demidov;
 
 import java.util.Objects;
 
+/**
+ * Variable class.
+ */
+
+
 public class Variable extends Expression {
     private String value;
 

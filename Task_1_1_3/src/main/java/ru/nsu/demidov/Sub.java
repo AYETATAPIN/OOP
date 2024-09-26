@@ -1,5 +1,10 @@
 package ru.nsu.demidov;
 
+/**
+ * Subtraction class.
+ */
+
+
 public class Sub extends Expression {
     private Expression first;
     private Expression second;

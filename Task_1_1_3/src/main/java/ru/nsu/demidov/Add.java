@@ -1,5 +1,10 @@
 package ru.nsu.demidov;
 
+/**
+ * Addition class.
+ */
+
+
 public class Add extends Expression {
     private Expression first;
     private Expression second;

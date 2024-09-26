@@ -1,5 +1,10 @@
 package ru.nsu.demidov;
 
+/**
+ * Number class.
+ */
+
+
 public class Number extends Expression {
     private int value;
 

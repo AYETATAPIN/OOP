@@ -1,12 +1,12 @@
 package ru.nsu.demidov;
 
+/**
+ * Division class.
+ */
+
 public class Div extends Expression {
     private Expression first;
     private Expression second;
-
-    /**
-     * Div constructor.
-     */
 
     Div(Expression first, Expression second) {
         this.first = first;

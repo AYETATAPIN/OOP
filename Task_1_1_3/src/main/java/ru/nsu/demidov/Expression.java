@@ -3,6 +3,11 @@ package ru.nsu.demidov;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Expression class.
+ */
+
+
 public abstract class Expression {
     Map<String, Integer> values;
 

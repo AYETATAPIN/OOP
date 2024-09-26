@@ -1,5 +1,9 @@
 package ru.nsu.demidov;
 
+/**
+ * Multiplication class.
+ */
+
 public class Mul extends Expression {
     private Expression first;
     private Expression second;
