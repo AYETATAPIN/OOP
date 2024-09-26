@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"ru.nsu.demidov","l":"Add"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.demidov","l":"Div"},{"p":"ru.nsu.demidov","l":"Expression"},{"p":"ru.nsu.demidov","l":"Main"},{"p":"ru.nsu.demidov","l":"Mul"},{"p":"ru.nsu.demidov","l":"Number"},{"p":"ru.nsu.demidov","l":"Sub"},{"p":"ru.nsu.demidov","l":"Variable"}]
