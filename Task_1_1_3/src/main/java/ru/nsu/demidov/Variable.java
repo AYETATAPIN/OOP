@@ -5,6 +5,10 @@ import java.util.Objects;
 public class Variable extends Expression {
     private String value;
 
+    /**
+     * Variable constructor.
+     */
+
     Variable(String value) {
         this.value = value;
     }

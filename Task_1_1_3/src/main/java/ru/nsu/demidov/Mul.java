@@ -4,6 +4,10 @@ public class Mul extends Expression {
     private Expression first;
     private Expression second;
 
+    /**
+     * Mul constructor.
+     */
+
     Mul(Expression first, Expression second) {
         this.first = first;
         this.second = second;

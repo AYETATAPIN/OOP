@@ -3,6 +3,10 @@ package ru.nsu.demidov;
 public class Number extends Expression {
     private int value;
 
+    /**
+     * Number constructor.
+     */
+
     Number(int value) {
         this.value = value;
     }

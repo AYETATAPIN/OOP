@@ -4,6 +4,10 @@ public class Sub extends Expression {
     private Expression first;
     private Expression second;
 
+    /**
+     * Sub constructor.
+     */
+
     Sub(Expression first, Expression second) {
         this.first = first;
         this.second = second;
