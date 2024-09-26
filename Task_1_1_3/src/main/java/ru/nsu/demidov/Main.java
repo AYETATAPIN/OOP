@@ -1,6 +1,15 @@
 package ru.nsu.demidov;
 
+/**
+ * Expressions input.
+ */
+
 public class Main {
+
+    /**
+     * Expressions input.
+     */
+
     public static void main(String[] args) {
         Expression sample = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
         sample.print();
@@ -9,8 +18,7 @@ public class Main {
         sampleDerivative.print();
         System.out.println();
         sample = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
-        Expression e = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
-        int result = e.ejaculate("x = 10; y = 13");
+        int result = sample.ejaculate("x = 10; y = 13");
         System.out.println(result);
     }
 }

@@ -1,14 +1,13 @@
 package ru.nsu.demidov;
 
-import java.util.Map;
 import java.util.Objects;
+
 public class Variable extends Expression {
     private String value;
 
     Variable(String value) {
         this.value = value;
     }
-
 
     public Expression derivative(String variable) {
         if (Objects.equals(this.value, variable) == true) {

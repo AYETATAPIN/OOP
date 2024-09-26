@@ -1,6 +1,5 @@
 package ru.nsu.demidov;
 
-import java.util.Map;
 public class Number extends Expression {
     private int value;
 

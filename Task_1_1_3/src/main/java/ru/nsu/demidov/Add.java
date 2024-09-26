@@ -1,11 +1,10 @@
 package ru.nsu.demidov;
 
-import java.util.Map;
 public class Add extends Expression {
     private Expression first;
     private Expression second;
 
-    Add(Expression first, Expression second){
+    Add(Expression first, Expression second) {
         this.first = first;
         this.second = second;
     }
