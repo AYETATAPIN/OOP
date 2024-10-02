@@ -14,7 +14,7 @@ public class Number extends Expression {
      * Number constructor.
      */
 
-    Number(int value) {
+    Number(double value) {
         this.value = value;
     }
 
