@@ -29,6 +29,9 @@ public class Variable extends Expression {
 
     @Override
     public double ejaculate(Map<String, Integer> values) throws Exception {
+        if (values.containsKey(value) == false){
+            throw new Exception(value + " doesn't have a value");
+        }
         return values.get(value);
     }
 
