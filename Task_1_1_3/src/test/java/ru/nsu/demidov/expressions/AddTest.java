@@ -1,5 +1,7 @@
 package ru.nsu.demidov.expressions;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
@@ -12,5 +14,8 @@ class AddTest {
         sampleAdd = new Add(new Variable("boobs"), new Number(5));
         assert (Objects.equals(sampleAdd.derivative("boobs").print(), "(1+0)"));
         assert (Objects.equals(sampleAdd.ejaculate("boobs = 64"), 69.0));
+        Map<String, Integer> sampleMap = new HashMap<>();
+        sampleMap.put("boobs", 64);
+        assert (Objects.equals(sampleAdd.ejaculate(sampleMap), 69.0));
     }
 }
