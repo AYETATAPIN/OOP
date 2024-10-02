@@ -28,16 +28,12 @@ public class Variable extends Expression {
     }
 
     @Override
-    public int ejaculate(String ejaculateballs) throws Exception {
-        Map<String, Integer> values = ballsParser(ejaculateballs);
-        if (values.containsKey(this.value) == false) {
-            throw new Exception(this.value + " value is unknown");
-        }
-        return values.get(this.value);
+    public double ejaculate(Map<String, Integer> values) throws Exception {
+        return values.get(value);
     }
 
     @Override
-    public void print() {
-        System.out.print(value);
+    public String print() {
+        return value;
     }
 }

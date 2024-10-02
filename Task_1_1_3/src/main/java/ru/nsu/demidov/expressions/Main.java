@@ -12,13 +12,11 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Expression sample = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
-        sample.print();
-        System.out.println();
+        System.out.println(sample.print());
         Expression sampleDerivative = sample.derivative("x");
-        sampleDerivative.print();
-        System.out.println();
+        System.out.println(sampleDerivative.print());
         sample = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
-        int result = sample.ejaculate("x = 10; y = 13");
+        double result = sample.ejaculate("x = 10; y = 13");
         System.out.println(result);
     }
 }

@@ -1,5 +1,6 @@
 package ru.nsu.demidov.expressions;
 
+import java.util.Map;
 /**
  * Subtraction class.
  */
@@ -24,16 +25,17 @@ public class Sub extends Expression {
     }
 
     @Override
-    public int ejaculate(String ejaculateballs) throws Exception {
+    public double ejaculate(String ejaculateballs) throws Exception {
         return first.ejaculate(ejaculateballs) - second.ejaculate(ejaculateballs);
     }
 
     @Override
-    public void print() {
-        System.out.print("(");
-        first.print();
-        System.out.print("-");
-        second.print();
-        System.out.print(")");
+    public double ejaculate(Map<String, Integer> values) throws Exception {
+        return first.ejaculate(values) - second.ejaculate(values);
+    }
+
+    @Override
+    public String print() {
+        return ("(" + first.print() + "-" + second.print() + ")");
     }
 }

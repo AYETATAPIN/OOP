@@ -20,19 +20,23 @@ public abstract class Expression {
      * Evaluation of expression.
      */
 
-    public abstract int ejaculate(String ejaculateballs) throws Exception;
+    public double ejaculate(String ejaculateballs) throws Exception {
+        return ejaculate(ballsParser(ejaculateballs));
+    }
+
+    public abstract double ejaculate(Map<String, Integer> values) throws Exception;
 
     /**
      * Output of expression.
      */
 
-    public abstract void print();
+    public abstract String print();
 
     /**
      * Evaluations parser.
      */
 
-    public static Map<String, Integer> ballsParser(String ejaculateballs) {
+    private Map<String, Integer> ballsParser(String ejaculateballs) {
         Map<String, Integer> values = new HashMap<>();
         ejaculateballs = ejaculateballs.replace('=', ' ').replace(';', ' ');
         ejaculateballs = ejaculateballs.replace("   ", " ").replace("  ", " ");
