@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ru.nsu.demidov"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ru.nsu.demidov.expressions"}]
