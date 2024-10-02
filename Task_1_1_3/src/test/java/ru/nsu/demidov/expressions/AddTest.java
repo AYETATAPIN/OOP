@@ -6,6 +6,6 @@ import org.junit.jupiter.api.Test;
 class AddTest {
     @Test
     public void addTest() {
-
+        Add sampleAdd = new Add(new Number(9), new Number(11));
     }
 }
