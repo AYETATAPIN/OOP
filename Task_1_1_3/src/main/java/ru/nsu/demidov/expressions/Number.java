@@ -1,4 +1,4 @@
-package ru.nsu.demidov;
+package ru.nsu.demidov.expressions;
 
 /**
  * Number class.

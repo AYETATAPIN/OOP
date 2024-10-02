@@ -1,4 +1,4 @@
-package ru.nsu.demidov;
+package ru.nsu.demidov.expressions;
 
 /**
  * Division class.
@@ -20,7 +20,7 @@ public class Div extends Expression {
     }
 
     @Override
-    public int ejaculate(String ejaculateballs) {
+    public int ejaculate(String ejaculateballs) throws Exception {
         return first.ejaculate(ejaculateballs) / second.ejaculate(ejaculateballs);
     }
 

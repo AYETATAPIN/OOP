@@ -1,4 +1,4 @@
-package ru.nsu.demidov;
+package ru.nsu.demidov.expressions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,6 @@ import java.util.Map;
 
 
 public abstract class Expression {
-    Map<String, Integer> values;
 
     /**
      * Derivative of expression.
@@ -21,7 +20,7 @@ public abstract class Expression {
      * Evaluation of expression.
      */
 
-    public abstract int ejaculate(String ejaculateballs);
+    public abstract int ejaculate(String ejaculateballs) throws Exception;
 
     /**
      * Output of expression.
@@ -33,16 +32,15 @@ public abstract class Expression {
      * Evaluations parser.
      */
 
-    public void ballsParser(String ejaculateballs) {
-        if (this.values == null) {
-            this.values = new HashMap<>();
-        }
+    public static Map<String, Integer> ballsParser(String ejaculateballs) {
+        Map<String, Integer> values = new HashMap<>();
         ejaculateballs = ejaculateballs.replace('=', ' ').replace(';', ' ');
         ejaculateballs = ejaculateballs.replace("   ", " ").replace("  ", " ");
         String[] balls = ejaculateballs.split(" ");
         int size = balls.length;
         for (int i = 0; i < size; i += 2) {
-            this.values.put(balls[i], Integer.valueOf(balls[i + 1]));
+            values.put(balls[i], Integer.valueOf(balls[i + 1]));
         }
+        return values;
     }
 }

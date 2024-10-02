@@ -1,5 +1,6 @@
-package ru.nsu.demidov;
+package ru.nsu.demidov.expressions;
 
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -27,9 +28,12 @@ public class Variable extends Expression {
     }
 
     @Override
-    public int ejaculate(String ejaculateballs) {
-        ballsParser(ejaculateballs);
-        return this.values.get(this.value);
+    public int ejaculate(String ejaculateballs) throws Exception {
+        Map<String, Integer> values = ballsParser(ejaculateballs);
+        if (values.containsKey(this.value) == false) {
+            throw new Exception(this.value + " value is unknown");
+        }
+        return values.get(this.value);
     }
 
     @Override
