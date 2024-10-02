@@ -12,7 +12,6 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Expression sample = new Add(new Number(3), new Mul(new Number(2), new Variable("x")));
-        //double exceptionResult = sample.ejaculate("y = 13");
         System.out.println(sample.print());
         Expression sampleDerivative = sample.derivative("x");
         System.out.println(sampleDerivative.print());
