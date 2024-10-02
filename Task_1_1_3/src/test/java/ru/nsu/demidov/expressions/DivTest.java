@@ -12,7 +12,8 @@ class DivTest {
         assert (Objects.equals(sampleDiv.print(), "(9/1)"));
         assert (Objects.equals(sampleDiv.derivative("boobs").print(), "(((0*1)-(9*0))/(9*9))"));
         sampleDiv = new Div(new Variable("boobs"), new Number(1));
-        assert (Objects.equals(sampleDiv.derivative("boobs").print(), "(((1*1)-(boobs*0))/(boobs*boobs))"));
+        assert (Objects.equals(sampleDiv.derivative("boobs").print(),
+                "(((1*1)-(boobs*0))/(boobs*boobs))"));
         assert (Objects.equals(sampleDiv.ejaculate("boobs = 2"), 2.0));
         Map<String, Integer> sampleMap = new HashMap<>();
         sampleMap.put("boobs", 2);
