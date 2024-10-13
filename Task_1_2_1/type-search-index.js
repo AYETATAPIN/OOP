@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"ru.nsu.demidov.graph","l":"AdjacencyList"},{"p":"ru.nsu.demidov.graph","l":"AdjacencyMatrix"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.demidov.graph","l":"Graph"},{"p":"ru.nsu.demidov.graph","l":"IncidenceMatrix"},{"p":"ru.nsu.demidov.graph","l":"Main"}]
