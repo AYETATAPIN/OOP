@@ -6,16 +6,21 @@ import java.io.IOException;
 import java.util.*;
 
 public class AdjacencyList<T> implements Graph<T> {
+    private Map<T, Integer> verticesIndex;
+    private List<T> vertices;
     private Map<T, List<T>> adjacencyList;
 
     public AdjacencyList() {
         adjacencyList = new HashMap<>();
+        vertices = new ArrayList<>();
     }
 
     @Override
     public void addVertex(T vertex) {
         if (adjacencyList.containsKey(vertex) == false) {
             adjacencyList.put(vertex, new ArrayList<>());
+            verticesIndex.put(vertex, vertices.size());
+            vertices.add(vertex);
         }
     }
 
@@ -23,6 +28,9 @@ public class AdjacencyList<T> implements Graph<T> {
     public void removeVertex(T vertex) throws IllegalArgumentException {
         if (adjacencyList.containsKey(vertex) == true) {
             adjacencyList.remove(vertex);
+            int index = verticesIndex.get(vertex);
+            verticesIndex.remove(vertex);
+            vertices.remove(index);
             for (List<T> neighbors : adjacencyList.values()) {
                 neighbors.remove(vertex);
             }
@@ -50,8 +58,23 @@ public class AdjacencyList<T> implements Graph<T> {
     }
 
     @Override
-    public List<T> adjacentVertices(T vertex) {
-        return adjacencyList.getOrDefault(vertex, new ArrayList<>());
+    public List<T> adjacentVertices(int verticeIndex) {
+        return adjacencyList.getOrDefault(vertices.get(verticeIndex), new ArrayList<>());
+    }
+
+    @Override
+    public int verticesCount() {
+        return adjacencyList.size();
+    }
+
+    @Override
+    public int getVertexId(T vertex) {
+        return verticesIndex.get(vertex);
+    }
+
+    @Override
+    public T getVertex(int verticeIndex) {
+        return vertices.get(verticeIndex);
     }
 
     @Override
@@ -81,31 +104,5 @@ public class AdjacencyList<T> implements Graph<T> {
             }
             System.out.println();
         }
-    }
-
-    public List<T> toposort() {
-        List<T> sorted = new ArrayList<>();
-        Set<T> isVisited = new HashSet<>();
-        Stack<T> stack = new Stack<>();
-        for (T vertex : adjacencyList.keySet()) {
-            if (isVisited.contains(vertex) == false) {
-                traverse(vertex, isVisited, stack);
-            }
-        }
-        while (stack.isEmpty() == false) {
-            sorted.add(stack.pop());
-        }
-
-        return sorted;
-    }
-
-    private void traverse(T vertex, Set<T> isVisited, Stack<T> stack) {
-        isVisited.add(vertex);
-        for (int i = 0; i < adjacencyList.size(); ++i   ) {
-            if (isVisited.contains(adjacencyList.get(vertex).get(i)) == false) {
-                traverse(adjacencyList.get(vertex).get(i), isVisited, stack);
-            }
-        }
-        stack.push(vertex);
     }
 }

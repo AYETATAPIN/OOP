@@ -76,7 +76,8 @@ public class IncidenceMatrix<T> implements Graph<T> {
     }
 
     @Override
-    public List<T> adjacentVertices(T vertex) {
+    public List<T> adjacentVertices(int verticeIndex) {
+        T vertex = vertices.get(verticeIndex);
         List<T> neighbors = new ArrayList<>();
         if (verticesIndex.containsKey(vertex) == true) {
             int index = verticesIndex.get(vertex);
@@ -91,6 +92,21 @@ public class IncidenceMatrix<T> implements Graph<T> {
             }
         }
         return neighbors;
+    }
+
+    @Override
+    public int verticesCount() {
+        return vertices.size();
+    }
+
+    @Override
+    public int getVertexId(T vertex) {
+        return verticesIndex.get(vertex);
+    }
+
+    @Override
+    public T getVertex(int verticeIndex) {
+        return vertices.get(verticeIndex);
     }
 
     @Override
@@ -134,39 +150,5 @@ public class IncidenceMatrix<T> implements Graph<T> {
             }
             System.out.println();
         }
-    }
-
-    @Override
-    public List<T> toposort() {
-        List<T> sortedList = new ArrayList<>();
-        Set<T> isVisited = new HashSet<>();
-        Stack<T> stack = new Stack<>();
-        for (T vertex : vertices) {
-            if (isVisited.contains(vertex) == false) {
-                traverse(vertex, isVisited, stack);
-            }
-        }
-        while (stack.isEmpty() == false) {
-            sortedList.add(stack.pop());
-        }
-        return sortedList;
-    }
-
-    private void traverse(T vertex, Set<T> isVisited, Stack<T> stack) {
-        isVisited.add(vertex);
-        int index = verticesIndex.get(vertex);
-        for (int i = 0; i < incidenceMatrix.size(); ++i) {
-            if (incidenceMatrix.get(i).get(index) == 1) {
-                for (int j = 0; j < vertices.size(); j++) {
-                    if (incidenceMatrix.get(j).get(j) == 1) {
-                        T neighbor = vertices.get(j);
-                        if (!isVisited.contains(neighbor)) {
-                            traverse(neighbor, isVisited, stack);
-                        }
-                    }
-                }
-            }
-        }
-        stack.push(vertex);
     }
 }

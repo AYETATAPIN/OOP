@@ -11,16 +11,15 @@ public interface Graph<T> {
 
     void removeEdge(T from, T to) throws IllegalArgumentException;
 
-    List<T> adjacentVertices(T vertex);
+    List<T> adjacentVertices(int index);
 
-    default List<T> topologicalSort() {
-        return toposort();
-    }
-
-    List<T> toposort();
+    int verticesCount();
 
     void readFile(String filePath) throws Exception;
 
     void print();
-}
 
+    T getVertex(int pop);
+
+    int getVertexId(T vertex);
+}

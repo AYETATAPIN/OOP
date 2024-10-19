@@ -61,7 +61,8 @@ public class AdjacencyMatrix<T> implements Graph<T> {
     }
 
     @Override
-    public List<T> adjacentVertices(T vertex) {
+    public List<T> adjacentVertices(int verticeIndex) {
+        T vertex = vertices.get(verticeIndex);
         List<T> neighbours = new ArrayList<>();
         if (verticesIndex.containsKey(vertex)) {
             int index = verticesIndex.get(vertex);
@@ -72,6 +73,21 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             }
         }
         return neighbours;
+    }
+
+    @Override
+    public int verticesCount() {
+        return vertices.size();
+    }
+
+    @Override
+    public int getVertexId(T vertex) {
+        return verticesIndex.get(vertex);
+    }
+
+    @Override
+    public T getVertex(int verticeIndex) {
+        return vertices.get(verticeIndex);
     }
 
     @Override
@@ -111,36 +127,6 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             }
             System.out.println();
         }
-    }
-
-    @Override
-    public List<T> toposort() {
-        List<T> sorted = new ArrayList<>();
-        Set<T> isVisited = new HashSet<>();
-        Stack<T> stack = new Stack<>();
-        for (int i = 0; i < vertices.size(); ++i) {
-            if (isVisited.contains(vertices.get(i)) == false) {
-                traverse(vertices.get(i), isVisited, stack);
-            }
-        }
-        while (stack.isEmpty() == false) {
-            sorted.add(stack.pop());
-        }
-        return sorted;
-    }
-
-    private void traverse(T vertex, Set<T> isVisited, Stack<T> stack) {
-        isVisited.add(vertex);
-        int index = verticesIndex.get(vertex);
-        for (int i = 0; i < vertices.size(); i++) {
-            if (adjacencyMatrix[index][i]) {
-                T neighbor = vertices.get(i);
-                if (isVisited.contains(neighbor) == false) {
-                    traverse(neighbor, isVisited, stack);
-                }
-            }
-        }
-        stack.push(vertex);
     }
 
     private void resizeMatrix() {
