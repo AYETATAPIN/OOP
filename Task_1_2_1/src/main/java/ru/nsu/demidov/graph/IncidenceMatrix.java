@@ -2,6 +2,7 @@ package ru.nsu.demidov.graph;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class IncidenceMatrix<T> implements Graph<T> {
@@ -27,7 +28,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
     }
 
     @Override
-    public void removeVertex(T vertex) throws Exception {
+    public void removeVertex(T vertex) throws IllegalArgumentException {
         if (verticesIndex.containsKey(vertex) == true) {
             int index = verticesIndex.get(vertex);
             verticesIndex.remove(vertex);
@@ -37,12 +38,12 @@ public class IncidenceMatrix<T> implements Graph<T> {
             }
         }
         else {
-            throw new Exception("You stoopid no such vertex " + vertex);
+            throw new IllegalArgumentException("You stoopid no such vertex " + vertex);
         }
     }
 
     @Override
-    public void addEdge(T from, T to) throws Exception {
+    public void addEdge(T from, T to) throws IllegalArgumentException {
         if (verticesIndex.containsKey(from) && verticesIndex.containsKey(to)) {
             int fromIndex = verticesIndex.get(from);
             int toIndex = verticesIndex.get(to);
@@ -52,12 +53,12 @@ public class IncidenceMatrix<T> implements Graph<T> {
             incidenceMatrix.add(newRow);
         }
         else {
-            throw new Exception("You stoopid no such edge " + from + "and " + to);
+            throw new IllegalArgumentException("You stoopid no such edge " + from + "and " + to);
         }
     }
 
     @Override
-    public void removeEdge(T from, T to) throws Exception {
+    public void removeEdge(T from, T to) throws IllegalArgumentException {
         if (verticesIndex.containsKey(from) && verticesIndex.containsKey(to)) {
             int fromIndex = verticesIndex.get(from);
             int toIndex = verticesIndex.get(to);
@@ -70,7 +71,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
             }
         }
         else {
-            throw new Exception("You stoopid no such edge " + from + "and " + to);
+            throw new IllegalArgumentException("You stoopid no such edge " + from + "and " + to);
         }
     }
 
@@ -93,18 +94,21 @@ public class IncidenceMatrix<T> implements Graph<T> {
     }
 
     @Override
-    public void readFile(String path) throws Exception {
-        BufferedReader input = new BufferedReader(new FileReader(path));
-        String line;
-        while ((line = input.readLine()) != null) {
-            String[] args = line.split(" ");
-            T from = (T) args[0];
-            T to = (T) args[1];
-            addVertex(from);
-            addVertex(to);
-            addEdge(from, to);
+    public void readFile(String path) {
+        try(BufferedReader input = new BufferedReader(new FileReader(path))) {
+            String currentString;
+            while ((currentString = input.readLine()) != null) {
+                String[] args = currentString.split(" ");
+                T from = (T) args[0];
+                T to = (T) args[1];
+                addVertex(from);
+                addVertex(to);
+                addEdge(from, to);
+            }
         }
-        input.close();
+        catch (IOException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 
     @Override

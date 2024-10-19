@@ -2,6 +2,7 @@ package ru.nsu.demidov.graph;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class AdjacencyList<T> implements Graph<T> {
@@ -19,32 +20,32 @@ public class AdjacencyList<T> implements Graph<T> {
     }
 
     @Override
-    public void removeVertex(T vertex) throws Exception {
+    public void removeVertex(T vertex) throws IllegalArgumentException {
         if (adjacencyList.containsKey(vertex) == true) {
             adjacencyList.remove(vertex);
             for (List<T> neighbors : adjacencyList.values()) {
                 neighbors.remove(vertex);
             }
         } else {
-            throw new Exception("You stoopid no such vertex " + vertex);
+            throw new IllegalArgumentException("You stoopid no such vertex " + vertex);
         }
     }
 
     @Override
-    public void addEdge(T from, T to) throws Exception {
+    public void addEdge(T from, T to) throws IllegalArgumentException {
         if (adjacencyList.containsKey(from) && adjacencyList.containsKey(to)) {
             adjacencyList.get(from).add(to);
         } else {
-            throw new Exception("You stoopid no such edge " + from + "and " + to);
+            throw new IllegalArgumentException("You stoopid no such edge " + from + "and " + to);
         }
     }
 
     @Override
-    public void removeEdge(T from, T to) throws Exception {
+    public void removeEdge(T from, T to) throws IllegalArgumentException {
         if (adjacencyList.containsKey(from)) {
             adjacencyList.get(from).remove(to);
         } else {
-            throw new Exception("You stoopid no such edge " + from + "and " + to);
+            throw new IllegalArgumentException("You stoopid no such edge " + from + "and " + to);
         }
     }
 
@@ -54,31 +55,57 @@ public class AdjacencyList<T> implements Graph<T> {
     }
 
     @Override
-    public void readFile(String path) throws Exception {
-        BufferedReader input = new BufferedReader(new FileReader(path));
-        String line;
-        while ((line = input.readLine()) != null) {
-            String[] args = line.split(" ");
-            T from = (T) args[0];
-            T to = (T) args[1];
-            addVertex(from);
-            addVertex(to);
-            addEdge(from, to);
+    public void readFile(String path) {
+        try(BufferedReader input = new BufferedReader(new FileReader(path))) {
+            String currentString;
+            while ((currentString = input.readLine()) != null) {
+                String[] args = currentString.split(" ");
+                T from = (T) args[0];
+                T to = (T) args[1];
+                addVertex(from);
+                addVertex(to);
+                addEdge(from, to);
+            }
         }
-        input.close();
+        catch (IOException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 
     @Override
     public void print() {
-
+        for (Map.Entry<T, List<T>> entry : adjacencyList.entrySet()) {
+            System.out.print(entry.getKey() + " - ");
+            for (T neighbour : entry.getValue()) {
+                System.out.print(neighbour + " ");
+            }
+            System.out.println();
+        }
     }
 
-    @Override
     public List<T> toposort() {
-        return null;
+        List<T> sorted = new ArrayList<>();
+        Set<T> isVisited = new HashSet<>();
+        Stack<T> stack = new Stack<>();
+        for (T vertex : adjacencyList.keySet()) {
+            if (isVisited.contains(vertex) == false) {
+                traverse(vertex, isVisited, stack);
+            }
+        }
+        while (stack.isEmpty() == false) {
+            sorted.add(stack.pop());
+        }
+
+        return sorted;
     }
 
-    private void topologicalSortUtil(T vertex, Set<T> visited, Stack<T> stack) {
-
+    private void traverse(T vertex, Set<T> isVisited, Stack<T> stack) {
+        isVisited.add(vertex);
+        for (int i = 0; i < adjacencyList.size(); ++i   ) {
+            if (isVisited.contains(adjacencyList.get(vertex).get(i)) == false) {
+                traverse(adjacencyList.get(vertex).get(i), isVisited, stack);
+            }
+        }
+        stack.push(vertex);
     }
 }
