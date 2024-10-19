@@ -228,6 +228,13 @@ implements <a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph<
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
 <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.ru.nsu.demidov.graph.Graph">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;ru.nsu.demidov.graph.<a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a></h3>
+<code><a href="Graph.html#topologicalSort()">topologicalSort</a></code></li>
+</ul>
 </li>
 </ul>
 </section>
@@ -287,12 +294,12 @@ implements <a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph<
 <li class="blockList">
 <h4>removeVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;removeVertex&#8203;(<a href="AdjacencyMatrix.html" title="type parameter in AdjacencyMatrix">T</a>&nbsp;vertex)
-                  throws java.lang.Exception</pre>
+                  throws java.lang.IllegalArgumentException</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Graph.html#removeVertex(T)">removeVertex</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a>&lt;<a href="AdjacencyMatrix.html" title="type parameter in AdjacencyMatrix">T</a>&gt;</code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.Exception</code></dd>
+<dd><code>java.lang.IllegalArgumentException</code></dd>
 </dl>
 </li>
 </ul>
@@ -306,12 +313,12 @@ implements <a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph<
 <h4>addEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addEdge&#8203;(<a href="AdjacencyMatrix.html" title="type parameter in AdjacencyMatrix">T</a>&nbsp;from,
                     <a href="AdjacencyMatrix.html" title="type parameter in AdjacencyMatrix">T</a>&nbsp;to)
-             throws java.lang.Exception</pre>
+             throws java.lang.IllegalArgumentException</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Graph.html#addEdge(T,T)">addEdge</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a>&lt;<a href="AdjacencyMatrix.html" title="type parameter in AdjacencyMatrix">T</a>&gt;</code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.Exception</code></dd>
+<dd><code>java.lang.IllegalArgumentException</code></dd>
 </dl>
 </li>
 </ul>
@@ -325,12 +332,12 @@ implements <a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph<
 <h4>removeEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;removeEdge&#8203;(<a href="AdjacencyMatrix.html" title="type parameter in AdjacencyMatrix">T</a>&nbsp;from,
                        <a href="AdjacencyMatrix.html" title="type parameter in AdjacencyMatrix">T</a>&nbsp;to)
-                throws java.lang.Exception</pre>
+                throws java.lang.IllegalArgumentException</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Graph.html#removeEdge(T,T)">removeEdge</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a>&lt;<a href="AdjacencyMatrix.html" title="type parameter in AdjacencyMatrix">T</a>&gt;</code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.Exception</code></dd>
+<dd><code>java.lang.IllegalArgumentException</code></dd>
 </dl>
 </li>
 </ul>
@@ -355,13 +362,10 @@ implements <a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph<
 <ul class="blockList">
 <li class="blockList">
 <h4>readFile</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;readFile&#8203;(java.lang.String&nbsp;path)
-              throws java.lang.Exception</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;readFile&#8203;(java.lang.String&nbsp;path)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Graph.html#readFile(java.lang.String)">readFile</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a>&lt;<a href="AdjacencyMatrix.html" title="type parameter in AdjacencyMatrix">T</a>&gt;</code></dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.Exception</code></dd>
 </dl>
 </li>
 </ul>
