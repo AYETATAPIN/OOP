@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -191,33 +191,43 @@ implements <a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph<
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#adjacentVertices(T)">adjacentVertices</a></span>&#8203;(<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&nbsp;vertex)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#adjacentVertices(int)">adjacentVertices</a></span>&#8203;(int&nbsp;verticeIndex)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertex(int)">getVertex</a></span>&#8203;(int&nbsp;verticeIndex)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexId(T)">getVertexId</a></span>&#8203;(<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&nbsp;vertex)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#print()">print</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readFile(java.lang.String)">readFile</a></span>&#8203;(java.lang.String&nbsp;path)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeEdge(T,T)">removeEdge</a></span>&#8203;(<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&nbsp;from,
           <a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&nbsp;to)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeVertex(T)">removeVertex</a></span>&#8203;(<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&nbsp;vertex)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toposort()">toposort</a></span>()</code></th>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#verticesCount()">verticesCount</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -227,13 +237,6 @@ implements <a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph<
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
 <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a id="methods.inherited.from.class.ru.nsu.demidov.graph.Graph">
-<!--   -->
-</a>
-<h3>Methods inherited from interface&nbsp;ru.nsu.demidov.graph.<a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a></h3>
-<code><a href="Graph.html#topologicalSort()">topologicalSort</a></code></li>
 </ul>
 </li>
 </ul>
@@ -341,18 +344,57 @@ implements <a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph<
 </dl>
 </li>
 </ul>
-<a id="adjacentVertices(java.lang.Object)">
-<!--   -->
-</a><a id="adjacentVertices(T)">
+<a id="adjacentVertices(int)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>adjacentVertices</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;&nbsp;adjacentVertices&#8203;(<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&nbsp;vertex)</pre>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;&nbsp;adjacentVertices&#8203;(int&nbsp;verticeIndex)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Graph.html#adjacentVertices(T)">adjacentVertices</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a>&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;</code></dd>
+<dd><code><a href="Graph.html#adjacentVertices(int)">adjacentVertices</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a>&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a id="verticesCount()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>verticesCount</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;verticesCount()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="Graph.html#verticesCount()">verticesCount</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a>&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a id="getVertexId(java.lang.Object)">
+<!--   -->
+</a><a id="getVertexId(T)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getVertexId</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getVertexId&#8203;(<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&nbsp;vertex)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="Graph.html#getVertexId(T)">getVertexId</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a>&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a id="getVertex(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getVertex</h4>
+<pre class="methodSignature">public&nbsp;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&nbsp;getVertex&#8203;(int&nbsp;verticeIndex)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="Graph.html#getVertex(int)">getVertex</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a>&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -372,26 +414,13 @@ implements <a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph<
 <a id="print()">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>print</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;print()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Graph.html#print()">print</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a>&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;</code></dd>
-</dl>
-</li>
-</ul>
-<a id="toposort()">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>toposort</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;&nbsp;toposort()</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Graph.html#toposort()">toposort</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.demidov.graph">Graph</a>&lt;<a href="AdjacencyList.html" title="type parameter in AdjacencyList">T</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
