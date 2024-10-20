@@ -81,7 +81,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
             for (List<Integer> row : incidenceMatrix) {
                 if (row.get(index) == 1) {
                     for (int i = 0; i < vertices.size(); i++) {
-                        if (row.get(i) == 1 && neighbors.contains(vertices.get(i)) == false) {
+                        if (row.get(i) == 1 && neighbors.contains(vertices.get(i)) == false && i != verticeIndex) {
                             neighbors.add(vertices.get(i));
                         }
                     }
@@ -132,14 +132,16 @@ public class IncidenceMatrix<T> implements Graph<T> {
             for (int j = 0; j < incidenceMatrix.size(); ++j) {
                 if (incidenceMatrix.get(i).get(i) == 1) {
                     for (int k = 0; k < vertices.size(); k++) {
-                        if (incidenceMatrix.get(i).get(k) == 1) {
+                        if (incidenceMatrix.get(i).get(k) == 1 /*&& str.toString().contains(vertices.get(k).toString()) == false*/) {
                             if (foundAdjacent == false) {
                                 str.append(" - ");
                                 foundAdjacent = true;
                             } else {
                                 str.append(" - ");
                             }
-                            str.append(vertices.get(k));
+                            if (str.toString().contains(vertices.get(k).toString()) == false) {
+                                str.append(vertices.get(k));
+                            }
                         }
                     }
                 }

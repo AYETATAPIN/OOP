@@ -34,7 +34,7 @@ class AdjacencyMatrixTest {
             System.out.println(adjacencyMatrixGraph.getVertexId("A"));
         }
         catch (Exception exception) {
-            //assert (Objects.equals(exception.getMessage(), "Cannot invoke \"java.lang.Integer.intValue()\" because the return value of \"java.util.Map.get(Object)\" is null"));
+            assert (Objects.equals(exception.getMessage(), "Cannot invoke \"java.lang.Integer.intValue()\" because the return value of \"java.util.Map.get(Object)\" is null"));
         }
 
         try {
