@@ -13,6 +13,7 @@ public class AdjacencyList<T> implements Graph<T> {
     public AdjacencyList() {
         adjacencyList = new HashMap<>();
         vertices = new ArrayList<>();
+        verticesIndex = new HashMap<>();
     }
 
     @Override
@@ -79,7 +80,7 @@ public class AdjacencyList<T> implements Graph<T> {
 
     @Override
     public void readFile(String path) {
-        try(BufferedReader input = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader input = new BufferedReader(new FileReader(path))) {
             String currentString;
             while ((currentString = input.readLine()) != null) {
                 String[] args = currentString.split(" ");
@@ -89,20 +90,21 @@ public class AdjacencyList<T> implements Graph<T> {
                 addVertex(to);
                 addEdge(from, to);
             }
-        }
-        catch (IOException exception) {
+        } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
     }
 
     @Override
-    public void print() {
+    public String print() {
+        StringBuilder str = new StringBuilder();
         for (Map.Entry<T, List<T>> entry : adjacencyList.entrySet()) {
-            System.out.print(entry.getKey() + " - ");
+            str.append(entry.getKey() + " - ");
             for (T neighbour : entry.getValue()) {
-                System.out.print(neighbour + " ");
+                str.append(neighbour + " ");
             }
-            System.out.println();
+            str.append('\n');
         }
+        return str.toString();
     }
 }

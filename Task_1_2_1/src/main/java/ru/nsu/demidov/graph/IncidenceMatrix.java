@@ -33,11 +33,10 @@ public class IncidenceMatrix<T> implements Graph<T> {
             int index = verticesIndex.get(vertex);
             verticesIndex.remove(vertex);
             vertices.remove(index);
-            for (int i = 0; i  < incidenceMatrix.size(); ++i) {
+            for (int i = 0; i < incidenceMatrix.size(); ++i) {
                 incidenceMatrix.get(i).remove(index);
             }
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("You stoopid no such vertex " + vertex);
         }
     }
@@ -51,8 +50,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
             newRow.set(fromIndex, 1);
             newRow.set(toIndex, 1);
             incidenceMatrix.add(newRow);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("You stoopid no such edge " + from + "and " + to);
         }
     }
@@ -69,8 +67,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
                     break;
                 }
             }
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("You stoopid no such edge " + from + "and " + to);
         }
     }
@@ -84,7 +81,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
             for (List<Integer> row : incidenceMatrix) {
                 if (row.get(index) == 1) {
                     for (int i = 0; i < vertices.size(); i++) {
-                        if (row.get(i) == 1) {
+                        if (row.get(i) == 1 && neighbors.contains(vertices.get(i)) == false) {
                             neighbors.add(vertices.get(i));
                         }
                     }
@@ -111,7 +108,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
 
     @Override
     public void readFile(String path) {
-        try(BufferedReader input = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader input = new BufferedReader(new FileReader(path))) {
             String currentString;
             while ((currentString = input.readLine()) != null) {
                 String[] args = currentString.split(" ");
@@ -121,34 +118,34 @@ public class IncidenceMatrix<T> implements Graph<T> {
                 addVertex(to);
                 addEdge(from, to);
             }
-        }
-        catch (IOException exception) {
+        } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
     }
 
     @Override
-    public void print() {
+    public String print() {
+        StringBuilder str = new StringBuilder();
         for (int i = 0; i < vertices.size(); i++) {
-            System.out.print(vertices.get(i));
+            str.append(vertices.get(i));
             boolean foundAdjacent = false;
             for (int j = 0; j < incidenceMatrix.size(); ++j) {
                 if (incidenceMatrix.get(i).get(i) == 1) {
                     for (int k = 0; k < vertices.size(); k++) {
                         if (incidenceMatrix.get(i).get(k) == 1) {
                             if (foundAdjacent == false) {
-                                System.out.print(" - ");
+                                str.append(" - ");
                                 foundAdjacent = true;
+                            } else {
+                                str.append(" - ");
                             }
-                            else {
-                                System.out.print(" - ");
-                            }
-                            System.out.print(vertices.get(k));
+                            str.append(vertices.get(k));
                         }
                     }
                 }
             }
-            System.out.println();
+            str.append('\n');
         }
+        return str.toString();
     }
 }

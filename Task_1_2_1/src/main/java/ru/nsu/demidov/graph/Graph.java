@@ -17,7 +17,7 @@ public interface Graph<T> {
 
     void readFile(String filePath) throws Exception;
 
-    void print();
+    String print();
 
     T getVertex(int pop);
 

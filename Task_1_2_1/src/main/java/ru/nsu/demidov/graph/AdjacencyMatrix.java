@@ -30,8 +30,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             verticesIndex.remove(vertex);
             vertices.remove(index);
             resizeMatrix();
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("You stoopid no such vertex " + vertex);
         }
     }
@@ -42,8 +41,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             int fromIndex = verticesIndex.get(from);
             int toIndex = verticesIndex.get(to);
             adjacencyMatrix[fromIndex][toIndex] = true;
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("You stoopid no such vertices " + from + "and " + to);
         }
     }
@@ -67,7 +65,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         if (verticesIndex.containsKey(vertex)) {
             int index = verticesIndex.get(vertex);
             for (int i = 0; i < vertices.size(); i++) {
-                if (adjacencyMatrix[index][i]) {
+                if (adjacencyMatrix[index][i] && neighbours.contains(vertices.get(i)) == false) {
                     neighbours.add(vertices.get(i));
                 }
             }
@@ -92,7 +90,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
 
     @Override
     public void readFile(String path) {
-        try(BufferedReader input = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader input = new BufferedReader(new FileReader(path))) {
             String currentString;
             while ((currentString = input.readLine()) != null) {
                 String[] args = currentString.split(" ");
@@ -102,31 +100,31 @@ public class AdjacencyMatrix<T> implements Graph<T> {
                 addVertex(to);
                 addEdge(from, to);
             }
-        }
-        catch (IOException exception) {
+        } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
     }
 
     @Override
-    public void print() {
+    public String print() {
+        StringBuilder str = new StringBuilder();
         for (int i = 0; i < vertices.size(); i++) {
-            System.out.print(vertices.get(i));
+            str.append(vertices.get(i));
             boolean foundAdjacent = false;
             for (int j = 0; j < vertices.size(); j++) {
                 if (adjacencyMatrix[i][j] == true) {
                     if (foundAdjacent == false) {
-                        System.out.print(" - ");
+                        str.append(" - ");
                         foundAdjacent = true;
+                    } else {
+                        str.append(" - ");
                     }
-                    else {
-                        System.out.print(" - ");
-                    }
-                    System.out.print(vertices.get(j));
+                    str.append(vertices.get(j));
                 }
             }
-            System.out.println();
+            str.append('\n');
         }
+        return str.toString();
     }
 
     private void resizeMatrix() {
