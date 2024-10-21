@@ -19,7 +19,14 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         if (verticesIndex.containsKey(vertex) == false) {
             verticesIndex.put(vertex, vertices.size());
             vertices.add(vertex);
-            resizeMatrix();
+            int size = vertices.size();
+            boolean[][] temp = new boolean[size][size];
+            for (int i = 0; i < size - 1; i++) {
+                for (int j = 0; j < size - 1; j++) {
+                    temp[i][j] = adjacencyMatrix[i][j];
+                }
+            }
+            adjacencyMatrix = temp;
         }
     }
 
@@ -29,7 +36,14 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             int index = verticesIndex.get(vertex);
             verticesIndex.remove(vertex);
             vertices.remove(index);
-            resizeMatrix();
+            int size = vertices.size();
+            boolean[][] temp = new boolean[size][size];
+            for (int i = 0; i < size - 1; i++) {
+                for (int j = 0; j < size - 1; j++) {
+                    temp[i][j] = adjacencyMatrix[i][j];
+                }
+            }
+            adjacencyMatrix = temp;
         } else {
             throw new IllegalArgumentException("You stoopid no such vertex " + vertex);
         }
@@ -103,16 +117,5 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
-    }
-
-    private void resizeMatrix() {
-        int size = vertices.size();
-        boolean[][] temp = new boolean[size][size];
-        for (int i = 0; i < size - 1; i++) {
-            for (int j = 0; j < size - 1; j++) {
-                temp[i][j] = adjacencyMatrix[i][j];
-            }
-        }
-        adjacencyMatrix = temp;
     }
 }
