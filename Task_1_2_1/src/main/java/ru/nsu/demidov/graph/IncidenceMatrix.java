@@ -51,7 +51,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
             newRow.set(toIndex, 1);
             incidenceMatrix.add(newRow);
         } else {
-            throw new IllegalArgumentException("You stoopid no such edge " + from + " and " + to);
+            throw new IllegalArgumentException("You stoopid no such vertices " + from + " and " + to);
         }
     }
 

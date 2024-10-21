@@ -21,6 +21,7 @@ class AdjacencyMatrixTest {
             );
         }
     }
+
     @ParameterizedTest
     @ArgumentsSource(testArgumentsProvider.class)
     void AdjacencyMatrixTesting(Graph<String> sampleGraph) throws Exception {
@@ -58,6 +59,12 @@ class AdjacencyMatrixTest {
             sampleGraph.removeEdge("A", "B");
         } catch (Exception exception) {
             assert (Objects.equals(exception.getMessage(), "You stoopid no such edge A and B"));
+        }
+
+        try {
+            sampleGraph.addEdge("BOOBS", "KNOCKERS");
+        } catch (Exception exception) {
+            assert (Objects.equals(exception.getMessage(), "You stoopid no such vertices BOOBS and KNOCKERS"));
         }
     }
 
