@@ -115,7 +115,7 @@ public class IncidenceMatrix<T> implements Graph<T> {
                 if (row.get(index) == 1) {
                     for (int i = 0; i < vertices.size(); i++) {
                         if (row.get(i) == 1 && neighbors.contains(vertices.get(i)) == false
-                           && i != verticeIndex) {
+                            && i != verticeIndex) {
                             neighbors.add(vertices.get(i));
                         }
                     }
