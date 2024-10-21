@@ -122,32 +122,4 @@ public class IncidenceMatrix<T> implements Graph<T> {
             System.out.println(exception.getMessage());
         }
     }
-
-    @Override
-    public String print() {
-        StringBuilder str = new StringBuilder();
-        for (int i = 0; i < vertices.size(); i++) {
-            str.append(vertices.get(i));
-            boolean foundAdjacent = false;
-            for (int j = 0; j < incidenceMatrix.size(); ++j) {
-                if (incidenceMatrix.get(i).get(i) == 1) {
-                    for (int k = 0; k < vertices.size(); k++) {
-                        if (incidenceMatrix.get(i).get(k) == 1 /*&& str.toString().contains(vertices.get(k).toString()) == false*/) {
-                            if (foundAdjacent == false) {
-                                str.append(" - ");
-                                foundAdjacent = true;
-                            } else {
-                                str.append(" - ");
-                            }
-                            if (str.toString().contains(vertices.get(k).toString()) == false) {
-                                str.append(vertices.get(k));
-                            }
-                        }
-                    }
-                }
-            }
-            str.append('\n');
-        }
-        return str.toString();
-    }
 }

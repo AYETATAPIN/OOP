@@ -35,7 +35,6 @@ class AdjacencyMatrixTest {
         assert (Objects.equals(sampleGraph.getVertexId("D"), 3));
         assert (Objects.equals(sampleGraph.verticesCount(), 4));
         assert (Objects.equals(sampleGraph.adjacentVertices(0), List.of("B", "C", "D")));
-        //assert (Objects.equals(sampleGraph.print(), "A - B - C - D\n" + "B - C\n" + "C\n" + "D\n"));
         sampleGraph.removeVertex("A");
         try {
             System.out.println(sampleGraph.getVertexId("A"));

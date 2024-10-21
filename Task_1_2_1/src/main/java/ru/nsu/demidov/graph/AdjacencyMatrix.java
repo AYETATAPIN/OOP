@@ -105,28 +105,6 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         }
     }
 
-    @Override
-    public String print() {
-        StringBuilder str = new StringBuilder();
-        for (int i = 0; i < vertices.size(); i++) {
-            str.append(vertices.get(i));
-            boolean foundAdjacent = false;
-            for (int j = 0; j < vertices.size(); j++) {
-                if (adjacencyMatrix[i][j] == true) {
-                    if (foundAdjacent == false) {
-                        str.append(" - ");
-                        foundAdjacent = true;
-                    } else {
-                        str.append(" - ");
-                    }
-                    str.append(vertices.get(j));
-                }
-            }
-            str.append('\n');
-        }
-        return str.toString();
-    }
-
     private void resizeMatrix() {
         int size = vertices.size();
         boolean[][] temp = new boolean[size][size];

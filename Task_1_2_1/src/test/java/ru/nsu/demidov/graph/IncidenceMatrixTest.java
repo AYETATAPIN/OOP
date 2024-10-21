@@ -26,9 +26,7 @@ class IncidenceMatrixTest {
         assert (Objects.equals(incidenceMatrixGraph.getVertexId("C"), 2));
         assert (Objects.equals(incidenceMatrixGraph.getVertexId("D"), 3));
         assert (Objects.equals(incidenceMatrixGraph.verticesCount(), 4));
-        System.out.println(incidenceMatrixGraph.print());
         assert (Objects.equals(incidenceMatrixGraph.adjacentVertices(0), List.of("B", "C", "D")));
-        //assert (Objects.equals(incidenceMatrixGraph.print(), "A - B - C - D\n" + "B - C\n" + "C\n" + "D\n"));
         incidenceMatrixGraph.removeVertex("A");
         try {
             System.out.println(incidenceMatrixGraph.getVertexId("A"));

@@ -94,17 +94,4 @@ public class AdjacencyList<T> implements Graph<T> {
             System.out.println(exception.getMessage());
         }
     }
-
-    @Override
-    public String print() {
-        StringBuilder str = new StringBuilder();
-        for (Map.Entry<T, List<T>> entry : adjacencyList.entrySet()) {
-            str.append(entry.getKey() + " - ");
-            for (T neighbour : entry.getValue()) {
-                str.append(neighbour + " ");
-            }
-            str.append('\n');
-        }
-        return str.toString();
-    }
 }
