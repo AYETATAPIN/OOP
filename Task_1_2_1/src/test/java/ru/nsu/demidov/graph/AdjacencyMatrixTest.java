@@ -43,6 +43,12 @@ class AdjacencyMatrixTest {
         }
 
         try {
+            sampleGraph.removeVertex("A");
+        } catch (Exception exception) {
+            assert (Objects.equals(exception.getMessage(), "You stoopid no such vertex A"));
+        }
+
+        try {
             System.out.println(sampleGraph.getVertex(3));
         } catch (Exception exception) {
             assert (Objects.equals(exception.getMessage(), "Index 3 out of bounds for length 3"));
