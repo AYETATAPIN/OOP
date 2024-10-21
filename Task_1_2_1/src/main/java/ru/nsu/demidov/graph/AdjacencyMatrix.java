@@ -42,7 +42,7 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             int toIndex = verticesIndex.get(to);
             adjacencyMatrix[fromIndex][toIndex] = true;
         } else {
-            throw new IllegalArgumentException("You stoopid no such vertices " + from + "and " + to);
+            throw new IllegalArgumentException("You stoopid no such vertices " + from + " and " + to);
         }
     }
 

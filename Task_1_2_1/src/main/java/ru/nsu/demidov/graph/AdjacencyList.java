@@ -45,7 +45,7 @@ public class AdjacencyList<T> implements Graph<T> {
         if (adjacencyList.containsKey(from) && adjacencyList.containsKey(to)) {
             adjacencyList.get(from).add(to);
         } else {
-            throw new IllegalArgumentException("You stoopid no such edge " + from + "and " + to);
+            throw new IllegalArgumentException("You stoopid no such edge " + from + " and " + to);
         }
     }
 
@@ -54,7 +54,7 @@ public class AdjacencyList<T> implements Graph<T> {
         if (adjacencyList.containsKey(from)) {
             adjacencyList.get(from).remove(to);
         } else {
-            throw new IllegalArgumentException("You stoopid no such edge " + from + "and " + to);
+            throw new IllegalArgumentException("You stoopid no such edge " + from + " and " + to);
         }
     }
 

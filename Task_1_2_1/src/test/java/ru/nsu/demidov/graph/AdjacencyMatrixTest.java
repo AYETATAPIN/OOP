@@ -47,6 +47,12 @@ class AdjacencyMatrixTest {
         } catch (Exception exception) {
             assert (Objects.equals(exception.getMessage(), "Index 3 out of bounds for length 3"));
         }
+
+        try {
+            sampleGraph.removeEdge("A", "B");
+        } catch (Exception exception) {
+            assert (Objects.equals(exception.getMessage(), "You stoopid no such edge A and B"));
+        }
     }
 
 }
