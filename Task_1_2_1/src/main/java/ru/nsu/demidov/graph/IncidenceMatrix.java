@@ -3,7 +3,11 @@ package ru.nsu.demidov.graph;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.Map;
+import java.util.List;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class IncidenceMatrix<T> implements Graph<T> {
     private Map<T, Integer> verticesIndex;
@@ -51,7 +55,8 @@ public class IncidenceMatrix<T> implements Graph<T> {
             newRow.set(toIndex, 1);
             incidenceMatrix.add(newRow);
         } else {
-            throw new IllegalArgumentException("You stoopid no such vertices " + from + " and " + to);
+            throw new IllegalArgumentException("You stoopid no such vertices "
+                + from + " and " + to);
         }
     }
 
@@ -81,7 +86,8 @@ public class IncidenceMatrix<T> implements Graph<T> {
             for (List<Integer> row : incidenceMatrix) {
                 if (row.get(index) == 1) {
                     for (int i = 0; i < vertices.size(); i++) {
-                        if (row.get(i) == 1 && neighbors.contains(vertices.get(i)) == false && i != verticeIndex) {
+                        if (row.get(i) == 1 && neighbors.contains(vertices.get(i)) == false
+                           && i != verticeIndex) {
                             neighbors.add(vertices.get(i));
                         }
                     }

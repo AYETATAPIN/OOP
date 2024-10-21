@@ -1,11 +1,13 @@
 package ru.nsu.demidov.graph;
-import org.junit.jupiter.api.Test;
+
 import java.util.List;
 import java.util.Objects;
+import org.junit.jupiter.api.Test;
+
 
 class TopSortTest {
     @Test
-    void TopSortTesting() {
+    void topSortTesting() {
         Graph<String> adjacencyMatrixGraph = new AdjacencyMatrix<>();
         adjacencyMatrixGraph.addVertex("A");
         adjacencyMatrixGraph.addVertex("B");

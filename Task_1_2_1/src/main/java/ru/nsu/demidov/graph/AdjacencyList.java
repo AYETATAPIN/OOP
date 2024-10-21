@@ -3,7 +3,10 @@ package ru.nsu.demidov.graph;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.Map;
+import java.util.List;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 public class AdjacencyList<T> implements Graph<T> {
     private Map<T, Integer> verticesIndex;
@@ -45,7 +48,8 @@ public class AdjacencyList<T> implements Graph<T> {
         if (adjacencyList.containsKey(from) && adjacencyList.containsKey(to)) {
             adjacencyList.get(from).add(to);
         } else {
-            throw new IllegalArgumentException("You stoopid no such vertices " + from + " and " + to);
+            throw new IllegalArgumentException("You stoopid no such vertices "
+                + from + " and " + to);
         }
     }
 
