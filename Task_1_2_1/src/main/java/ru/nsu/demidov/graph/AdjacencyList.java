@@ -127,7 +127,7 @@ public class AdjacencyList<T> implements Graph<T> {
      */
 
     @Override
-    public void readFile(String path) {
+    public void readFile(String path) throws Exception {
         try (BufferedReader input = new BufferedReader(new FileReader(path))) {
             String currentString;
             while ((currentString = input.readLine()) != null) {
@@ -139,7 +139,7 @@ public class AdjacencyList<T> implements Graph<T> {
                 addEdge(from, to);
             }
         } catch (IOException exception) {
-            System.out.println(exception.getMessage());
+            throw new Exception("Error opening file" + path, exception);
         }
     }
 }
