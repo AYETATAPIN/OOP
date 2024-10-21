@@ -8,15 +8,27 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.ArrayList;
 
+/**
+ * Adjacency matrix graph realisation.
+ */
+
 public class AdjacencyMatrix<T> implements Graph<T> {
     private Map<T, Integer> verticesIndex;
     private List<T> vertices;
     private boolean[][] adjacencyMatrix;
 
+    /**
+     * Adjacency matrix graph constructor.
+     */
+
     public AdjacencyMatrix() {
         verticesIndex = new HashMap<>();
         vertices = new ArrayList<>();
     }
+
+    /**
+     * Adjacency matrix graph addVertex realisation.
+     */
 
     @Override
     public void addVertex(T vertex) {
@@ -33,6 +45,10 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             adjacencyMatrix = temp;
         }
     }
+
+    /**
+     * Adjacency matrix graph removeVertex realisation.
+     */
 
     @Override
     public void removeVertex(T vertex) throws IllegalArgumentException {
@@ -53,6 +69,10 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         }
     }
 
+    /**
+     * Adjacency matrix graph addEdge realisation.
+     */
+
     @Override
     public void addEdge(T from, T to) throws IllegalArgumentException {
         if (verticesIndex.containsKey(from) && verticesIndex.containsKey(to)) {
@@ -65,6 +85,10 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         }
     }
 
+    /**
+     * Adjacency matrix graph removeEdge realisation.
+     */
+
     @Override
     public void removeEdge(T from, T to) throws IllegalArgumentException {
         if (verticesIndex.containsKey(from) && verticesIndex.containsKey(to)) {
@@ -76,6 +100,10 @@ public class AdjacencyMatrix<T> implements Graph<T> {
             adjacencyMatrix[fromIndex][toIndex] = false;
         }
     }
+
+    /**
+     * Adjacency matrix graph adjacentVertices realisation.
+     */
 
     @Override
     public List<T> adjacentVertices(int verticeIndex) {
@@ -92,20 +120,36 @@ public class AdjacencyMatrix<T> implements Graph<T> {
         return neighbours;
     }
 
+    /**
+     * Adjacency matrix graph verticesCount realisation.
+     */
+
     @Override
     public int verticesCount() {
         return vertices.size();
     }
+
+    /**
+     * Adjacency matrix graph getVertexId realisation.
+     */
 
     @Override
     public int getVertexId(T vertex) {
         return verticesIndex.get(vertex);
     }
 
+    /**
+     * Adjacency matrix graph getVertex realisation.
+     */
+
     @Override
     public T getVertex(int verticeIndex) {
         return vertices.get(verticeIndex);
     }
+
+    /**
+     * Adjacency matrix graph readFile realisation.
+     */
 
     @Override
     public void readFile(String path) {

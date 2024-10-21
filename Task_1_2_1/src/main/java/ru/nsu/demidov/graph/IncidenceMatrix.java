@@ -9,16 +9,28 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Incidence matrix graph realisation.
+ */
+
 public class IncidenceMatrix<T> implements Graph<T> {
     private Map<T, Integer> verticesIndex;
     private List<T> vertices;
     private List<List<Integer>> incidenceMatrix;
+
+    /**
+     * Incidence matrix graph constructor.
+     */
 
     public IncidenceMatrix() {
         verticesIndex = new HashMap<>();
         vertices = new ArrayList<>();
         incidenceMatrix = new ArrayList<>();
     }
+
+    /**
+     * Incidence matrix graph addVertex realisation.
+     */
 
     @Override
     public void addVertex(T vertex) {
@@ -30,6 +42,10 @@ public class IncidenceMatrix<T> implements Graph<T> {
             }
         }
     }
+
+    /**
+     * Incidence matrix graph removeVertex realisation.
+     */
 
     @Override
     public void removeVertex(T vertex) throws IllegalArgumentException {
@@ -45,6 +61,10 @@ public class IncidenceMatrix<T> implements Graph<T> {
         }
     }
 
+    /**
+     * Incidence matrix graph addEdge realisation.
+     */
+
     @Override
     public void addEdge(T from, T to) throws IllegalArgumentException {
         if (verticesIndex.containsKey(from) && verticesIndex.containsKey(to)) {
@@ -59,6 +79,10 @@ public class IncidenceMatrix<T> implements Graph<T> {
                 + from + " and " + to);
         }
     }
+
+    /**
+     * Incidence matrix graph removeEdge realisation.
+     */
 
     @Override
     public void removeEdge(T from, T to) throws IllegalArgumentException {
@@ -76,6 +100,10 @@ public class IncidenceMatrix<T> implements Graph<T> {
             throw new IllegalArgumentException("You stoopid no such edge " + from + " and " + to);
         }
     }
+
+    /**
+     * Incidence matrix graph adjacentVertices realisation.
+     */
 
     @Override
     public List<T> adjacentVertices(int verticeIndex) {
@@ -97,20 +125,36 @@ public class IncidenceMatrix<T> implements Graph<T> {
         return neighbors;
     }
 
+    /**
+     * Incidence matrix graph verticesCount realisation.
+     */
+
     @Override
     public int verticesCount() {
         return vertices.size();
     }
+
+    /**
+     * Incidence matrix graph getVertexId realisation.
+     */
 
     @Override
     public int getVertexId(T vertex) {
         return verticesIndex.get(vertex);
     }
 
+    /**
+     * Incidence matrix graph getVertex realisation.
+     */
+
     @Override
     public T getVertex(int verticeIndex) {
         return vertices.get(verticeIndex);
     }
+
+    /**
+     * Incidence matrix graph readFile realisation.
+     */
 
     @Override
     public void readFile(String path) {
