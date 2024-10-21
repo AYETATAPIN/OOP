@@ -8,11 +8,11 @@ class AdjacencyMatrixTest {
     @Test
     void AdjacencyMatrixTesting() throws Exception {
         Graph<String> adjacencyMatrixGraph = new AdjacencyMatrix<>();
+        adjacencyMatrixGraph.readFile("input.txt");
         assert (Objects.equals(adjacencyMatrixGraph.getVertex(0), "A"));
         assert (Objects.equals(adjacencyMatrixGraph.getVertex(1), "B"));
         assert (Objects.equals(adjacencyMatrixGraph.getVertex(2), "C"));
         assert (Objects.equals(adjacencyMatrixGraph.getVertex(3), "D"));
-        adjacencyMatrixGraph.readFile("input.txt");
         assert (Objects.equals(adjacencyMatrixGraph.getVertexId("A"), 0));
         assert (Objects.equals(adjacencyMatrixGraph.getVertexId("B"), 1));
         assert (Objects.equals(adjacencyMatrixGraph.getVertexId("C"), 2));
