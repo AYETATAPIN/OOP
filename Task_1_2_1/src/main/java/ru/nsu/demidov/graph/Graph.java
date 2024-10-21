@@ -2,6 +2,10 @@ package ru.nsu.demidov.graph;
 
 import java.util.List;
 
+/**
+ * Graph interface.
+ */
+
 public interface Graph<T> {
     void addVertex(T vertex);
 
