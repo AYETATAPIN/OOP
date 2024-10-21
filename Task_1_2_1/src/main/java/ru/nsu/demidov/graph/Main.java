@@ -4,7 +4,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws Exception {
         Graph<String> graph = new AdjacencyMatrix<>();
-        graph.readFile("C:\\Users\\dmitr\\oop_rep\\OOP\\Task_1_2_1\\src\\main\\java\\ru\\nsu\\demidov\\graph\\input.txt");
+        graph.readFile("input.txt");
         graph.print();
         TopSort<String> sampleSort = new TopSort<>();
         List<String> sorted = sampleSort.toposort(graph);
