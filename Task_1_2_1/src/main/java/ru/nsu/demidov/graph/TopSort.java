@@ -4,8 +4,16 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
+
+/**
+ * Topological sort.
+ */
+
 public class TopSort<T> {
 
+    /**
+     * Toposort realisation.
+     */
 
     public List<T> toposort(Graph<T> graph) {
         boolean[] isVisited;
@@ -24,6 +32,10 @@ public class TopSort<T> {
         }
         return sorted;
     }
+
+    /**
+     * DFS realisation.
+     */
 
     private void dfs(int verticeIndex, Graph<T> graph, boolean[] isVisited, Deque<Integer> stack) {
         if (isVisited[verticeIndex] == true) {

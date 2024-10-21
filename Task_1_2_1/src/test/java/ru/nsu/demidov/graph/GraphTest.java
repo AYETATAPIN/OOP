@@ -4,13 +4,13 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
-import org.junit.jupiter.params.provider.ArgumentsSource;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 
 class GraphTest {
-    static class testArgumentsProvider implements ArgumentsProvider {
+    static class TestArgumentsProvider implements ArgumentsProvider {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             return Stream.of(
@@ -22,8 +22,8 @@ class GraphTest {
     }
 
     @ParameterizedTest
-    @ArgumentsSource(testArgumentsProvider.class)
-    void AdjacencyMatrixTesting(Graph<String> sampleGraph) throws Exception {
+    @ArgumentsSource(TestArgumentsProvider.class)
+    void graphTesting(Graph<String> sampleGraph) throws Exception {
         sampleGraph.readFile("input.txt");
         assert (Objects.equals(sampleGraph.getVertex(0), "A"));
         assert (Objects.equals(sampleGraph.getVertex(1), "B"));
@@ -39,9 +39,9 @@ class GraphTest {
         try {
             System.out.println(sampleGraph.getVertexId("A"));
         } catch (Exception exception) {
-            assert (Objects.equals(exception.getMessage(),"Cannot invoke \"java.lang.Integer." +
-                "intValue()\" because the return value " +
-                "of \"java.util.Map.get(Object)\" is null"));
+            assert (Objects.equals(exception.getMessage(), "Cannot invoke \"java.lang.Integer."
+                + "intValue()\" because the return value "
+                + "of \"java.util.Map.get(Object)\" is null"));
         }
 
         try {
@@ -53,7 +53,8 @@ class GraphTest {
         try {
             System.out.println(sampleGraph.getVertex(3));
         } catch (Exception exception) {
-            assert (Objects.equals(exception.getMessage(),"Index 3 out of bounds for length 3"));
+            assert (Objects.equals(exception.getMessage(),
+                "Index 3 out of bounds for length 3"));
         }
 
         try {
@@ -65,9 +66,8 @@ class GraphTest {
         try {
             sampleGraph.addEdge("BOOBS", "KNOCKERS");
         } catch (Exception exception) {
-            assert (Objects.equals(exception.getMessage(), "You stoopid no such vertices " +
-               "BOOBS and KNOCKERS"));
+            assert (Objects.equals(exception.getMessage(), "You stoopid no such vertices "
+                + "BOOBS and KNOCKERS"));
         }
     }
-
 }
