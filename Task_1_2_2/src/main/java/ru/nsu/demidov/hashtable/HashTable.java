@@ -196,6 +196,9 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
             if (initialModCount != modCount) {
                 throw new ConcurrentModificationException("You modificated the table while iteration. Your execution date is tomorrow");
             }
+            if (nodeIndex < table.get(bucketIndex).size()) {
+                return true;
+            }
             for (int i = bucketIndex; i < table.size(); i++) {
                 if (table.get(i) != null && table.get(i).isEmpty() == false) {
                     return true;
