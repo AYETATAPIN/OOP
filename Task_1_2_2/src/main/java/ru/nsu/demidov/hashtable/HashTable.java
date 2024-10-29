@@ -1,9 +1,5 @@
 package ru.nsu.demidov.hashtable;
-import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
 
@@ -24,7 +20,8 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
     }
 
     private int hash(K key) {
-        return key.hashCode() > 0 ? key.hashCode() % table.size() : (key.hashCode() % table.size()) * -1;
+        return key.hashCode() > 0 ? key.hashCode() % table.size()
+                : (key.hashCode() % table.size()) * -1;
     }
 
     public void put(K key, V value) throws IllegalArgumentException {
@@ -88,7 +85,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
                 }
             }
         }
-        throw new IllegalArgumentException("Key not found: " + key);
+        throw new IllegalArgumentException("No such element with key " + key);
     }
 
     public boolean containsKey(K key) {
@@ -124,7 +121,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         for (List<Pair<K, V>> bucket : table) {
             if (bucket != null) {
                 for (Pair<K, V> pair : bucket) {
-                    if (comparable.containsKey(pair.key) == false || comparable.get(pair.key).equals(pair.value) == false) {
+                    if (comparable.containsKey(pair.key) == false || Objects.equals(comparable.get(pair.key), pair.value) == false) {
                         return false;
                     }
                 }
@@ -177,6 +174,11 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
             this.key = key;
             this.value = value;
         }
+
+        @Override
+        public String toString() {
+            return (key + " : " + value);
+        }
     }
 
     private class HashTableIterator implements Iterator<Pair<K, V>> {
@@ -196,9 +198,9 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
             if (initialModCount != modCount) {
                 throw new ConcurrentModificationException("You modificated the table while iteration. Your execution date is tomorrow");
             }
-            if (nodeIndex < table.get(bucketIndex).size()) {
+            /*if (nodeIndex < table.get(bucketIndex).size()) {
                 return true;
-            }
+            }*/
             for (int i = bucketIndex; i < table.size(); i++) {
                 if (table.get(i) != null && table.get(i).isEmpty() == false) {
                     return true;
