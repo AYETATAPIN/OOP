@@ -1,5 +1,15 @@
 package ru.nsu.demidov.hashtable;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.Iterator;
+import java.util.Objects;
+
+/**
+ * HashTable class cruto ofigenno.
+ */
 
 public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
 
@@ -8,6 +18,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
     private int size;
     private int threshold;
     private int modCount;
+
+    /**
+     * HashTable constructor.
+     */
 
     public HashTable(int capacity) {
         table = new ArrayList<>(capacity);
@@ -23,6 +37,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         return key.hashCode() > 0 ? key.hashCode() % table.size()
                 : (key.hashCode() % table.size()) * -1;
     }
+
+    /**
+     * HashTable put method.
+     */
 
     public void put(K key, V value) throws IllegalArgumentException {
         if (size > threshold) {
@@ -44,6 +62,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         modCount++;
     }
 
+    /**
+     * HashTable get method.
+     */
+
     public V get(K key) {
         int index = hash(key);
         List<Pair<K, V>> bucket = table.get(index);
@@ -56,6 +78,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         }
         return null;
     }
+
+    /**
+     * HashTable remove method.
+     */
 
     public void remove(K key) throws IllegalAccessException {
         int index = hash(key);
@@ -74,6 +100,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         throw new IllegalAccessException("No such element with key" + key);
     }
 
+    /**
+     * HashTable update method.
+     */
+
     public void update(K key, V value) {
         int index = hash(key);
         List<Pair<K, V>> bucket = table.get(index);
@@ -88,6 +118,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         throw new IllegalArgumentException("No such element with key " + key);
     }
 
+    /**
+     * HashTable containsKey method.
+     */
+
     public boolean containsKey(K key) {
         int index = hash(key);
         List<Pair<K, V>> bucket = table.get(index);
@@ -101,10 +135,9 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         return false;
     }
 
-    @Override
-    public Iterator<Pair<K, V>> iterator() {
-        return new HashTableIterator();
-    }
+    /**
+     * HashTable equals method.
+     */
 
     @Override
     public boolean equals(Object o) {
@@ -129,6 +162,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         }
         return true;
     }
+
+    /**
+     * HashTable toString method.
+     */
 
     @Override
     public String toString() {
@@ -166,6 +203,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         }
     }
 
+    /**
+     * HashTable pair class.
+     */
+
     public static class Pair<K, V> {
         K key;
         V value;
@@ -181,6 +222,15 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         }
     }
 
+    /**
+     * HashTable iterator.
+     */
+
+    @Override
+    public Iterator<Pair<K, V>> iterator() {
+        return new HashTableIterator();
+    }
+
     private class HashTableIterator implements Iterator<Pair<K, V>> {
 
         private int bucketIndex;
@@ -193,14 +243,15 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
             nodeIndex = 0;
         }
 
+        /**
+         * Iterator hasNext method.
+         */
+
         @Override
         public boolean hasNext() {
             if (initialModCount != modCount) {
                 throw new ConcurrentModificationException("You modificated the table while iteration. Your execution date is tomorrow");
             }
-            /*if (nodeIndex < table.get(bucketIndex).size()) {
-                return true;
-            }*/
             for (int i = bucketIndex; i < table.size(); i++) {
                 if (table.get(i) != null && table.get(i).isEmpty() == false) {
                     return true;
@@ -208,6 +259,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
             }
             return false;
         }
+
+        /**
+         * Iterator next method.
+         */
 
         @Override
         public Pair<K, V> next() {

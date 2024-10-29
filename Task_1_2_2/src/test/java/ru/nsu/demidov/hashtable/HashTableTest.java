@@ -1,11 +1,11 @@
 package ru.nsu.demidov.hashtable;
 
-import org.junit.jupiter.api.Test;
 import java.util.Objects;
+import org.junit.jupiter.api.Test;
 
 class HashTableTest {
     @Test
-    void HashTableTesting() throws IllegalAccessException {
+    void hashTableTesting() throws IllegalAccessException {
         HashTable<String, Integer> sampleHashTable = new HashTable<>(100);
         sampleHashTable.put("one", 1);
         assert (Objects.equals(sampleHashTable.get("one"), 1));
@@ -32,7 +32,10 @@ class HashTableTest {
         smallHashTable.remove("four");
         assert (Objects.equals(sampleHashTable.equals(smallHashTable), true));
 
-        HashTable<String, HashTable<String, HashTable<HashTable<HashTable<HashTable<String, HashTable<String, String>>, HashTable<String, HashTable<String, HashTable<String, String>>>>, HashTable<String, String>>, HashTable<String, String>>>> differentTypeHashTable = new HashTable<>(2);
+        HashTable<String, HashTable<String, HashTable<HashTable<HashTable<HashTable<String,
+            HashTable<String, String>>, HashTable<String, HashTable<String,
+            HashTable<String, String>>>>, HashTable<String, String>>,
+            HashTable<String, String>>>> differentTypeHashTable = new HashTable<>(2);
         assert (Objects.equals(sampleHashTable.equals(differentTypeHashTable), false));
 
 
