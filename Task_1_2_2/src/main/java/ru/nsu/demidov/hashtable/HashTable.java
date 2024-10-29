@@ -2,8 +2,8 @@ package ru.nsu.demidov.hashtable;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
-import java.util.LinkedList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
