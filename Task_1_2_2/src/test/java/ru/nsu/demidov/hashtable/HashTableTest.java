@@ -2,6 +2,7 @@ package ru.nsu.demidov.hashtable;
 
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HashTableTest {
