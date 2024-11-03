@@ -7,13 +7,13 @@ import java.util.List;
 
 /**
  * Topological sort.
- */
+*/
 
 public class TopSort<T> {
 
     /**
      * Toposort realisation.
-     */
+    */
 
      public static <T> List<T> toposort(Graph<T> graph) {
         boolean[] isVisited;
@@ -37,7 +37,8 @@ public class TopSort<T> {
      * DFS realisation.
      */
 
-    private static <T> void dfs(int verticeIndex, Graph<T> graph, boolean[] isVisited, Deque<Integer> stack) {
+    private static <T> void dfs(int verticeIndex, Graph<T> graph, boolean[] isVisited
+        , Deque<Integer> stack) {
         if (isVisited[verticeIndex] == true) {
             return;
         }
