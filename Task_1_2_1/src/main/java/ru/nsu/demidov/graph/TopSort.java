@@ -13,9 +13,9 @@ public class TopSort<T> {
 
     /**
      * Toposort realisation.
-    */
+     */
 
-     public static <T> List<T> toposort(Graph<T> graph) {
+    public static <T> List<T> toposort(Graph<T> graph) {
         boolean[] isVisited;
         Deque<Integer> stack;
         int verticesCount = graph.verticesCount();
@@ -37,8 +37,8 @@ public class TopSort<T> {
      * DFS realisation.
      */
 
-    private static <T> void dfs(int verticeIndex, Graph<T> graph, boolean[] isVisited
-        , Deque<Integer> stack) {
+    private static <T> void dfs(int verticeIndex, Graph<T> graph, boolean[] isVisited,
+                            Deque<Integer> stack) {
         if (isVisited[verticeIndex] == true) {
             return;
         }
