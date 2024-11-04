@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  * HashTable class cruto ofigenno.
-*/
+ */
 
 public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
 
@@ -55,7 +55,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         for (Pair<K, V> pair : bucket) {
             if (pair.key.equals(key)) {
                 throw new IllegalArgumentException("Element " + pair.key + " : "
-                    + pair.value + "override");
+                        + pair.value + "override");
             }
         }
         bucket.add(new Pair<>(key, value));
@@ -155,9 +155,9 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         for (List<Pair<K, V>> bucket : table) {
             if (bucket != null) {
                 for (Pair<K, V> pair : bucket) {
-                    if (comparable.containsKey(pair.key) == false
-                        || Objects.equals(comparable.get(pair.key), pair.value) == false
-                        || Objects.equals(this.hash(pair.key), comparable.hash(pair.key))) {
+                    if (!comparable.containsKey(pair.key)
+                            || !Objects.equals(comparable.get(pair.key), pair.value)
+                            || pair.hashCode() != comparable.hash(pair.key)) {
                         return false;
                     }
                 }
@@ -223,6 +223,11 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         public String toString() {
             return (key + " : " + value);
         }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(key, value);
+        }
     }
 
     /**
@@ -254,7 +259,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         public boolean hasNext() {
             if (initialModCount != modCount) {
                 throw new ConcurrentModificationException("You modificated the table while "
-                    + "iteration. Your execution date is tomorrow");
+                        + "iteration. Your execution date is tomorrow");
             }
             for (int i = bucketIndex; i < table.size(); i++) {
                 if (table.get(i) != null && table.get(i).isEmpty() == false) {
@@ -272,7 +277,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
         public Pair<K, V> next() {
             if (initialModCount != modCount) {
                 throw new ConcurrentModificationException("You modificated the table while "
-                    + "iteration. Your execution date is tomorrow");
+                        + "iteration. Your execution date is tomorrow");
             }
             while (bucketIndex < table.size()) {
                 List<Pair<K, V>> bucket = table.get(bucketIndex);
