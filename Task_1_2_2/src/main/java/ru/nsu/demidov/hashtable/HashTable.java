@@ -156,7 +156,8 @@ public class HashTable<K, V> implements Iterable<HashTable.Pair<K, V>> {
             if (bucket != null) {
                 for (Pair<K, V> pair : bucket) {
                     if (comparable.containsKey(pair.key) == false
-                        || Objects.equals(comparable.get(pair.key), pair.value) == false) {
+                        || Objects.equals(comparable.get(pair.key), pair.value) == false
+                        || Objects.equals(this.hash(pair.key), comparable.hash(pair.key))) {
                         return false;
                     }
                 }
