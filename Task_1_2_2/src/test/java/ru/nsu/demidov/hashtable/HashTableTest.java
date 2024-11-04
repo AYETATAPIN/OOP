@@ -83,7 +83,7 @@ class HashTableTest {
         smallHashTable.remove("three");
         smallHashTable.remove("four");
         sampleHashTable.put("one", 11);
-        assertNotEquals(sampleHashTable, smallHashTable);
+        assertEquals(sampleHashTable, smallHashTable);
     }
 
     @Test
