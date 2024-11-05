@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.demidov.substring","l":"Main"},{"p":"ru.nsu.demidov.substring","l":"SubStringFinder"}];updateSearchResults();
