@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubStringFinder {
-    public static List<Integer> myFind(String fileName, String subString) {
+    public static List<Integer> myFind(String fileName, String subString) throws Exception {
         List<Integer> subStringIndexes = new ArrayList<>();
         int subStringLen = subString.length();
         int batchSize = 1024;
@@ -45,7 +45,7 @@ public class SubStringFinder {
                 }
             }
         } catch (IOException exception) {
-            System.out.println(exception.getMessage());
+            throw new Exception("Error opening the file: " + exception.getMessage());
         }
         return subStringIndexes;
     }

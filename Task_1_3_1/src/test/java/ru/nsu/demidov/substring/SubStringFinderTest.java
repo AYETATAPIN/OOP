@@ -21,7 +21,7 @@ public class SubStringFinderTest {
     }
 
     @Test
-    public void myFindTesting() {
+    public void myFindTesting() throws Exception {
         long OCCURENCES = 10000000;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
             StringBuilder sb = new StringBuilder();
@@ -41,7 +41,7 @@ public class SubStringFinderTest {
     }
 
     @Test
-    public void overlappingTesting() {
+    public void overlappingTesting() throws Exception {
         long OCCURENCES = 100000;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
             StringBuilder sb = new StringBuilder();
