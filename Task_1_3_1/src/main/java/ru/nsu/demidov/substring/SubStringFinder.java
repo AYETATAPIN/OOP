@@ -17,8 +17,8 @@ public class SubStringFinder {
             boolean foundSubString = false;
             while ((readCount = reader.read(buffer, subStringLen, batchSize)) != -1) {
                 for (int i = 0; i < readCount; i++) {
-                    for (int k = i; k < subString.length() + i; k++) {
-                        if (buffer[k] != subString.charAt(k - i)) {
+                    for (int j = i; j < subString.length() + i; j++) {
+                        if (buffer[j] != subString.charAt(j - i)) {
                             foundSubString = false;
                             break;
                         }
@@ -32,16 +32,16 @@ public class SubStringFinder {
                 read += readCount;
             }
             foundSubString = false;
-            for (int j = 0; j < subStringLen; j++) {
-                for (int k = j; k < subString.length(); k++) {
-                    if (buffer[k] != subString.charAt(k - j)) {
+            for (int i = 0; i < subStringLen; i++) {
+                for (int j = i; j < subString.length(); j++) {
+                    if (buffer[j] != subString.charAt(j - i)) {
                         foundSubString = false;
                         break;
                     }
                     foundSubString = true;
                 }
                 if (foundSubString == true) {
-                    subStringIndexes.add(read + j - subStringLen);
+                    subStringIndexes.add(read + i - subStringLen);
                 }
             }
         } catch (IOException exception) {
