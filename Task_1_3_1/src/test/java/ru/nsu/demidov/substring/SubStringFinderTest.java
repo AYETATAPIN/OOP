@@ -21,6 +21,17 @@ public class SubStringFinderTest {
     }
 
     @Test
+    public void bigDataTesting() throws Exception {
+        long OCCURENCES = 1000000;
+        List<Integer> result = SubStringFinder.myFind("input.txt", "boobies");
+        assertEquals(OCCURENCES, result.size());
+        /*for (int i = 0; i < result.size(); i++) {
+            assertEquals(i * 19 + 7, result.get(i).intValue());
+        }*/
+
+    }
+
+    @Test
     public void myFindTesting() throws Exception {
         long OCCURENCES = 10000000;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
