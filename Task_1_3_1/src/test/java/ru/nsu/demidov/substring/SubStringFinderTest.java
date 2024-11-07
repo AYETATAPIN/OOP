@@ -39,13 +39,14 @@ public class SubStringFinderTest {
             for (long iL = 0; iL < OCCURENCES; iL++) { 
                 sb.append("boobsieboobiesboobs");
             }
+            sb.append("bebra");
             writer.write(sb.toString());
         } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
-        String subString = "boobies";
+        String subString = "bebra";
         List<Integer> result = SubStringFinder.myFind(tempFile.getAbsolutePath(), subString);
-        assertEquals(OCCURENCES, result.size());
+        assertEquals(1, result.size());
     }
 
     @Test
