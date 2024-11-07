@@ -36,7 +36,7 @@ public class SubStringFinderTest {
         long OCCURENCES = 1000000000000000000L;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
             StringBuilder sb = new StringBuilder();
-            for (long i = 0; i < OCCURENCES; i++) {
+            for (long i = 0; i < OCCURENCES; i++) { 
                 sb.append("boobsieboobiesboobs");
             }
             writer.write(sb.toString());
