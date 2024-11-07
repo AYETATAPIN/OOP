@@ -33,10 +33,10 @@ public class SubStringFinderTest {
 
     @Test
     public void myFindTesting() throws Exception {
-        long OCCURENCES = 10L;
+        long OCCURENCES = 1000000000000000000L;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
             StringBuilder sb = new StringBuilder();
-            for (long iL = 0; iL < OCCURENCES; iL++) { 
+            for (long iL = 0L; iL < OCCURENCES; iL++) { 
                 sb.append("boobsieboobiesboobs");
             }
             sb.append("bebra");
