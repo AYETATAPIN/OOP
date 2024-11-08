@@ -34,7 +34,7 @@ public class SubStringFinderTest {
 
     @Test
     public void myFindTesting() throws Exception {
-        long OCCURENCES = 10000000L;
+        long OCCURENCES = 100000000L;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
             StringBuilder sb = new StringBuilder();
             for (long iL = 0L; iL < OCCURENCES; iL++) {
