@@ -2,14 +2,14 @@ package ru.nsu.demidov.substring;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.AfterEach;
-import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -78,6 +78,10 @@ public class SubStringFinderTest {
             assertEquals(i, result.get(i).intValue());
         }
     }
+
+    /**
+     * AfterEach method.
+     */
 
     @AfterEach
     public void deleteEach() {
