@@ -47,6 +47,7 @@ public class SubStringFinderTest {
         String subString = "bebra";
         List<Integer> result = SubStringFinder.myFind(tempFile.getAbsolutePath(), subString);
         assertEquals(1, result.size());
+        tempFile.delete();
     }
 
     @Test
@@ -67,5 +68,6 @@ public class SubStringFinderTest {
         for (int i = 0; i < result.size(); i++) {
             assertEquals(i, result.get(i).intValue());
         }
+        tempFile.delete();
     }
 }
