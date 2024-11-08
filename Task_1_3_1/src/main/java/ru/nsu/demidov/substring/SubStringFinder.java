@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * subStringFinder class
+ * subStringFinder class.
  */
 
 public class SubStringFinder {
 
     /**
-     * myFind method
+     * myFind method.
      */
 
     public static List<Integer> myFind(InputStream inputStream, String subString) throws Exception {

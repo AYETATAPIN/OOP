@@ -1,7 +1,7 @@
 package ru.nsu.demidov.substring;
 
 /**
- * main clAss
+ * main clAss.
  */
 
 public class Main {
