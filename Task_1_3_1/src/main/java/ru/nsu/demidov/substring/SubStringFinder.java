@@ -1,9 +1,6 @@
 package ru.nsu.demidov.substring;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +14,8 @@ public class SubStringFinder {
      * myFind method.
      */
 
-    public static List<Integer> myFind(InputStream inputStream, String subString) throws Exception {
+    public static List<Integer> myFind(InputStream inputStream,
+                                   String subString) throws FileNotFoundException {
         List<Integer> subStringIndexes = new ArrayList<>();
         int subStringLen = subString.length();
         int batchSize = 1024;
@@ -56,7 +54,7 @@ public class SubStringFinder {
                 }
             }
         } catch (IOException exception) {
-            throw new Exception("Error opening the file: " + exception.getMessage());
+            throw new FileNotFoundException("Error opening the file: " + exception.getMessage());
         }
         return subStringIndexes;
     }
