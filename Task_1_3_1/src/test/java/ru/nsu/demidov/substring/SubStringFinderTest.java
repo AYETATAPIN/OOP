@@ -52,7 +52,7 @@ public class SubStringFinderTest {
         assertEquals(occurences, result.size());
     }
 
-    /*@Test
+    @Test
     public void myFindTesting() throws FileNotFoundException {
         long occurences = 1000000000L;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
@@ -67,7 +67,7 @@ public class SubStringFinderTest {
         String subString = "bebra";
         List<Integer> result = SubStringFinder.myFind(new FileInputStream(tempFile), subString);
         assertEquals(1, result.size());
-    }*/
+    }
 
     @Test
     public void overlappingTesting() throws FileNotFoundException {
