@@ -28,7 +28,7 @@ public class SubStringFinderTest {
     }
 
     @Test
-    public void resourceTesting() throws FileNotFoundException {
+    public void resourceTesting() throws Throwable {
         String resource = "chingchangchong.txt";
         InputStream input = getClass().getClassLoader().getResourceAsStream(resource);
         List<Integer> result = SubStringFinder.myFind(input, "肏");
@@ -36,7 +36,7 @@ public class SubStringFinderTest {
     }
     
     @Test
-    public void bigDataTesting() throws FileNotFoundException {
+    public void bigDataTesting() throws Throwable {
         long occurences = 2000000;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
             StringBuilder sb = new StringBuilder();
@@ -53,7 +53,7 @@ public class SubStringFinderTest {
     }
 
     @Test
-    public void myFindTesting() throws FileNotFoundException {
+    public void myFindTesting() throws Throwable {
         long occurences = 1000000000L;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
             for (long i = 0L; i < occurences; i++) {
@@ -70,7 +70,7 @@ public class SubStringFinderTest {
     }
 
     @Test
-    public void overlappingTesting() throws FileNotFoundException {
+    public void overlappingTesting() throws Throwable {
         long occurences = 100000;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
             StringBuilder sb = new StringBuilder();

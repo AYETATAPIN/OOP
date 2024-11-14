@@ -20,7 +20,7 @@ public class SubStringFinder {
      */
 
     public static List<Integer> myFind(InputStream inputStream,
-                                   String subString) throws FileNotFoundException {
+                                   String subString) throws Throwable {
         List<Integer> subStringIndexes = new ArrayList<>();
         int subStringLen = subString.length();
         int batchSize = 1024;
@@ -59,7 +59,7 @@ public class SubStringFinder {
                 }
             }
         } catch (IOException exception) {
-            throw new FileNotFoundException("Error opening the file: " + exception.getMessage());
+            throw new FileNotFoundException().initCause(exception.getCause());
         }
         return subStringIndexes;
     }
