@@ -1,6 +1,10 @@
 package ru.nsu.demidov.substring;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.StreamCorruptedException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +59,7 @@ public class SubStringFinder {
                 }
             }
         } catch (IOException exception) {
-            throw new StreamCorruptedException().initCause(exception);
+            throw new SubStringFinderException("Error reading from stream", exception);
         }
         return subStringIndexes;
     }
