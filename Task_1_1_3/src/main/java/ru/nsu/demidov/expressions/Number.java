@@ -1,43 +1,72 @@
 package ru.nsu.demidov.expressions;
 
-import java.util.Map;
-import java.util.Objects;
+
 /**
  * Number class.
  */
 
-
 public class Number extends Expression {
-    private double value;
+    public double value;
 
     /**
      * Number constructor.
      */
 
-    Number(double value) {
+    public Number(double value) {
         this.value = value;
     }
 
+    /**
+     * Derivative method.
+     */
+
     @Override
-    public Expression derivative(String variable) {
+    public Number derivative(String variable) {
         return new Number(0);
     }
 
-    @Override
-    public double ejaculate(String ejaculateballs) {
-        return value;
-    }
+    /**
+     * Simplify method.
+     */
 
     @Override
-    public double ejaculate(Map<String, Integer> values) throws Exception {
-        return value;
+    public Number simplify() {
+        return new Number(this.value);
     }
 
+    /**
+     * Evaluate method.
+     */
+
     @Override
-    public String print() {
-        if (value == (int) value) {
-            return ("" + ((int) value));
+    public double evaluate(String values) {
+        return this.value;
+    }
+
+    /**
+     * toString method.
+     */
+
+    @Override
+    public String toString() {
+        if (this.value % 1 == 0) {
+            return "" + (int) this.value;
+        } else {
+            return "" + this.value;
         }
-        return "" + value;
+    }
+
+    /**
+     * Equals method.
+     */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        } else if (o instanceof Number obj) {
+            return value == obj.value;
+        }
+        return false;
     }
 }

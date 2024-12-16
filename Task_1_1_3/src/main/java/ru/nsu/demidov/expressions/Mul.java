@@ -1,41 +1,84 @@
 package ru.nsu.demidov.expressions;
 
-import java.util.Map;
 /**
- * Multiplication class.
+ * Expression class.
  */
 
 public class Mul extends Expression {
-    private Expression first;
-    private Expression second;
+    public Expression left;
+    public Expression right;
 
     /**
      * Mul constructor.
      */
 
-    Mul(Expression first, Expression second) {
-        this.first = first;
-        this.second = second;
+    public Mul(Expression left, Expression right) {
+        this.left = left;
+        this.right = right;
     }
+
+    /**
+     * Derivative method.
+     */
 
     @Override
     public Expression derivative(String variable) {
-        return new Add(new Mul(first.derivative(variable), second),
-                new Mul(first, second.derivative(variable)));
+        return new Sum(
+                new Mul(this.left.derivative(variable), this.right),
+                new Mul(this.left, this.right.derivative(variable)));
     }
 
-    @Override
-    public double ejaculate(String ejaculateballs) throws Exception {
-        return first.ejaculate(ejaculateballs) * second.ejaculate(ejaculateballs);
-    }
+    /**
+     * Simplify method.
+     */
 
     @Override
-    public double ejaculate(Map<String, Integer> values) throws Exception {
-        return first.ejaculate(values) * second.ejaculate(values);
+    public Expression simplify() {
+        Mul simplifiedMul = new Mul(this.left.simplify(), this.right.simplify());
+        if (simplifiedMul.left instanceof Number leftNumber
+                && simplifiedMul.right instanceof Number rightNumber) {
+            return new Number(leftNumber.value * rightNumber.value);
+        } else if (simplifiedMul.left instanceof Number leftNumber && leftNumber.value == 0
+                || simplifiedMul.right instanceof Number rightNumber && rightNumber.value == 0) {
+            return new Number(0);
+        } else if (simplifiedMul.left instanceof Number leftNumber && leftNumber.value == 1) {
+            return simplifiedMul.right;
+        } else if (simplifiedMul.right instanceof Number rightNumber && rightNumber.value == 1) {
+            return simplifiedMul.left;
+        } else {
+            return simplifiedMul;
+        }
     }
 
+    /**
+     * Evaluate method.
+     */
+
     @Override
-    public String print() {
-        return ("(" + first.print() + "*" + second.print() + ")");
+    public double evaluate(String values) {
+        return this.left.evaluate(values) * this.right.evaluate(values);
+    }
+
+    /**
+     * toString method.
+     */
+
+    @Override
+    public String toString() {
+        return "(" + this.left.toString() + "*" + this.right.toString() + ")";
+    }
+
+    /**
+     * Equals method.
+     */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        } else if (o instanceof Mul omult) {
+            return left.equals(omult.left) && right.equals(omult.right);
+        }
+        return false;
     }
 }

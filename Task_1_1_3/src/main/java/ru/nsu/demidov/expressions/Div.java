@@ -1,37 +1,87 @@
 package ru.nsu.demidov.expressions;
 
-import java.util.Map;
 /**
- * Division class.
+ * Div class.
  */
 
 public class Div extends Expression {
-    private Expression first;
-    private Expression second;
+    public Expression left;
+    public Expression right;
 
-    Div(Expression first, Expression second) {
-        this.first = first;
-        this.second = second;
+    /**
+     * Div constructor.
+     */
+
+    public Div(Expression left, Expression right) {
+        this.left = left;
+        this.right = right;
     }
+
+    /**
+     * Derivative method.
+     */
 
     @Override
     public Expression derivative(String variable) {
-        return new Div(new Sub(new Mul(first.derivative(variable), second),
-                new Mul(first, second.derivative(variable))), new Mul(first, first));
+        return new Div(
+                new Sub(
+                        new Mul(this.left, this.right.derivative(variable)),
+                        new Mul(this.left.derivative(variable), this.right)),
+                new Mul(this.right, this.right));
     }
 
-    @Override
-    public double ejaculate(String ejaculateballs) throws Exception {
-        return first.ejaculate(ejaculateballs) / second.ejaculate(ejaculateballs);
-    }
+    /**
+     * Simplify method.
+     */
 
     @Override
-    public double ejaculate(Map<String, Integer> values) throws Exception {
-        return first.ejaculate(values) / second.ejaculate(values);
+    public Expression simplify() {
+        Div simplifiedDiv = new Div(this.left.simplify(), this.right.simplify());
+        if (simplifiedDiv.left instanceof Number leftNumber
+                && simplifiedDiv.right instanceof Number rightNumber) {
+            return new Number(leftNumber.value / rightNumber.value);
+        } else if (this.left instanceof Number leftNumber && leftNumber.value == 0) {
+            return new Number(0);
+        } else {
+            return simplifiedDiv;
+        }
     }
 
+    /**
+     * Evaluate method.
+     */
+
     @Override
-    public String print() {
-        return ("(" + first.print() + "/" + second.print() + ")");
+    public double evaluate(String values) {
+        double leftResult = this.left.evaluate(values);
+        double rightResult = this.right.evaluate(values);
+        if (rightResult == 0) {
+            throw new ArithmeticException("How dare you divide by zero");
+        }
+        return leftResult / rightResult;
+    }
+
+    /**
+     * toString method.
+     */
+
+    @Override
+    public String toString() {
+        return "(" + this.left.toString() + "/" + this.right.toString() + ")";
+    }
+
+    /**
+     * Equals method.
+     */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o instanceof Div odiv) {
+            return left.equals(odiv.left) && right.equals(odiv.right);
+        }
+        return false;
     }
 }

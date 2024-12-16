@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.demidov.expressions.NotationTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-12-16T17:51:09" hostname="CHINANUMBA1" time="0.01">
+  <properties/>
+  <testcase name="notationWithLongVariablesTest()" classname="ru.nsu.demidov.expressions.NotationTest" time="0.001"/>
+  <testcase name="notationExpressionTest()" classname="ru.nsu.demidov.expressions.NotationTest" time="0.001"/>
+  <testcase name="complicatedExpressionTest()" classname="ru.nsu.demidov.expressions.NotationTest" time="0.001"/>
+  <testcase name="notationWithBracketsTest()" classname="ru.nsu.demidov.expressions.NotationTest" time="0.001"/>
+  <testcase name="longNotationTest()" classname="ru.nsu.demidov.expressions.NotationTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

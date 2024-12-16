@@ -1,18 +1,18 @@
 package ru.nsu.demidov.expressions;
 
 /**
- * Sub class.
+ * Sum class.
  */
 
-public class Sub extends Expression {
+public class Sum extends Expression {
     public Expression left;
     public Expression right;
 
     /**
-     * Sub constructor.
+     * Sum constructor
      */
 
-    public Sub(Expression left, Expression right) {
+    public Sum(Expression left, Expression right) {
         this.left = left;
         this.right = right;
     }
@@ -23,7 +23,7 @@ public class Sub extends Expression {
 
     @Override
     public Expression derivative(String variable) {
-        return new Sub(this.left.derivative(variable), this.right.derivative(variable));
+        return new Sum(this.left.derivative(variable), this.right.derivative(variable));
     }
 
     /**
@@ -32,14 +32,12 @@ public class Sub extends Expression {
 
     @Override
     public Expression simplify() {
-        Sub simplifiedSub = new Sub(this.left.simplify(), this.right.simplify());
-        if (simplifiedSub.left instanceof Number leftNumber
-                && simplifiedSub.right instanceof Number rightNumber) {
-            return new Number(leftNumber.value - rightNumber.value);
-        } else if (simplifiedSub.left.toString().equals(simplifiedSub.right.toString())) {
-            return new Number(0);
+        Sum simplifiedSum = new Sum(this.left.simplify(), this.right.simplify());
+        if (simplifiedSum.left instanceof Number leftNumber
+                && simplifiedSum.right instanceof Number rightNumber) {
+            return new Number(leftNumber.value + rightNumber.value);
         } else {
-            return simplifiedSub;
+            return simplifiedSum;
         }
     }
 
@@ -49,7 +47,7 @@ public class Sub extends Expression {
 
     @Override
     public double evaluate(String values) {
-        return this.left.evaluate(values) - this.right.evaluate(values);
+        return this.left.evaluate(values) + this.right.evaluate(values);
     }
 
     /**
@@ -58,7 +56,7 @@ public class Sub extends Expression {
 
     @Override
     public String toString() {
-        return "(" + this.left.toString() + "-" + this.right.toString() + ")";
+        return "(" + this.left.toString() + "+" + this.right.toString() + ")";
     }
 
     /**
@@ -69,7 +67,7 @@ public class Sub extends Expression {
     public boolean equals(Object o) {
         if (this == o) {
             return true;
-        } else if (o instanceof Sub obj) {
+        } else if (o instanceof Sum obj) {
             return left.equals(obj.left) && right.equals(obj.right);
         }
         return false;

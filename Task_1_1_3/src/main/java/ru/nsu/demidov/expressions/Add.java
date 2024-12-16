@@ -1,41 +1,75 @@
 package ru.nsu.demidov.expressions;
 
-import java.util.Map;
 /**
- * Addition class.
+ * Add class.
  */
 
-
 public class Add extends Expression {
-    private Expression first;
-    private Expression second;
+    public Expression left;
+    public Expression right;
 
     /**
      * Add constructor.
      */
 
-    Add(Expression first, Expression second) {
-        this.first = first;
-        this.second = second;
+    public Add(Expression left, Expression right) {
+        this.left = left;
+        this.right = right;
     }
+
+    /**
+     * Derivative method.
+     */
 
     @Override
     public Expression derivative(String variable) {
-        return new Add(first.derivative(variable), second.derivative(variable));
+        return new Add(this.left.derivative(variable), this.right.derivative(variable));
     }
 
-    @Override
-    public double ejaculate(String ejaculateballs) throws Exception {
-        return first.ejaculate(ejaculateballs) + second.ejaculate(ejaculateballs);
-    }
+    /**
+     * Simplify method.
+     */
 
     @Override
-    public double ejaculate(Map<String, Integer> values) throws Exception {
-        return first.ejaculate(values) + second.ejaculate(values);
+    public Expression simplify() {
+        Add simplifiedSum = new Add(this.left.simplify(), this.right.simplify());
+        if (simplifiedSum.left instanceof Number leftNumber
+                && simplifiedSum.right instanceof Number rightNumber) {
+            return new Number(leftNumber.value + rightNumber.value);
+        } else {
+            return simplifiedSum;
+        }
     }
 
+    /**
+     * Evaluate method.
+     */
+
     @Override
-    public String print() {
-        return ("(" + first.print() + "+" + second.print() + ")");
+    public double evaluate(String values) {
+        return this.left.evaluate(values) + this.right.evaluate(values);
+    }
+
+    /**
+     * toString method.
+     */
+
+    @Override
+    public String toString() {
+        return "(" + this.left.toString() + "+" + this.right.toString() + ")";
+    }
+
+    /**
+     * Equals method.
+     */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        } else if (o instanceof Add obj) {
+            return left.equals(obj.left) && right.equals(obj.right);
+        }
+        return false;
     }
 }
