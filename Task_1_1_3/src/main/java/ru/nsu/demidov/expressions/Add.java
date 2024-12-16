@@ -55,7 +55,7 @@ public class Add extends Expression {
      */
 
     @Override
-    public String toString() {
+    public String toString() { 
         return "(" + this.left.toString() + "+" + this.right.toString() + ")";
     }
 
