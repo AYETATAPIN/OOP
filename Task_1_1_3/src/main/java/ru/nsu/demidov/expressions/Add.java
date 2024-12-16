@@ -37,7 +37,7 @@ public class Add extends Expression {
                 && simplifiedSum.right instanceof Number rightNumber) {
             return new Number(leftNumber.value + rightNumber.value);
         } else {
-            return simplifiedSum;
+            return simplifiedSum; 
         }
     }
 
