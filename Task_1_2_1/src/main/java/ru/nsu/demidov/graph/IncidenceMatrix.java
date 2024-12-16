@@ -2,18 +2,35 @@ package ru.nsu.demidov.graph;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Incidence matrix graph realisation.
+ */
 
 public class IncidenceMatrix<T> implements Graph<T> {
     private Map<T, Integer> verticesIndex;
     private List<T> vertices;
     private List<List<Integer>> incidenceMatrix;
 
+    /**
+     * Incidence matrix graph constructor.
+     */
+
     public IncidenceMatrix() {
         verticesIndex = new HashMap<>();
         vertices = new ArrayList<>();
         incidenceMatrix = new ArrayList<>();
     }
+
+    /**
+     * Incidence matrix graph addVertex realisation.
+     */
 
     @Override
     public void addVertex(T vertex) {
@@ -26,23 +43,30 @@ public class IncidenceMatrix<T> implements Graph<T> {
         }
     }
 
+    /**
+     * Incidence matrix graph removeVertex realisation.
+     */
+
     @Override
-    public void removeVertex(T vertex) throws Exception {
+    public void removeVertex(T vertex) throws IllegalArgumentException {
         if (verticesIndex.containsKey(vertex) == true) {
             int index = verticesIndex.get(vertex);
             verticesIndex.remove(vertex);
             vertices.remove(index);
-            for (int i = 0; i  < incidenceMatrix.size(); ++i) {
+            for (int i = 0; i < incidenceMatrix.size(); ++i) {
                 incidenceMatrix.get(i).remove(index);
             }
-        }
-        else {
-            throw new Exception("You stoopid no such vertex " + vertex);
+        } else {
+            throw new IllegalArgumentException("You stoopid no such vertex " + vertex);
         }
     }
 
+    /**
+     * Incidence matrix graph addEdge realisation.
+     */
+
     @Override
-    public void addEdge(T from, T to) throws Exception {
+    public void addEdge(T from, T to) throws IllegalArgumentException {
         if (verticesIndex.containsKey(from) && verticesIndex.containsKey(to)) {
             int fromIndex = verticesIndex.get(from);
             int toIndex = verticesIndex.get(to);
@@ -50,14 +74,18 @@ public class IncidenceMatrix<T> implements Graph<T> {
             newRow.set(fromIndex, 1);
             newRow.set(toIndex, 1);
             incidenceMatrix.add(newRow);
-        }
-        else {
-            throw new Exception("You stoopid no such edge " + from + "and " + to);
+        } else {
+            throw new IllegalArgumentException("You stoopid no such vertices "
+                + from + " and " + to);
         }
     }
 
+    /**
+     * Incidence matrix graph removeEdge realisation.
+     */
+
     @Override
-    public void removeEdge(T from, T to) throws Exception {
+    public void removeEdge(T from, T to) throws IllegalArgumentException {
         if (verticesIndex.containsKey(from) && verticesIndex.containsKey(to)) {
             int fromIndex = verticesIndex.get(from);
             int toIndex = verticesIndex.get(to);
@@ -68,21 +96,26 @@ public class IncidenceMatrix<T> implements Graph<T> {
                     break;
                 }
             }
-        }
-        else {
-            throw new Exception("You stoopid no such edge " + from + "and " + to);
+        } else {
+            throw new IllegalArgumentException("You stoopid no such edge " + from + " and " + to);
         }
     }
 
+    /**
+     * Incidence matrix graph adjacentVertices realisation.
+     */
+
     @Override
-    public List<T> adjacentVertices(T vertex) {
+    public List<T> adjacentVertices(int verticeIndex) {
+        T vertex = vertices.get(verticeIndex);
         List<T> neighbors = new ArrayList<>();
         if (verticesIndex.containsKey(vertex) == true) {
             int index = verticesIndex.get(vertex);
             for (List<Integer> row : incidenceMatrix) {
                 if (row.get(index) == 1) {
                     for (int i = 0; i < vertices.size(); i++) {
-                        if (row.get(i) == 1) {
+                        if (row.get(i) == 1 && neighbors.contains(vertices.get(i)) == false
+                            && i != verticeIndex) {
                             neighbors.add(vertices.get(i));
                         }
                     }
@@ -92,77 +125,51 @@ public class IncidenceMatrix<T> implements Graph<T> {
         return neighbors;
     }
 
-    @Override
-    public void readFile(String path) throws Exception {
-        BufferedReader input = new BufferedReader(new FileReader(path));
-        String line;
-        while ((line = input.readLine()) != null) {
-            String[] args = line.split(" ");
-            T from = (T) args[0];
-            T to = (T) args[1];
-            addVertex(from);
-            addVertex(to);
-            addEdge(from, to);
-        }
-        input.close();
-    }
+    /**
+     * Incidence matrix graph verticesCount realisation.
+     */
 
     @Override
-    public void print() {
-        for (int i = 0; i < vertices.size(); i++) {
-            System.out.print(vertices.get(i));
-            boolean foundAdjacent = false;
-            for (int j = 0; j < incidenceMatrix.size(); ++j) {
-                if (incidenceMatrix.get(i).get(i) == 1) {
-                    for (int k = 0; k < vertices.size(); k++) {
-                        if (incidenceMatrix.get(i).get(k) == 1) {
-                            if (foundAdjacent == false) {
-                                System.out.print(" - ");
-                                foundAdjacent = true;
-                            }
-                            else {
-                                System.out.print(" - ");
-                            }
-                            System.out.print(vertices.get(k));
-                        }
-                    }
-                }
-            }
-            System.out.println();
-        }
+    public int verticesCount() {
+        return vertices.size();
     }
+
+    /**
+     * Incidence matrix graph getVertexId realisation.
+     */
 
     @Override
-    public List<T> toposort() {
-        List<T> sortedList = new ArrayList<>();
-        Set<T> isVisited = new HashSet<>();
-        Stack<T> stack = new Stack<>();
-        for (T vertex : vertices) {
-            if (isVisited.contains(vertex) == false) {
-                traverse(vertex, isVisited, stack);
-            }
-        }
-        while (stack.isEmpty() == false) {
-            sortedList.add(stack.pop());
-        }
-        return sortedList;
+    public int getVertexId(T vertex) {
+        return verticesIndex.get(vertex);
     }
 
-    private void traverse(T vertex, Set<T> isVisited, Stack<T> stack) {
-        isVisited.add(vertex);
-        int index = verticesIndex.get(vertex);
-        for (int i = 0; i < incidenceMatrix.size(); ++i) {
-            if (incidenceMatrix.get(i).get(index) == 1) {
-                for (int j = 0; j < vertices.size(); j++) {
-                    if (incidenceMatrix.get(j).get(j) == 1) {
-                        T neighbor = vertices.get(j);
-                        if (!isVisited.contains(neighbor)) {
-                            traverse(neighbor, isVisited, stack);
-                        }
-                    }
-                }
+    /**
+     * Incidence matrix graph getVertex realisation.
+     */
+
+    @Override
+    public T getVertex(int verticeIndex) {
+        return vertices.get(verticeIndex);
+    }
+
+    /**
+     * Incidence matrix graph readFile realisation.
+     */
+
+    @Override
+    public void readFile(String path) {
+        try (BufferedReader input = new BufferedReader(new FileReader(path))) {
+            String currentString;
+            while ((currentString = input.readLine()) != null) {
+                String[] args = currentString.split(" ");
+                T from = (T) args[0];
+                T to = (T) args[1];
+                addVertex(from);
+                addVertex(to);
+                addEdge(from, to);
             }
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
         }
-        stack.push(vertex);
     }
 }

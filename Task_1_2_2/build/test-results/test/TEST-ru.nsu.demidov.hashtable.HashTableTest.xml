@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.demidov.hashtable.HashTableTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-11-04T15:09:29" hostname="CHINANUMBA1" time="0.114">
+  <properties/>
+  <testcase name="testToStringAfterPut()" classname="ru.nsu.demidov.hashtable.HashTableTest" time="0.042"/>
+  <testcase name="testContainsKey()" classname="ru.nsu.demidov.hashtable.HashTableTest" time="0.008"/>
+  <testcase name="testPutAndGet()" classname="ru.nsu.demidov.hashtable.HashTableTest" time="0.01"/>
+  <testcase name="testToStringAfterRemove()" classname="ru.nsu.demidov.hashtable.HashTableTest" time="0.002"/>
+  <testcase name="testSmallHashTablePutAndRemove()" classname="ru.nsu.demidov.hashtable.HashTableTest" time="0.001"/>
+  <testcase name="testDifferentTypeHashTable()" classname="ru.nsu.demidov.hashtable.HashTableTest" time="0.011"/>
+  <testcase name="testRemove()" classname="ru.nsu.demidov.hashtable.HashTableTest" time="0.003"/>
+  <testcase name="testUpdate()" classname="ru.nsu.demidov.hashtable.HashTableTest" time="0.001"/>
+  <testcase name="testIterator()" classname="ru.nsu.demidov.hashtable.HashTableTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

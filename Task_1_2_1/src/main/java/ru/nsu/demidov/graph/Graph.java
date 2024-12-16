@@ -2,21 +2,26 @@ package ru.nsu.demidov.graph;
 
 import java.util.List;
 
+/**
+ * Graph interface.
+ */
+
 public interface Graph<T> {
     void addVertex(T vertex);
 
-    void removeVertex(T vertex) throws Exception;
+    void removeVertex(T vertex) throws IllegalArgumentException;
 
-    void addEdge(T from, T to) throws Exception;
+    void addEdge(T from, T to) throws IllegalArgumentException;
 
-    void removeEdge(T from, T to) throws Exception;
+    void removeEdge(T from, T to) throws IllegalArgumentException;
 
-    List<T> adjacentVertices(T vertex);
+    List<T> adjacentVertices(int index);
 
-    List<T> toposort();
+    int verticesCount();
 
     void readFile(String filePath) throws Exception;
 
-    void print();
-}
+    T getVertex(int pop);
 
+    int getVertexId(T vertex);
+}
