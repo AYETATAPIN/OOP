@@ -48,7 +48,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Gradle.Tests in 'Task_1_1_3.test'.executor": "Coverage",
+    "Gradle.Tests in 'Task_1_1_3.test'.executor": "Run",
     "git-widget-placeholder": "Task__1__1__3__modified"
   }
 }]]></component>
