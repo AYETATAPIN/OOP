@@ -39,8 +39,8 @@ public class Div extends Expression {
         Div simplifiedDiv = new Div(this.left.simplify(), this.right.simplify());
         if (simplifiedDiv.left instanceof Number leftNumber
                 && simplifiedDiv.right instanceof Number rightNumber) {
-            return new Number(leftNumber.value / rightNumber.value);
-        } else if (this.left instanceof Number leftNumber && leftNumber.value == 0) {
+            return new Number(leftNumber.getValue() / rightNumber.getValue());
+        } else if (this.left instanceof Number leftNumber && leftNumber.getValue() == 0) {
             return new Number(0);
         } else {
             return simplifiedDiv;

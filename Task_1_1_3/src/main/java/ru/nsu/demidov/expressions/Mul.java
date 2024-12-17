@@ -37,13 +37,15 @@ public class Mul extends Expression {
         Mul simplifiedMul = new Mul(this.left.simplify(), this.right.simplify());
         if (simplifiedMul.left instanceof Number leftNumber
                 && simplifiedMul.right instanceof Number rightNumber) {
-            return new Number(leftNumber.value * rightNumber.value);
-        } else if (simplifiedMul.left instanceof Number leftNumber && leftNumber.value == 0
-                || simplifiedMul.right instanceof Number rightNumber && rightNumber.value == 0) {
+            return new Number(leftNumber.getValue() * rightNumber.getValue());
+        } else if (simplifiedMul.left instanceof Number leftNumber && leftNumber.getValue() == 0
+                || simplifiedMul.right instanceof Number rightNumber
+                && rightNumber.getValue() == 0) {
             return new Number(0);
-        } else if (simplifiedMul.left instanceof Number leftNumber && leftNumber.value == 1) {
+        } else if (simplifiedMul.left instanceof Number leftNumber && leftNumber.getValue() == 1) {
             return simplifiedMul.right;
-        } else if (simplifiedMul.right instanceof Number rightNumber && rightNumber.value == 1) {
+        } else if (simplifiedMul.right instanceof Number rightNumber
+                && rightNumber.getValue() == 1) {
             return simplifiedMul.left;
         } else {
             return simplifiedMul;

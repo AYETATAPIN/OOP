@@ -6,7 +6,11 @@ package ru.nsu.demidov.expressions;
  */
 
 public class Number extends Expression {
-    public double value;
+    private double value;
+
+    public double getValue() {
+        return value;
+    }
 
     /**
      * Number constructor.

@@ -35,7 +35,7 @@ public class Sub extends Expression {
         Sub simplifiedSub = new Sub(this.left.simplify(), this.right.simplify());
         if (simplifiedSub.left instanceof Number leftNumber
                 && simplifiedSub.right instanceof Number rightNumber) {
-            return new Number(leftNumber.value - rightNumber.value);
+            return new Number(leftNumber.getValue() - rightNumber.getValue());
         } else if (simplifiedSub.left.toString().equals(simplifiedSub.right.toString())) {
             return new Number(0);
         } else {

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.nsu.demidov.expressions.ExpressionTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-12-16T17:51:09" hostname="CHINANUMBA1" time="0.052">
+<testsuite name="ru.nsu.demidov.expressions.ExpressionTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-12-17T05:51:54" hostname="CHINANUMBA1" time="0.105">
   <properties/>
-  <testcase name="testDerivative()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.029"/>
-  <testcase name="testNotEqual()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.004"/>
-  <testcase name="testAdd()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.002"/>
-  <testcase name="testDiv()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.001"/>
-  <testcase name="testSub()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.001"/>
-  <testcase name="testEqual()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.001"/>
-  <testcase name="testExpressions()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.001"/>
+  <testcase name="testDerivative()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.053"/>
+  <testcase name="testNotEqual()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.003"/>
+  <testcase name="testAdd()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.005"/>
+  <testcase name="testDiv()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.003"/>
+  <testcase name="testSub()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.006"/>
+  <testcase name="testEqual()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.003"/>
+  <testcase name="testExpressions()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.002"/>
   <testcase name="testVariables()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.001"/>
-  <testcase name="testEvaluate()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.001"/>
+  <testcase name="testEvaluate()" classname="ru.nsu.demidov.expressions.ExpressionTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

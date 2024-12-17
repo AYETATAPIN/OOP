@@ -35,7 +35,7 @@ public class Sum extends Expression {
         Sum simplifiedSum = new Sum(this.left.simplify(), this.right.simplify());
         if (simplifiedSum.left instanceof Number leftNumber
                 && simplifiedSum.right instanceof Number rightNumber) {
-            return new Number(leftNumber.value + rightNumber.value);
+            return new Number(leftNumber.getValue() + rightNumber.getValue());
         } else {
             return simplifiedSum;
         }
