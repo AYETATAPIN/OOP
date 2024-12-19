@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 
 public class Variable extends Expression {
-    public String value;
+    private String value;
 
     /**
      * parseAssignation method.

@@ -5,8 +5,8 @@ package ru.nsu.demidov.expressions;
  */
 
 public class Div extends Expression {
-    public Expression left;
-    public Expression right;
+    private Expression left;
+    private Expression right;
 
     /**
      * Div constructor.
