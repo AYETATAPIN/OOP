@@ -1,4 +1,4 @@
-package ru.nsu.demidov.primeNumbers;
+package ru.nsu.demidov.primenumbers;
 
 public class Subsequent implements PrimeDetector {
     @Override

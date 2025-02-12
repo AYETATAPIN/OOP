@@ -1,4 +1,4 @@
-package ru.nsu.demidov.primeNumbers;
+package ru.nsu.demidov.primenumbers;
 
 public interface PrimeDetector {
     boolean containsNotPrime(int[] numbers);
