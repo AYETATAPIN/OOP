@@ -1,7 +1,15 @@
 package ru.nsu.demidov.primenumbers;
 
+/**
+ * PrimeDetector interface.
+ */
+
 public interface PrimeDetector {
     boolean containsNotPrime(int[] numbers);
+
+    /**
+     * isPrime method.
+     */
 
     default boolean isPrime(int number) {
         if (number < 2) {

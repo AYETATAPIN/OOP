@@ -1,5 +1,9 @@
 package ru.nsu.demidov.primenumbers;
 
+/**
+ * Subsequent class.
+ */
+
 public class Subsequent implements PrimeDetector {
     @Override
     public boolean containsNotPrime(int[] numbers) {

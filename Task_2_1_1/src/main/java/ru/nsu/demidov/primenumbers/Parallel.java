@@ -2,12 +2,24 @@ package ru.nsu.demidov.primenumbers;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * Parallel class.
+ */
+
 public class Parallel implements PrimeDetector {
     private final int threadCount;
+
+    /**
+     * Parallel constructor.
+     */
 
     public Parallel(int threadCount) {
         this.threadCount = threadCount;
     }
+
+    /**
+     * containsNotPrime method.
+     */
 
     @Override
     public boolean containsNotPrime(int[] numbers) {
@@ -35,6 +47,10 @@ public class Parallel implements PrimeDetector {
         }
         return result.get();
     }
+
+    /**
+     * createThread method.
+     */
 
     private Thread createThread(int[] numbers, int start, int end, AtomicBoolean result) {
         return new Thread(() -> {
