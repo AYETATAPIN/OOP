@@ -1,4 +1,4 @@
-package ru.nsu.demidov.primenumbers;
+package ru.nsu.demidov.primeNumbers;
 
 /**
  * Subsequent class.

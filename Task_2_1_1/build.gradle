@@ -3,7 +3,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'ru.nsu.demidov.primeNumbers'
+group = 'ru.nsu.demidov.primenumbers'
 version = '1.0-SNAPSHOT'
 
 repositories {
