@@ -8,7 +8,7 @@ public class Subsequent implements PrimeDetector {
     @Override
     public boolean containsNotPrime(int[] numbers) {
         for (int number : numbers) {
-            if (isPrime(number) == false) {
+            if (PrimeDetector.isPrime(number) == false) {
                 return true;
             }
         }

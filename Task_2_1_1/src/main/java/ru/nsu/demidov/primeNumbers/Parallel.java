@@ -55,7 +55,7 @@ public class Parallel implements PrimeDetector {
     private Thread createThread(int[] numbers, int start, int end, AtomicBoolean result) {
         return new Thread(() -> {
             for (int i = start; i < end; i++) {
-                if (isPrime(numbers[i]) == false) {
+                if (PrimeDetector.isPrime(numbers[i]) == false) {
                     result.set(true);
                     break;
                 }

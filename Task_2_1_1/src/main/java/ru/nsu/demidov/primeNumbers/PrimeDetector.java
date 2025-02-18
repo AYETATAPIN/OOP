@@ -11,7 +11,7 @@ public interface PrimeDetector {
      * isPrime method.
      */
 
-    default boolean isPrime(int number) {
+    static boolean isPrime(int number) {
         if (number < 2) {
             return false;
         }
