@@ -1,4 +1,4 @@
-package ru.nsu.demidov.primeNumbers;
+package ru.nsu.demidov.primenumbers;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -37,7 +37,7 @@ public class PrimeDetectorTest {
     @ArgumentsSource(PrimeDetectorProvider.class)
     void testContainsNotPrimeLongArr(PrimeDetector primeDetector) {
         int[] longArr = {20319251, 6997901, 6997927, 6997937, 17858849, 6997967, 6998009,
-            6998029, 6998039, 20165149, 6998051, 6998053};
+                6998029, 6998039, 20165149, 6998051, 6998053};
         Assertions.assertFalse(primeDetector.containsNotPrime(longArr));
     }
 
@@ -65,5 +65,16 @@ public class PrimeDetectorTest {
                     Arguments.of(new ParallelStream())
             );
         }
+    }
+
+    @Test
+    public void longTest() {
+        int[] arr = new int[100000000];
+        for (int i = 0; i < 100000000; ++i) {
+            arr[i] = i % 2 == 0 ? 27449 : 27437;
+        }
+        arr[99999999] = 1488;
+        Parallel parallel = new Parallel(8);
+        assertTrue(parallel.containsNotPrime(arr));
     }
 }
