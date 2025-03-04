@@ -1,0 +1,11 @@
+{
+  "bakers": [
+    {"speed": 2000},
+    {"speed": 3000}
+  ],
+  "couriers": [
+    {"capacity": 2},
+    {"capacity": 3}
+  ],
+  "warehouseCapacity": 10
+}
