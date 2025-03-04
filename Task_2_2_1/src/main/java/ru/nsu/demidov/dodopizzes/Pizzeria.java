@@ -1,7 +1,7 @@
 package ru.nsu.demidov.dodopizzes;
 
-import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Pizzeria class.
@@ -17,15 +17,16 @@ public class Pizzeria {
      * Pizzeria constructor.
      */
 
-    public Pizzeria(int N, int M, int T, int[] bakerSpeeds, int[] courierCapacities) {
-        warehouse = new Warehouse(T);
-        bakers = new Baker[N];
-        for (int i = 0; i < N; i++) {
+    public Pizzeria(int bakersNumber, int couriersNumber, int warehouseCapacity,
+                int[] bakerSpeeds, int[] courierCapacities) {
+        warehouse = new Warehouse(warehouseCapacity);
+        bakers = new Baker[bakersNumber];
+        for (int i = 0; i < bakersNumber; i++) {
             bakers[i] = new Baker(bakerSpeeds[i], orderQueue, warehouse);
             bakers[i].start();
         }
-        couriers = new Courier[M];
-        for (int i = 0; i < M; i++) {
+        couriers = new Courier[couriersNumber];
+        for (int i = 0; i < couriersNumber; i++) {
             couriers[i] = new Courier(courierCapacities[i], warehouse);
             couriers[i].start();
         }
