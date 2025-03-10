@@ -6,6 +6,7 @@ package ru.nsu.demidov.dodopizzes;
 
 public class CourierConfig {
     private int capacity;
+    private int speed;
 
     /**
      * getCapacity method.
@@ -21,5 +22,13 @@ public class CourierConfig {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    /**
+     * getSpeed method.
+     */
+
+    public int getSpeed() {
+        return speed;
     }
 }

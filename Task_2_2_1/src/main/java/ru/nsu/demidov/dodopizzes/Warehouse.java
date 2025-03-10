@@ -29,7 +29,7 @@ public class Warehouse {
             try {
                 wait();
             } catch (InterruptedException e) {
-                return;
+                e.printStackTrace();
             }
         }
         orders.add(order);

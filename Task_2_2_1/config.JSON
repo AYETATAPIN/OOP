@@ -4,8 +4,9 @@
     {"speed": 3000}
   ],
   "couriers": [
-    {"capacity": 2},
-    {"capacity": 3}
+    {"capacity": 2, "speed": 2000},
+    {"capacity": 3, "speed": 1500}
   ],
-  "warehouseCapacity": 10
+  "warehouseCapacity": 10,
+  "workTime": 2000
 }

@@ -18,7 +18,7 @@ public class Pizzeria {
      */
 
     public Pizzeria(int bakersNumber, int couriersNumber, int warehouseCapacity,
-                int[] bakerSpeeds, int[] courierCapacities) {
+                int[] bakerSpeeds, int[] courierCapacities, int[] courierSpeeds) {
         warehouse = new Warehouse(warehouseCapacity);
         bakers = new Baker[bakersNumber];
         for (int i = 0; i < bakersNumber; i++) {
@@ -27,7 +27,7 @@ public class Pizzeria {
         }
         couriers = new Courier[couriersNumber];
         for (int i = 0; i < couriersNumber; i++) {
-            couriers[i] = new Courier(courierCapacities[i], warehouse);
+            couriers[i] = new Courier(courierCapacities[i], courierSpeeds[i], warehouse);
             couriers[i].start();
         }
     }

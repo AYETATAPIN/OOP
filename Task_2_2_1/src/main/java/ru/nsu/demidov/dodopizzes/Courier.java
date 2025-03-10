@@ -8,14 +8,16 @@ import java.util.List;
 
 public class Courier extends Thread {
     private int capacity;
+    private int speed;
     private Warehouse warehouse;
 
     /**
      * Courier constructor.
      */
 
-    public Courier(int capacity, Warehouse warehouse) {
+    public Courier(int capacity, int speed, Warehouse warehouse) {
         this.capacity = capacity;
+        this.speed = speed;
         this.warehouse = warehouse;
     }
 
@@ -29,9 +31,9 @@ public class Courier extends Thread {
             List<Order> orders = warehouse.getOrders(capacity);
             for (Order order : orders) {
                 order.setStatus("DELIVERING");
-                System.out.println("Order " + order.getOrderId() + " " + order.getStatus());
+                System.out.println(order);
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(speed);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

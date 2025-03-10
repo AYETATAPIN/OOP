@@ -34,13 +34,13 @@ public class Baker extends Thread {
                     try {
                         orderQueue.wait();
                     } catch (InterruptedException e) {
-                        return;
+                        e.printStackTrace();
                     }
                 }
                 order = orderQueue.poll();
             }
             order.setStatus("PREPARING");
-            System.out.println("Order " + order.getOrderId() + " " + order.getStatus());
+            System.out.println(order);
             try {
                 Thread.sleep(speed);
             } catch (InterruptedException e) {

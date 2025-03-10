@@ -10,6 +10,15 @@ public class PizzeriaConfig {
     private List<BakerConfig> bakers;
     private List<CourierConfig> couriers;
     private int warehouseCapacity;
+    private int workTime;
+
+    /**
+     * getWorkTime method.
+     */
+
+    public int getWorkTime() {
+        return workTime;
+    }
 
     /**
      * getBakers method.

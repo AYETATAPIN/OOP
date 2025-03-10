@@ -27,9 +27,11 @@ public class Main {
             int[] bakerSpeeds = bakers.stream().mapToInt(BakerConfig::getSpeed).toArray();
             int[] courierCapacities =
                 couriers.stream().mapToInt(CourierConfig::getCapacity).toArray();
+            int[] courierSpeeds =
+                    couriers.stream().mapToInt(CourierConfig::getSpeed).toArray();
 
             Pizzeria pizzeria = new Pizzeria(bakers.size(), couriers.size(), warehouseCapacity,
-                bakerSpeeds, courierCapacities);
+                bakerSpeeds, courierCapacities, courierSpeeds);
             for (int i = 1; i < 11; i++) {
                 pizzeria.placeOrder(new Order(i));
                 try {
