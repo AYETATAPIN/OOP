@@ -1,8 +1,5 @@
 package ru.nsu.demidov.dodopizzes;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  * Pizzeria class.
  */

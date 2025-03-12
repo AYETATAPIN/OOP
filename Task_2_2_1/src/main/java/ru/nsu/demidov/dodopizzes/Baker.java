@@ -1,7 +1,5 @@
 package ru.nsu.demidov.dodopizzes;
 
-import java.util.Queue;
-
 /**
  * Baker class.
  */
