@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import static java.lang.Thread.sleep;
-
 /**
  * Main class.
  */
@@ -38,13 +36,13 @@ public class Main {
             for (int i = 1; i < 11; i++) {
                 orderQueue.placeOrder(new Order(i));
                 try {
-                    sleep(100);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
             try {
-                sleep(200);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -1,7 +1,8 @@
 package ru.nsu.demidov.dodopizzes;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PizzeriaTest {
 

@@ -1,10 +1,10 @@
 package ru.nsu.demidov.dodopizzes;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class WarehouseTest {
 

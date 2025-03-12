@@ -2,8 +2,18 @@ package ru.nsu.demidov.dodopizzes;
 
 import java.util.LinkedList;
 import java.util.Queue;
+
+/**
+ * OrderQueue class.
+ */
+
 public class OrderQueue {
+
     private Queue<Order> orderQueue = new LinkedList<>();
+
+    /**
+     * pollOrder method.
+     */
 
     public Order pollOrder() {
         synchronized (orderQueue) {
@@ -14,9 +24,13 @@ public class OrderQueue {
                     break;
                 }
             }
-            return(orderQueue.poll());
+            return (orderQueue.poll());
         }
     }
+
+    /**
+     * add method.
+     */
 
     public void add(Order order) {
         this.orderQueue.add(order);
