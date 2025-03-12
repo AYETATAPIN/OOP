@@ -29,7 +29,7 @@ public class Warehouse {
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                break;
             }
         }
         orders.add(order);
@@ -45,7 +45,7 @@ public class Warehouse {
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                return null;
             }
         }
         List<Order> result = new LinkedList<>();

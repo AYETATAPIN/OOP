@@ -8,7 +8,7 @@ import java.util.Queue;
  */
 
 public class Pizzeria {
-    private Queue<Order> orderQueue = new LinkedList<>();
+    private OrderQueue orderQueue;
     private Warehouse warehouse;
     private Baker[] bakers;
     private Courier[] couriers;
@@ -17,8 +17,9 @@ public class Pizzeria {
      * Pizzeria constructor.
      */
 
-    public Pizzeria(int bakersNumber, int couriersNumber, int warehouseCapacity,
-                int[] bakerSpeeds, int[] courierCapacities, int[] courierSpeeds) {
+    public Pizzeria(int bakersNumber, int couriersNumber, int warehouseCapacity, int[] bakerSpeeds,
+                int[] courierCapacities, int[] courierSpeeds, OrderQueue orderQueue) {
+        this.orderQueue = orderQueue;
         warehouse = new Warehouse(warehouseCapacity);
         bakers = new Baker[bakersNumber];
         for (int i = 0; i < bakersNumber; i++) {
@@ -29,17 +30,6 @@ public class Pizzeria {
         for (int i = 0; i < couriersNumber; i++) {
             couriers[i] = new Courier(courierCapacities[i], courierSpeeds[i], warehouse);
             couriers[i].start();
-        }
-    }
-
-    /**
-     * placeOrder method.
-     */
-
-    public void placeOrder(Order order) {
-        synchronized (orderQueue) {
-            orderQueue.add(order);
-            orderQueue.notifyAll();
         }
     }
 

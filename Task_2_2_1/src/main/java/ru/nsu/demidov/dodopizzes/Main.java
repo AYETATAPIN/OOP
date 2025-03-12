@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Main class.
  */
@@ -17,6 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
         ObjectMapper objectMapper = new ObjectMapper();
+        OrderQueue orderQueue = new OrderQueue();
         try {
             PizzeriaConfig config = objectMapper.readValue(new File("config.json"),
                 PizzeriaConfig.class);
@@ -31,17 +34,17 @@ public class Main {
                     couriers.stream().mapToInt(CourierConfig::getSpeed).toArray();
 
             Pizzeria pizzeria = new Pizzeria(bakers.size(), couriers.size(), warehouseCapacity,
-                bakerSpeeds, courierCapacities, courierSpeeds);
+                bakerSpeeds, courierCapacities, courierSpeeds, orderQueue);
             for (int i = 1; i < 11; i++) {
-                pizzeria.placeOrder(new Order(i));
+                orderQueue.placeOrder(new Order(i));
                 try {
-                    Thread.sleep(1000);
+                    sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
             try {
-                Thread.sleep(20000);
+                sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

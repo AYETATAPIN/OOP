@@ -8,14 +8,14 @@ import java.util.Queue;
 
 public class Baker extends Thread {
     private int speed;
-    private Queue<Order> orderQueue;
+    private OrderQueue orderQueue;
     private Warehouse warehouse;
 
     /**
      * Baker constructor.
      */
 
-    public Baker(int speed, Queue<Order> orderQueue, Warehouse warehouse) {
+    public Baker(int speed, OrderQueue orderQueue, Warehouse warehouse) {
         this.speed = speed;
         this.orderQueue = orderQueue;
         this.warehouse = warehouse;
@@ -28,26 +28,19 @@ public class Baker extends Thread {
     @Override
     public void run() {
         while (true) {
-            Order order;
-            synchronized (orderQueue) {
-                while (orderQueue.isEmpty()) {
-                    try {
-                        orderQueue.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                order = orderQueue.poll();
+            Order order = orderQueue.pollOrder();
+            if (order == null) {
+                break;
             }
             order.setStatus("PREPARING");
             System.out.println(order);
             try {
                 Thread.sleep(speed);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                break;
             }
             order.setStatus("READY");
-            System.out.println("Order " + order.getOrderId() + " " + order.getStatus());
+            System.out.println(order);
             warehouse.addOrder(order);
         }
     }

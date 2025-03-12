@@ -29,13 +29,16 @@ public class Courier extends Thread {
     public void run() {
         while (true) {
             List<Order> orders = warehouse.getOrders(capacity);
+            if (orders == null) {
+                break;
+            }
             for (Order order : orders) {
                 order.setStatus("DELIVERING");
                 System.out.println(order);
                 try {
                     Thread.sleep(speed);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    break;
                 }
                 order.setStatus("DELIVERED");
                 System.out.println("Order " + order.getOrderId() + " " + order.getStatus());
