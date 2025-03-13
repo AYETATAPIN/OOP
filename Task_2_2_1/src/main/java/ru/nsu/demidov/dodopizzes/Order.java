@@ -41,6 +41,7 @@ public class Order {
         this.status = status;
     }
 
+    @Override
     public String toString() {
         return ("Order " + this.getOrderId() + " " + this.getStatus());
     }
