@@ -14,6 +14,7 @@ public class GameView {
     private final Canvas canvas;
     private final GameModel model;
     private final GraphicsContext graphics;
+    private boolean lostShown = false;
 
     public GameView(Canvas canvas, GameModel model) {
         this.canvas = canvas;
@@ -21,7 +22,12 @@ public class GameView {
         this.graphics = canvas.getGraphicsContext2D();
     }
 
+    public boolean isLostShown() {
+        return lostShown;
+    }
+
     public void showLost() {
+        lostShown = true;
         graphics.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         graphics.setFont(new Font(null, 125));
         graphics.setTextAlign(TextAlignment.CENTER);
