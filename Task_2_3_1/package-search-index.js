@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"ru.nsu.demidov.zmei.zmeyuka","l":"ru.nsu.demidov.zmei.zmeyuka"}];updateSearchResults();
