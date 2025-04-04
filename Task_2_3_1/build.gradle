@@ -1,56 +1,44 @@
 plugins {
   id 'java'
   id 'jacoco'
-  id 'application'
-  id 'org.javamodularity.moduleplugin' version '1.8.12'
   id 'org.openjfx.javafxplugin' version '0.1.0'
-  id 'org.beryx.jlink' version '2.25.0'
+  id 'application'
 }
 
-group 'ru.nsu.demidov.zmei'
-version '1.0-SNAPSHOT'
-
+group = 'ru.nsu.demidov.zmei'
+version = '1.0-SNAPSHOT'
 repositories {
   mavenCentral()
 }
 
-ext {
-  junitVersion = '5.10.2'
-}
-
-sourceCompatibility = '21'
-targetCompatibility = '21'
-
-tasks.withType(JavaCompile) {
-  options.encoding = 'UTF-8'
-}
-
-application {
-  mainModule = 'ru.nsu.demidov.zmei.zmeyuka'
-  mainClass = 'ru.nsu.demidov.zmei.zmeyuka.MainApp'
-}
-
-javafx {
-  version = '21.0.6'
-  modules = ['javafx.controls', 'javafx.fxml']
-}
-
 dependencies {
-  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+  testImplementation platform('org.junit:junit-bom:5.10.0')
+  testImplementation 'org.junit.jupiter:junit-jupiter'
+
 }
 
 test {
-useJUnitPlatform()}
+  useJUnitPlatform()
+}
 
-jlink {
-  imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
-  options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
-  launcher {
-    name = 'app'
+jacocoTestReport {
+  reports {
+    xml.required = true
   }
 }
 
-jlinkZip {
-  group = 'distribution'
+javafx {
+  version = "17.0.8"
+  modules = [ 'javafx.controls' , 'javafx.fxml']
+}
+
+application {
+  mainClass = 'ru.nsu.demidov.zmei.zmeyuka.MainApp'
+  //java/ru/nsu/demidov/zmei/task_2_3_1/MainApp.java
+}
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(21)
+  }
 }
