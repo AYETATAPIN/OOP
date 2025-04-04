@@ -36,14 +36,14 @@ class SnakeGameControllerTest {
             sampleController.handleKeyPress(sampleUpEvent);
         }
         assertEquals(sampleController.getModel().getSnake().getDirection(), Direction.UP);
-        KeyEvent sampleDownEvent = new KeyEvent(KeyEvent.KEY_PRESSED, "", "", KeyCode.DOWN,
-                false, false, false, false);
-        sampleController.handleKeyPress(sampleDownEvent);
-        assertEquals(sampleController.getModel().getSnake().getDirection(), Direction.DOWN);
         KeyEvent sampleLeftEvent = new KeyEvent(KeyEvent.KEY_PRESSED, "", "", KeyCode.LEFT,
                 false, false, false, false);
         sampleController.handleKeyPress(sampleLeftEvent);
         assertEquals(sampleController.getModel().getSnake().getDirection(), Direction.LEFT);
+        KeyEvent sampleDownEvent = new KeyEvent(KeyEvent.KEY_PRESSED, "", "", KeyCode.DOWN,
+                false, false, false, false);
+        sampleController.handleKeyPress(sampleDownEvent);
+        assertEquals(sampleController.getModel().getSnake().getDirection(), Direction.DOWN);
         KeyEvent sampleRightEvent = new KeyEvent(KeyEvent.KEY_PRESSED, "", "", KeyCode.RIGHT,
                 false, false, false, false);
         sampleController.handleKeyPress(sampleRightEvent);
