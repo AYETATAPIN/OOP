@@ -6,7 +6,16 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * GameModelTest class.
+ */
+
 class GameModelTest {
+
+    /**
+     * food test.
+     */
+
     @Test
     public void foodTest() {
         GameModel sampleModel = new GameModel(10, 10);
@@ -19,6 +28,10 @@ class GameModelTest {
         assertEquals(prevLen + 2, sampleModel.getSnake().lengthProperty().snakeLengthProperty().get());
         assertNotEquals(sampleFood, sampleModel.getFoods().getFirst());
     }
+
+    /**
+     * collision test.
+     */
 
     @Test
     public void collisionTest() {

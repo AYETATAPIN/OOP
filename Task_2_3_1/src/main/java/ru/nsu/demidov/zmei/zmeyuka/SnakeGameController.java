@@ -5,11 +5,19 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 
+/**
+ * SnakeGameController class.
+ */
+
 public class SnakeGameController {
     @FXML
     private Canvas gameCanvas;
     private GameModel model;
     private GameView view;
+
+    /**
+     * initialize method.
+     */
 
     @FXML
     public void initialize() {
@@ -20,29 +28,49 @@ public class SnakeGameController {
         gameCanvas.requestFocus();
     }
 
+    /**
+     * setGameCanvas method.
+     */
+
     public void setGameCanvas(Canvas gameCanvas) {
         this.gameCanvas = gameCanvas;
     }
+
+    /**
+     * setModel method.
+     */
 
     public void setModel(GameModel model) {
         this.model = model;
     }
 
+    /**
+     * setView method.
+     */
+
     public void setView(GameView view) {
         this.view = view;
     }
 
-    public Canvas getGameCanvas() {
-        return gameCanvas;
-    }
+    /**
+     * getModel method.
+     */
 
     public GameModel getModel() {
         return model;
     }
 
+    /**
+     * getView method.
+     */
+
     public GameView getView() {
         return view;
     }
+
+    /**
+     * startGameLoop method.
+     */
 
     public void startGameLoop(boolean isTesting) {
         new Thread(() -> {
@@ -68,6 +96,10 @@ public class SnakeGameController {
             }
         }).start();
     }
+
+    /**
+     * handleKeyPress method.
+     */
 
     @FXML
     public void handleKeyPress(KeyEvent event) {

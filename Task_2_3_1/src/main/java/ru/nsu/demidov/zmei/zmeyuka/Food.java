@@ -1,5 +1,9 @@
 package ru.nsu.demidov.zmei.zmeyuka;
 
+/**
+ * Food class.
+ */
+
 public class Food {
     private int x;
     private int y;

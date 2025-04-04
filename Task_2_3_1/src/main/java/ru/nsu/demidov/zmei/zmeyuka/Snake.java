@@ -3,6 +3,10 @@ package ru.nsu.demidov.zmei.zmeyuka;
 import java.awt.Point;
 import java.util.LinkedList;
 
+/**
+ * zmeyuka.
+ */
+
 public class Snake {
     private LinkedList<Point> body;
     private Direction direction;
@@ -17,6 +21,10 @@ public class Snake {
         lengthProperty.setSnakeLength(body.size());
     }
 
+    /**
+     * move method.
+     */
+
     public void move() {
         Point head = getHead();
         Point newHead = switch (direction) {
@@ -30,27 +38,51 @@ public class Snake {
         body.removeLast();
     }
 
+    /**
+     * grow method.
+     */
+
     public void grow() {
         Point tail = body.getLast();
         body.addLast(new Point((int) tail.getX(), (int) tail.getY()));
         lengthProperty.setSnakeLength(body.size());
     }
 
+    /**
+     * lengthProperty method.
+     */
+
     public SnakeLengthProperty lengthProperty() {
         return lengthProperty;
     }
+
+    /**
+     * getHead method.
+     */
 
     public Point getHead() {
         return body.getFirst();
     }
 
+    /**
+     * getBody method.
+     */
+
     public LinkedList<Point> getBody() {
         return body;
     }
 
+    /**
+     * getDirection method.
+     */
+
     public Direction getDirection() {
         return direction;
     }
+
+    /**
+     * setDirection method.
+     */
 
     public void setDirection(Direction newDirection) {
         if (newDirection.isOpposite(this.direction) == false) {

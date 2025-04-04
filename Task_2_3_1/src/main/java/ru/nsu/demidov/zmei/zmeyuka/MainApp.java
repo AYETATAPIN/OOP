@@ -7,10 +7,18 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
+/**
+ * MainApp class.
+ */
+
 public class MainApp extends Application {
+
+    /**
+     * start method.
+     */
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("snakeGame.fxml"));
@@ -31,6 +39,10 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * nu tipa main.
+     */
 
     public static void main(String[] args) {
         launch();

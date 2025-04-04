@@ -6,6 +6,11 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
+/**
+ * GameModel class.
+ */
+
+
 public class GameModel {
     private boolean isItOver = false;
     private int width;
@@ -24,15 +29,27 @@ public class GameModel {
         }
     }
 
+    /**
+     * snakeLengthProperty method.
+     */
+
     public IntegerProperty snakeLengthProperty() {
         return snake.lengthProperty().snakeLengthProperty();
     }
+
+    /**
+     * update method.
+     */
 
     public void update() {
         snake.move();
         checkCollisions();
         checkFood();
     }
+
+    /**
+     * generateFood method.
+     */
 
     private void generateFood() {
         Random rand = new Random();
@@ -62,11 +79,16 @@ public class GameModel {
         foods.add(new Food(x, y, value));
     }
 
+    /**
+     * checkFood method.
+     */
+
     private void checkFood() {
         Point head = snake.getHead();
         Point neck = snake.getBody().get(1);
         for (Food food : foods) {
-            if ((food.getX() == head.x || food.getX() == neck.x) && (food.getY() == head.y || food.getY() == neck.getY())) {
+            if ((food.getX() == head.x || food.getX() == neck.x)
+                && (food.getY() == head.y || food.getY() == neck.getY())) {
                 for (int i = 0; i < food.getValue(); ++i) {
                     snake.grow();
                 }
@@ -77,17 +99,33 @@ public class GameModel {
         }
     }
 
+    /**
+     * getSnake method.
+     */
+
     public Snake getSnake() {
         return snake;
     }
+
+    /**
+     * getFoods method.
+     */
 
     public List<Food> getFoods() {
         return foods;
     }
 
+    /**
+     * setFoods method.
+     */
+
     void setFoods(LinkedList<Food> foods) {
         this.foods = foods;
     }
+
+    /**
+     * checkCollisions method.
+     */
 
     private void checkCollisions() {
         Point head = snake.getHead();
@@ -105,6 +143,10 @@ public class GameModel {
             System.out.println("It's actually over");
         }
     }
+
+    /**
+     * itsActuallyOverForYou method.
+     */
 
     public boolean itsActuallyOverForYou() {
         return isItOver;

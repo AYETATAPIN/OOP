@@ -2,15 +2,20 @@ package ru.nsu.demidov.zmei.zmeyuka;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
-
-import java.awt.*;
-import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * SnakeGameControllerTest.
+ */
+
 class SnakeGameControllerTest {
+
+    /**
+     * initialize test.
+     */
+
     @Test
     public void initializeTest() throws InterruptedException {
         SnakeGameController sampleController = new SnakeGameController();

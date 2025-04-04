@@ -10,6 +10,10 @@ import javafx.scene.text.TextAlignment;
 import java.awt.Point;
 import java.util.LinkedList;
 
+/**
+ * GameView class.
+ */
+
 public class GameView {
     private final Canvas canvas;
     private final GameModel model;
@@ -22,9 +26,17 @@ public class GameView {
         this.graphics = canvas.getGraphicsContext2D();
     }
 
+    /**
+     * isLostShow method.
+     */
+
     public boolean isLostShown() {
         return lostShown;
     }
+
+    /**
+     * showLost method.
+     */
 
     public void showLost() {
         lostShown = true;
@@ -35,9 +47,15 @@ public class GameView {
         graphics.setStroke(Color.WHITE);
         graphics.setLineWidth(7);
         graphics.setFill(Color.RED);
-        graphics.strokeText("IT NEVER BEGAN", canvas.getWidth() / 2, canvas.getHeight() / 2);
-        graphics.fillText("IT NEVER BEGAN", canvas.getWidth() / 2, canvas.getHeight() / 2);
+        graphics.strokeText("IT NEVER BEGAN", canvas.getWidth() / 2,
+            canvas.getHeight() / 2);
+        graphics.fillText("IT NEVER BEGAN", canvas.getWidth() / 2,
+            canvas.getHeight() / 2);
     }
+
+    /**
+     * render method.
+     */
 
     public void render() {
         graphics.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -64,6 +82,7 @@ public class GameView {
         }
         graphics.setFill(Color.WHITE);
         graphics.setFont(new Font(null, 20));
-        graphics.fillText("PSL: " + model.snakeLengthProperty().get(), canvas.getWidth() - 120, 30);
+        graphics.fillText("PSL: " + model.snakeLengthProperty().get(),
+            canvas.getWidth() - 120, 30);
     }
 }

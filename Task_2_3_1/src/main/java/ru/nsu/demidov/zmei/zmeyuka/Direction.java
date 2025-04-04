@@ -1,5 +1,9 @@
 package ru.nsu.demidov.zmei.zmeyuka;
 
+/**
+ * Direction enum.
+ */
+
 public enum Direction {
     UP, DOWN, LEFT, RIGHT;
 
