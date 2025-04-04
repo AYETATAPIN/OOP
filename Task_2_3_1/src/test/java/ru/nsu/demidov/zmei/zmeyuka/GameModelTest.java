@@ -1,10 +1,12 @@
 package ru.nsu.demidov.zmei.zmeyuka;
-import org.junit.jupiter.api.Test;
 
-import java.awt.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 import java.util.LinkedList;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  * GameModelTest class.
@@ -25,7 +27,8 @@ class GameModelTest {
         sampleModel.setFoods(sampleFoods);
         int prevLen = sampleModel.getSnake().lengthProperty().snakeLengthProperty().get();
         sampleModel.update();
-        assertEquals(prevLen + 2, sampleModel.getSnake().lengthProperty().snakeLengthProperty().get());
+        assertEquals(prevLen + 2,
+            sampleModel.getSnake().lengthProperty().snakeLengthProperty().get());
         assertNotEquals(sampleFood, sampleModel.getFoods().getFirst());
     }
 

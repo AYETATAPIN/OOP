@@ -1,9 +1,9 @@
 package ru.nsu.demidov.zmei.zmeyuka;
-import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.awt.*;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class SnakeTest {
     @Test
@@ -14,7 +14,8 @@ class SnakeTest {
         assertEquals(sampleSnake.getDirection(), Direction.RIGHT);
         sampleSnake.setDirection(Direction.UP);
         assertEquals(sampleSnake.getDirection(), Direction.UP);
-        Point prevHead = new Point((int) sampleSnake.getHead().getX(), (int) sampleSnake.getHead().getY());
+        Point prevHead = new Point((int) sampleSnake.getHead().getX(),
+            (int) sampleSnake.getHead().getY());
         prevHead.setLocation(prevHead.getX(), prevHead.getY() - 1);
         sampleSnake.move();
         assertEquals(prevHead.getLocation(), sampleSnake.getHead().getLocation());

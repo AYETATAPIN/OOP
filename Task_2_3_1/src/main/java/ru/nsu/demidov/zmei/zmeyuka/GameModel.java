@@ -1,10 +1,12 @@
 package ru.nsu.demidov.zmei.zmeyuka;
 
-import javafx.beans.property.IntegerProperty;
-
-import java.awt.*;
-import java.util.*;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Random;
 import java.util.List;
+import java.util.LinkedList;
+import javafx.beans.property.IntegerProperty;
 
 /**
  * GameModel class.
@@ -17,14 +19,18 @@ public class GameModel {
     private int height;
     private Snake snake;
     private List<Food> foods;
-    private final int INITIAL_FOOD_COUNT = 5;
+    private final int initialFoodCount = 5;
+
+    /**
+     * GameModel constructor.
+     */
 
     public GameModel(int width, int height) {
         this.width = width;
         this.height = height;
         this.snake = new Snake(width / 2, height / 2);
         this.foods = new ArrayList<>();
-        for (int i = 0; i < INITIAL_FOOD_COUNT; i++) {
+        for (int i = 0; i < initialFoodCount; i++) {
             generateFood();
         }
     }
@@ -72,7 +78,7 @@ public class GameModel {
                     }
                 }
             } catch (Exception ignored) {
-
+                ignored.toString();
             }
         }
         int value = rand.nextInt(1, 50);
@@ -87,8 +93,8 @@ public class GameModel {
         Point head = snake.getHead();
         Point neck = snake.getBody().get(1);
         for (Food food : foods) {
-            if ((food.getX() == head.x || food.getX() == neck.x)
-                && (food.getY() == head.y || food.getY() == neck.getY())) {
+            if ((food.getxCord() == head.x || food.getxCord() == neck.x)
+                && (food.getyCord() == head.y || food.getyCord() == neck.getY())) {
                 for (int i = 0; i < food.getValue(); ++i) {
                     snake.grow();
                 }

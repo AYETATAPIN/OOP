@@ -5,25 +5,29 @@ package ru.nsu.demidov.zmei.zmeyuka;
  */
 
 public class Food {
-    private int x;
-    private int y;
+    private int xCord;
+    private int yCord;
     private int value;
 
     public int getValue() {
         return value;
     }
 
-    public int getX() {
-        return x;
+    public int getxCord() {
+        return xCord;
     }
 
-    public int getY() {
-        return y;
+    public int getyCord() {
+        return yCord;
     }
 
-    public Food(int x, int y, int value) {
-        this.x = x;
-        this.y = y;
+    /**
+     * Food constructor.
+     */
+
+    public Food(int xCord, int yCord, int value) {
+        this.xCord = xCord;
+        this.yCord = yCord;
         this.value = value;
     }
 }

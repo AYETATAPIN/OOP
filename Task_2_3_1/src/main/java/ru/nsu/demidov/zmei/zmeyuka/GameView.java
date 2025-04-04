@@ -1,14 +1,13 @@
 package ru.nsu.demidov.zmei.zmeyuka;
 
+import java.awt.Point;
+import java.util.LinkedList;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-
-import java.awt.Point;
-import java.util.LinkedList;
 
 /**
  * GameView class.
@@ -19,6 +18,10 @@ public class GameView {
     private final GameModel model;
     private final GraphicsContext graphics;
     private boolean lostShown = false;
+
+    /**
+     * GameView constructor.
+     */
 
     public GameView(Canvas canvas, GameModel model) {
         this.canvas = canvas;
@@ -74,11 +77,11 @@ public class GameView {
                 graphics.fillRect(point.getX() * 20, point.getY() * 20, 20, 20);
             }
         } catch (Exception ignored) {
-
+            ignored.toString();
         }
         graphics.setFill(Color.MEDIUMVIOLETRED);
         for (Food food : model.getFoods()) {
-            graphics.fillOval(food.getX() * 20, food.getY() * 20, 20, 20);
+            graphics.fillOval(food.getxCord() * 20, food.getyCord() * 20, 20, 20);
         }
         graphics.setFill(Color.WHITE);
         graphics.setFont(new Font(null, 20));

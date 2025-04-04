@@ -117,6 +117,8 @@ public class SnakeGameController {
             case RIGHT -> {
                 model.getSnake().setDirection(Direction.RIGHT);
             }
+            default -> {
+            }
         }
         if (prevDirection.toString().equals(event.getCode().toString()) == false) {
             model.getSnake().move();

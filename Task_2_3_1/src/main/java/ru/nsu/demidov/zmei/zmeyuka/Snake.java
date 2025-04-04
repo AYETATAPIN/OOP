@@ -12,6 +12,10 @@ public class Snake {
     private Direction direction;
     private final SnakeLengthProperty lengthProperty = new SnakeLengthProperty();
 
+    /**
+     * zmeyuka constructor.
+     */
+
     public Snake(int startX, int startY) {
         body = new LinkedList<>();
         body.add(new Point(startX, startY));

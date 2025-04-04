@@ -1,10 +1,13 @@
 package ru.nsu.demidov.zmei.zmeyuka;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * SnakeGameControllerTest.
@@ -17,7 +20,7 @@ class SnakeGameControllerTest {
      */
 
     @Test
-    public void initializeTest() throws InterruptedException {
+    public void initializeTest() {
         SnakeGameController sampleController = new SnakeGameController();
         GameModel sampleModel = new GameModel(10, 10);
         Canvas sampleCanvas = new Canvas();
