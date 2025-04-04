@@ -81,7 +81,8 @@ public class GameView {
         }
         graphics.setFill(Color.MEDIUMVIOLETRED);
         for (Food food : model.getFoods()) {
-            graphics.fillOval(food.getAbscsissAxisCord() * 20, food.getOrdinateAxisCord() * 20, 20, 20);
+            graphics.fillOval(food.getAbscsissAxisCord() * 20,
+                food.getOrdinateAxisCord() * 20, 20, 20);
         }
         graphics.setFill(Color.WHITE);
         graphics.setFont(new Font(null, 20));

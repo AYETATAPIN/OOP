@@ -12,6 +12,10 @@ class SnakeTest {
         assertEquals(sampleSnake.getDirection(), Direction.RIGHT);
         sampleSnake.setDirection(Direction.LEFT);
         assertEquals(sampleSnake.getDirection(), Direction.RIGHT);
+        sampleSnake.setDirection(Direction.LEFT);
+        assertEquals(sampleSnake.getDirection(), Direction.LEFT);
+        sampleSnake.setDirection(Direction.DOWN);
+        assertEquals(sampleSnake.getDirection(), Direction.DOWN);
         sampleSnake.setDirection(Direction.UP);
         assertEquals(sampleSnake.getDirection(), Direction.UP);
         Point prevHead = new Point((int) sampleSnake.getHead().getX(),
