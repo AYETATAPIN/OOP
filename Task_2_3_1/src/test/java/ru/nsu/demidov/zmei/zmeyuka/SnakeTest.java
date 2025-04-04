@@ -2,7 +2,7 @@ package ru.nsu.demidov.zmei.zmeyuka;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.awt.*;
+import java.awt.Point;
 import org.junit.jupiter.api.Test;
 
 class SnakeTest {

@@ -3,10 +3,10 @@ package ru.nsu.demidov.zmei.zmeyuka;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import org.junit.jupiter.api.Test;
 
 
 /**
@@ -30,7 +30,8 @@ class SnakeGameControllerTest {
         sampleController.setGameCanvas(sampleCanvas);
         sampleController.startGameLoop(true);
         assertEquals(sampleController.getModel().getSnake().getDirection(), Direction.RIGHT);
-        KeyEvent sampleEvent = new KeyEvent(KeyEvent.KEY_PRESSED, "", "", KeyCode.UP, false, false, false, false);
+        KeyEvent sampleEvent = new KeyEvent(KeyEvent.KEY_PRESSED, "", "", KeyCode.UP,
+            false, false, false, false);
         for (int i = 0; i < 100; i++) {
             sampleController.handleKeyPress(sampleEvent);
         }

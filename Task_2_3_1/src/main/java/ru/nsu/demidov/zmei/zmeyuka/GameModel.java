@@ -3,9 +3,9 @@ package ru.nsu.demidov.zmei.zmeyuka;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Random;
 import java.util.List;
 import java.util.LinkedList;
+import java.util.Random;
 import javafx.beans.property.IntegerProperty;
 
 /**
