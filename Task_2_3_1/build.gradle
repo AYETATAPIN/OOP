@@ -5,7 +5,7 @@ plugins {
   id 'application'
 }
 
-group = 'ru.nsu.demidov.zmei'
+group = 'ru.nsu.demidov.zmei.zmeyuka'
 version = '1.0-SNAPSHOT'
 repositories {
   mavenCentral()
