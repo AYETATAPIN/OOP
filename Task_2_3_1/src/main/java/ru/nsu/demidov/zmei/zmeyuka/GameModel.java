@@ -2,9 +2,9 @@ package ru.nsu.demidov.zmei.zmeyuka;
 
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.List;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Random;
 import javafx.beans.property.IntegerProperty;
 
@@ -93,8 +93,8 @@ public class GameModel {
         Point head = snake.getHead();
         Point neck = snake.getBody().get(1);
         for (Food food : foods) {
-            if ((food.getxCord() == head.x || food.getxCord() == neck.x)
-                && (food.getyCord() == head.y || food.getyCord() == neck.getY())) {
+            if ((food.getAbscsissAxisCord() == head.x || food.getAbscsissAxisCord() == neck.x)
+                && (food.getOrdinateAxisCord() == head.y || food.getOrdinateAxisCord() == neck.getY())) {
                 for (int i = 0; i < food.getValue(); ++i) {
                     snake.grow();
                 }
