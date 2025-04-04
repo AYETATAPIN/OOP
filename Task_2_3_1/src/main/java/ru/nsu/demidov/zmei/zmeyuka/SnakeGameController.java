@@ -71,23 +71,23 @@ public class SnakeGameController {
 
     @FXML
     public void handleKeyPress(KeyEvent event) {
+        Direction prevDirection = model.getSnake().getDirection();
         switch (event.getCode()) {
             case UP -> {
                 model.getSnake().setDirection(Direction.UP);
-                model.getSnake().move();
             }
             case DOWN -> {
                 model.getSnake().setDirection(Direction.DOWN);
-                model.getSnake().move();
             }
             case LEFT -> {
                 model.getSnake().setDirection(Direction.LEFT);
-                model.getSnake().move();
             }
             case RIGHT -> {
                 model.getSnake().setDirection(Direction.RIGHT);
-                model.getSnake().move();
             }
+        }
+        if (prevDirection.toString().equals(event.getCode().toString()) == false) {
+            model.getSnake().move();
         }
     }
 }
