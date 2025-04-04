@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 
-
 public class SnakeGameController {
     @FXML
     private Canvas gameCanvas;
