@@ -7,40 +7,45 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class SlavePunisher extends Thread {
-    private final Socket socket;
     private final Master master;
+    private final int slaveId;
     private ObjectOutputStream out;
     private BufferedReader in;
-    private int[] task;
+    private boolean taskAssigned = false;
 
-    public SlavePunisher(Socket socket, Master master) throws IOException {
-        this.socket = socket;
+    public SlavePunisher(Socket socket, Master master, int slaveId) throws IOException {
         this.master = master;
+        this.slaveId = slaveId;
         this.out = new ObjectOutputStream(socket.getOutputStream());
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
 
     public void setTask(int[] task) throws IOException {
-        this.task = task;
         out.writeObject(task);
         out.flush();
+        taskAssigned = true;
+    }
+
+    public boolean isTaskAssigned() {
+        return taskAssigned;
     }
 
     @Override
     public void run() {
-        boolean finished = false;
+        boolean isMalfunctioned = false;
         try {
             String response;
             while ((response = in.readLine()) != null) {
                 if ("TRUE".equals(response)) {
                     master.getResult().set(true);
                 }
-                finished = true;
-                master.notifyAll();
+                isMalfunctioned = true;
+                break;
             }
         } catch (IOException e) {
-            finished = true;
-            master.notifyAll();
+            System.err.println("Slave " + slaveId + " malfunctioned");
+        } finally {
+            master.slaveEndALert(slaveId, isMalfunctioned);
         }
     }
 }

@@ -16,9 +16,12 @@ public class Slave {
     private static final String SLAVE_ACK = "SLAVE_ACK";
     private static final int PORT = 5055;
 
-    public void start() throws IOException, ClassNotFoundException {
+    public void start() throws Exception {
         for (; ; ) {
             InetAddress managerAddress = discoverManager();
+            if (managerAddress == null) {
+                throw new Exception("Couldn't get manager address");
+            }
             processTasks(managerAddress);
             try {
                 Thread.sleep(1000);
@@ -47,6 +50,7 @@ public class Slave {
             socket.send(responsePacket);
             return received_data.getAddress();
         }
+        return null;
 
     }
 

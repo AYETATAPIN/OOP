@@ -1,7 +1,7 @@
 package ru.nsu.demidov.primeroparallelo;
 
 public interface PrimeDetector {
-    boolean containsNotPrime(int[] numbers);
+    boolean containsNotPrime(int[] numbers) throws Exception;
 
     static boolean isPrime(int number) {
         if (number < 2) {

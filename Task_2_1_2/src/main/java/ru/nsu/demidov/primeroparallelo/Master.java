@@ -1,5 +1,6 @@
 package ru.nsu.demidov.primeroparallelo;
 
+import org.graalvm.collections.Pair;
 import java.io.IOException;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -11,24 +12,30 @@ public class Master {
     private static final String MASTER_ACK = "MASTER_ACK";
     private static final String SLAVE_ACK = "SLAVE_ACK";
     private static final int PORT = 5055;
-
-    private final Set<InetAddress> workers = new HashSet<>();
+    private static final int TASK_TIMEOUT = 10000;
+    private final Set<InetAddress> slaves = new HashSet<>();
     private final List<SlavePunisher> slavePunishers = new ArrayList<>();
     private final AtomicBoolean result = new AtomicBoolean(false);
+    private final Map<Integer, Boolean> slavesStatus = new HashMap<>();
+    private final List<Pair<Integer, Integer>> taskRanges = new ArrayList<>();
+    private int[] currentNumbers;
 
     public boolean processNumbers(int[] numbers) {
+        this.currentNumbers = numbers;
         try {
             acknowledgeSlaves();
             envokeMaster();
-            distributeParts(numbers);
+            distributeTasks();
+            waitForCompletion();
             return result.get();
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException("Царь батюшка-главный упал", e);
         }
     }
 
-    public AtomicBoolean getResult() {
-        return this.result;
+    public synchronized void slaveEndALert(int slaveId, boolean isMalfunctioned) {
+        slavesStatus.put(slaveId, isMalfunctioned);
+        notifyAll();
     }
 
     private void envokeMaster() throws IOException {
@@ -39,9 +46,11 @@ public class Master {
         while (System.currentTimeMillis() < end) {
             try {
                 Socket socket = serverSocket.accept();
-                if (workers.contains(socket.getInetAddress())) {
-                    SlavePunisher punisher = new SlavePunisher(socket, this);
+                if (slaves.contains(socket.getInetAddress())) {
+                    int slaveId = slavePunishers.size();
+                    SlavePunisher punisher = new SlavePunisher(socket, this, slaveId);
                     slavePunishers.add(punisher);
+                    slavesStatus.put(slaveId, false);
                     punisher.start();
                 } else {
                     socket.close();
@@ -51,43 +60,90 @@ public class Master {
         }
     }
 
-    private void acknowledgeSlaves() throws IOException {
-        DatagramSocket socket = new DatagramSocket();
-        InetAddress group = InetAddress.getByName(SUBNET);
-
-        byte[] buffer = MASTER_ACK.getBytes(StandardCharsets.UTF_8);
-        DatagramPacket sent_data = new DatagramPacket(buffer, buffer.length, group, PORT);
-        socket.send(sent_data);
-
-        long end = System.currentTimeMillis() + 1000;
-        while (System.currentTimeMillis() < end) {
-            byte[] receivedBuffer = new byte[1024];
-            DatagramPacket receivedData = new DatagramPacket(receivedBuffer, receivedBuffer.length);
-            socket.receive(receivedData);
-
-            String received = new String(receivedData.getData(), 0, receivedData.getLength());
-            if (SLAVE_ACK.equals(received) == true) {
-                workers.add(receivedData.getAddress());
-            }
-        }
-    }
-    
-
-    private void distributeParts(int[] numbers) throws InterruptedException, IOException {
-        int batchSize = numbers.length / slavePunishers.size();
-        int remainder = numbers.length % slavePunishers.size();
+    private void distributeTasks() throws IOException {
+        int batchSize = currentNumbers.length / slavePunishers.size();
+        int remainder = currentNumbers.length % slavePunishers.size();
         int start = 0;
+        taskRanges.clear();
 
-        for (SlavePunisher slavePunisher : slavePunishers) {
+        for (SlavePunisher punisher : slavePunishers) {
             int end = start + batchSize;
             if (remainder > 0) {
                 end++;
                 remainder--;
             }
-            int[] part = new int[end - start];
-            System.arraycopy(numbers, start, part, start, end - start);
-            slavePunisher.setTask(part);
+            taskRanges.add(Pair.create(start, end));
+            int[] task = Arrays.copyOfRange(currentNumbers, start, end);
+            punisher.setTask(task);
             start = end;
         }
+    }
+
+    private synchronized void waitForCompletion() throws InterruptedException, IOException {
+        long endTime = System.currentTimeMillis() + TASK_TIMEOUT;
+
+        while (true) {
+            boolean noneMalfunctions = true;
+            List<Integer> malfunctionedSlaves = new ArrayList<>();
+
+            for (int i = 0; i < slavePunishers.size(); i++) {
+                Boolean isMalfunctioned = slavesStatus.get(i);
+                if (isMalfunctioned == null || isMalfunctioned == false) {
+                    noneMalfunctions = false;
+                    if (slavePunishers.get(i).isTaskAssigned()) {
+                        malfunctionedSlaves.add(i);
+                    }
+                }
+            }
+
+            if (noneMalfunctions || System.currentTimeMillis() > endTime) {
+                break;
+            }
+
+            if (malfunctionedSlaves.isEmpty() == false) {
+                assertNewTasks(malfunctionedSlaves);
+            }
+            wait(1000);
+        }
+    }
+
+    private void assertNewTasks(List<Integer> malfunctionedSlaves) throws IOException {
+        for (int malfunctionedSlave : malfunctionedSlaves) {
+            Pair<Integer, Integer> range = taskRanges.get(malfunctionedSlave);
+            int[] task = Arrays.copyOfRange(currentNumbers, range.getLeft(), range.getRight());
+            Socket socket = new Socket(getFreeSlave(), PORT);
+            int taskSize = slavePunishers.size();
+            SlavePunisher slavePunisher = new SlavePunisher(socket, this, taskSize);
+            slavePunishers.add(slavePunisher);
+            slavesStatus.put(taskSize, false);
+            slavePunisher.setTask(task);
+            slavePunisher.start();
+        }
+    }
+
+    private InetAddress getFreeSlave() {
+        return slaves.iterator().next();
+    }
+
+    private void acknowledgeSlaves() throws IOException {
+        DatagramSocket socket = new DatagramSocket();
+        InetAddress group = InetAddress.getByName(SUBNET);
+        byte[] buffer = MASTER_ACK.getBytes(StandardCharsets.UTF_8);
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+        socket.send(packet);
+        long endTime = System.currentTimeMillis() + 1000;
+        while (System.currentTimeMillis() < endTime) {
+            byte[] receivedBuffer = new byte[1024];
+            DatagramPacket receivedPacket = new DatagramPacket(receivedBuffer, receivedBuffer.length);
+            socket.receive(receivedPacket);
+            String response = new String(receivedPacket.getData(), 0, receivedPacket.getLength());
+            if (SLAVE_ACK.equals(response)) {
+                slaves.add(receivedPacket.getAddress());
+            }
+        }
+    }
+
+    public AtomicBoolean getResult() {
+        return result;
     }
 }
