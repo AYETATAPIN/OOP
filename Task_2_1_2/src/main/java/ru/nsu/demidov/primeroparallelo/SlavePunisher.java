@@ -34,18 +34,23 @@ public class SlavePunisher extends Thread {
     public void run() {
         boolean isMalfunctioned = false;
         try {
-            String response;
-            while ((response = in.readLine()) != null) {
-                if ("TRUE".equals(response)) {
-                    master.getResult().set(true);
-                }
+            String response = in.readLine();
+            if ("TRUE".equals(response)) {
+                master.getResult().set(true);
                 isMalfunctioned = true;
-                break;
+            } else if ("FALSE".equals(response)) {
+                isMalfunctioned = true;
             }
         } catch (IOException e) {
             System.err.println("Slave " + slaveId + " malfunctioned");
         } finally {
-            master.slaveEndALert(slaveId, isMalfunctioned);
+            master.slaveEndAlert(slaveId, isMalfunctioned);
+            try {
+                out.close();
+                in.close();
+            } catch (IOException e) {
+                System.err.println("Rot ne zakrivaet " + slaveId);
+            }
         }
     }
 }

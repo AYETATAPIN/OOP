@@ -33,8 +33,8 @@ public class Master {
         }
     }
 
-    public synchronized void slaveEndALert(int slaveId, boolean isMalfunctioned) {
-        slavesStatus.put(slaveId, isMalfunctioned);
+    public synchronized void slaveEndAlert(int slaveId, boolean success) {
+        slavesStatus.put(slaveId, success);
         notifyAll();
     }
 
@@ -61,6 +61,9 @@ public class Master {
     }
 
     private void distributeTasks() throws IOException {
+        if (slavePunishers.isEmpty() || currentNumbers.length == 0) {
+            return;
+        }
         int batchSize = currentNumbers.length / slavePunishers.size();
         int remainder = currentNumbers.length % slavePunishers.size();
         int start = 0;
@@ -80,23 +83,20 @@ public class Master {
     }
 
     private synchronized void waitForCompletion() throws InterruptedException, IOException {
-        long endTime = System.currentTimeMillis() + TASK_TIMEOUT;
-
-        while (true) {
+        long end = System.currentTimeMillis() + TASK_TIMEOUT;
+        while (System.currentTimeMillis() < end) {
             boolean noneMalfunctions = true;
             List<Integer> malfunctionedSlaves = new ArrayList<>();
 
             for (int i = 0; i < slavePunishers.size(); i++) {
                 Boolean isMalfunctioned = slavesStatus.get(i);
-                if (isMalfunctioned == null || isMalfunctioned == false) {
+                if (isMalfunctioned == null) {
                     noneMalfunctions = false;
-                    if (slavePunishers.get(i).isTaskAssigned()) {
-                        malfunctionedSlaves.add(i);
-                    }
+                } else if (isMalfunctioned == false && slavePunishers.get(i).isTaskAssigned()) {
+                    malfunctionedSlaves.add(i);
                 }
             }
-
-            if (noneMalfunctions || System.currentTimeMillis() > endTime) {
+            if (noneMalfunctions == true || result.get() == true) {
                 break;
             }
 
@@ -104,6 +104,17 @@ public class Master {
                 assertNewTasks(malfunctionedSlaves);
             }
             wait(1000);
+        }
+
+        for (SlavePunisher slavePunisher : slavePunishers) {
+            try {
+                if (slavePunisher.isAlive()) {
+                    slavePunisher.interrupt();
+                    slavePunisher.join(1000);
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 

@@ -58,16 +58,14 @@ public class Slave {
         Socket socket = new Socket(managerAddress, PORT);
         ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-
-        for (; ; ) {
+        Subsequent subsequent = new Subsequent();
+        for (;;) {
             int[] numbers = (int[]) in.readObject();
             if (numbers.length == 0) {
                 break;
             }
-
-            boolean hasNotPrime = Arrays.stream(numbers).anyMatch(n -> !PrimeDetector.isPrime(n));
+            boolean hasNotPrime = subsequent.containsNotPrime(numbers);
             out.println(hasNotPrime ? "TRUE" : "FALSE");
         }
-
     }
 }
