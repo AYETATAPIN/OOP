@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class Slave {
-    private static final String SUBNET = "227.0.0.5";
+    private static final String SUBNET = "127.0.0.1";
     private static final String MASTER_ACK = "MASTER_ACK";
     private static final String SLAVE_ACK = "SLAVE_ACK";
     private static final int PORT = 5055;
@@ -32,7 +32,7 @@ public class Slave {
         }
     }
 
-    private InetAddress discoverManager() throws IOException {
+    InetAddress discoverManager() throws IOException {
         MulticastSocket socket = new MulticastSocket(PORT);
         socket.setReuseAddress(true);
         InetAddress group = InetAddress.getByName(SUBNET);
@@ -54,12 +54,12 @@ public class Slave {
 
     }
 
-    private void processTasks(InetAddress managerAddress) throws IOException, ClassNotFoundException {
+    void processTasks(InetAddress managerAddress) throws IOException, ClassNotFoundException {
         Socket socket = new Socket(managerAddress, PORT);
         ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         Subsequent subsequent = new Subsequent();
-        for (;;) {
+        for (; ; ) {
             int[] numbers = (int[]) in.readObject();
             if (numbers.length == 0) {
                 break;

@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Master {
-    private static final String SUBNET = "227.0.0.5";
+    private static final String SUBNET = "127.0.0.1";
     private static final String MASTER_ACK = "MASTER_ACK";
     private static final String SLAVE_ACK = "SLAVE_ACK";
     private static final int PORT = 5055;
